@@ -1,7 +1,5 @@
-package com.the_ajou.auction;
+package com.the_ajou;
 
-import com.the_ajou.domain.user.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

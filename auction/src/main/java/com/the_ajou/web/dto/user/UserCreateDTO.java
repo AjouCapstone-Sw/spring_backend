@@ -9,15 +9,19 @@ import javax.persistence.Column;
 @Getter
 @NoArgsConstructor
 public class UserCreateDTO {
-    private int userId;
-    private String userName;
+    private String userId;
     private String email;
+    private String password;
+    private String birth;
+    private String gender;
 
 
     @Builder
-    public UserCreateDTO(int userId, String userName, String email){
+    public UserCreateDTO(String userId, String email, String password, String birth, String gender){
         this.userId = userId;
-        this.userName = userName;
         this.email = email;
+        this.password = password;
+        this.birth = birth;
+        this.gender = gender;
     }
 }
