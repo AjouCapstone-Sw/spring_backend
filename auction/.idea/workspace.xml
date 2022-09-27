@@ -440,14 +440,7 @@
       <change afterPath="$PROJECT_DIR$/../../Tedi/평가표/정유빈 평가표.docx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../goQuality-dev-contents" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/MySQLConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserCreateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SwaggerConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-03-05 오후 12.51.37(2).png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-09-19 오전 10.55.11.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-09-19 오전 10.55.20.png" afterDir="false" />
@@ -487,6 +480,9 @@
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/tabbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../Machuda/kg_inicis/lib/tabbar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../Machuda/kg_inicis/lib/url.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -528,6 +524,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -565,13 +562,13 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Gradle.UserCreateTest">
+  <component name="RunManager" selected="Application.AuctionApplication">
     <configuration name="AuctionApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.the_ajou.auction.AuctionApplication" />
       <module name="auction.main" />
@@ -591,27 +588,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;com.the_ajou.auction.MySQLConnectionTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MySQLConnectionTest.testConnection" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.the_ajou.auction.MySQLConnectionTest.testConnection&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -669,13 +645,34 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="auction [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AuctionApplication" />
+        <item itemvalue="Gradle.auction [dependencies]" />
         <item itemvalue="Gradle.UserCreateTest" />
         <item itemvalue="Gradle.UserCreateTest.UserCreateTest" />
         <item itemvalue="Gradle.MySQLConnectionTest" />
-        <item itemvalue="Gradle.MySQLConnectionTest.testConnection" />
-        <item itemvalue="Application.AuctionApplication" />
       </list>
     </recent_temporary>
   </component>
