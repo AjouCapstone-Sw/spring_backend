@@ -17,3 +17,18 @@ spring:
       database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       hibernate:
         ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: kimhb09@ajou.ac.kr
+    password: rlagusqls1!
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000

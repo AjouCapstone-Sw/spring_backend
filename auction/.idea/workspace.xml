@@ -440,6 +440,9 @@
       <change afterPath="$PROJECT_DIR$/../../Tedi/평가표/정유빈 평가표.docx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../goQuality-dev-contents" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.." afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserLoginDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-03-05 오후 12.51.37(2).png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-09-19 오전 10.55.11.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../스크린샷 2022-09-19 오전 10.55.20.png" afterDir="false" />
@@ -480,14 +483,11 @@
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../Machuda/kg_inicis/lib/url.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/auction/AuctionApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/AuctionApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserCreateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/MySQLConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/MySQLConnectionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserCreateTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
