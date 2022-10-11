@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -17,28 +18,44 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "userId")
-    private String userId;
-
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "birth")
-    private String birth;
+    @Column(name = "phoneNum")
+    private String phoneNum;
 
-    @Column(name = "gender")
-    private String gender;
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
+
+    @Column(name = "status")
+    private int status;
+
+    @Column(name = "nickname")
+    private String nickname;
+
+    @Column(name = "point")
+    private int point;
+
 
     @Builder
-    public User(int id, String userId, String email, String password, String birth, String gender){
-        this.id = id;
-        this.userId = userId;
+    public User(String email, String password, String phoneNum, String address, Timestamp createdAt, Timestamp updatedAt, int status, String nickname, int point){
         this.email = email;
         this.password = password;
-        this.birth = birth;
-        this.gender = gender;
+        this.phoneNum = phoneNum;
+        this.address = address;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.status = status;
+        this.nickname = nickname;
+        this.point = point;
     }
 }

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -15,21 +17,32 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
 
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
+
     @Transactional
     public int signUp(UserCreateDTO userCreateDTO){
         User checkUser = userRepository.findByEmail(userCreateDTO.getEmail());
 
         if(checkUser == null){
             User user = User.builder()
-                    .userId(userCreateDTO.getUserId())
                     .email(userCreateDTO.getEmail())
                     .password(userCreateDTO.getPassword())
-                    .birth(userCreateDTO.getBirth())
-                    .gender(userCreateDTO.getGender())
+                    .phoneNum(userCreateDTO.getPhoneNum())
+                    .address(userCreateDTO.getAddress())
+                    .createdAt(Timestamp.valueOf(LocalDateTime.now()))
+                    .updatedAt(Timestamp.valueOf(LocalDateTime.now()))
+                    .status(1)
+                    .nickname(userCreateDTO.getNickname())
+                    .point(0)
                     .build();
+//            if(userCreateDTO.getPassword() != ""){
+//                user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
+//            }
 
             userRepository.save(user);
-            return 1;
+            return user.getId();
         }else{
             return 0;
         }
@@ -48,6 +61,7 @@ public class UserService {
     @Transactional
     public int login(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
+        //if(passwordEncoder.matches(user.getPassword(), userLoginDTO.getPassword())){
         if(user.getPassword().equals(userLoginDTO.getPassword())){
             System.out.println("OK");
             return 1;
