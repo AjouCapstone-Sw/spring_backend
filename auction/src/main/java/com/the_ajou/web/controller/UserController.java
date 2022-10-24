@@ -7,8 +7,6 @@ import com.the_ajou.web.dto.user.UserLoginDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -19,9 +17,9 @@ public class UserController {
         return userService.signUp(userCreateDTO);
     }
 
-    @GetMapping("/user")
-    public Optional<User> findUserById(int id) {
-        return (Optional<User>) userService.findUserById(id);
+    @GetMapping("/user/id")
+    public User findUserById(@RequestParam int id) {
+        return userService.findUserById(id);
     }
 
     @PostMapping("/user/login")

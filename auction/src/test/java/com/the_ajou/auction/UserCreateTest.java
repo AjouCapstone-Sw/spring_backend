@@ -2,24 +2,25 @@ package com.the_ajou.auction;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
-import com.the_ajou.service.UserService;
-import com.the_ajou.web.dto.user.UserCreateDTO;
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @SpringBootTest
 public class UserCreateTest {
-    @Autowired
-    private UserService userService;
+
+    private final UserRepository userRepository;
+
+    public UserCreateTest(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Test
     @Transactional
-    void UserCreateTest(){
-
+    void UserFindTest(){
+        User user = userRepository.findByEmail("kimhb09@ajou.ac.kr");
+        Assertions.assertThat(user.getPassword()).isSameAs("1234");
     }
 }

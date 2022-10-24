@@ -5,11 +5,13 @@ import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,38 +26,38 @@ public class UserService {
     @Transactional
     public int signUp(UserCreateDTO userCreateDTO){
         User checkUser = userRepository.findByEmail(userCreateDTO.getEmail());
+        User nickNameCheck = userRepository.findBynickname(userCreateDTO.getNickname());
 
-        if(checkUser == null){
+        if(checkUser == null && nickNameCheck == null){
             User user = User.builder()
                     .email(userCreateDTO.getEmail())
                     .password(userCreateDTO.getPassword())
                     .phoneNum(userCreateDTO.getPhoneNum())
                     .address(userCreateDTO.getAddress())
-                    .createdAt(Timestamp.valueOf(LocalDateTime.now()))
-                    .updatedAt(Timestamp.valueOf(LocalDateTime.now()))
+                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                    .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                     .status(1)
                     .nickname(userCreateDTO.getNickname())
                     .point(0)
+                    .gender(userCreateDTO.getGender())
+                    .birth(userCreateDTO.getBirth())
                     .build();
-//            if(userCreateDTO.getPassword() != ""){
-//                user.setPassword(passwordEncoder.encode(userCreateDTO.getPassword()));
-//            }
 
             userRepository.save(user);
             return user.getId();
-        }else{
-            return 0;
+        }else if(nickNameCheck != null){
+            return -2;
+        }
+        else{
+            return -1;
         }
     }
 
     @Transactional
-    public Object findUserById(int id){
-        Optional<User> user = userRepository.findById(id);
-        if(user == null){
-            return 0;
-        }else{
-            return user;
-        }
+    public User findUserById(int id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("없는 사용자 입니다"));
+        return user;
     }
 
     @Transactional
