@@ -2,6 +2,7 @@ package com.the_ajou.web.controller;
 
 import com.the_ajou.domain.sale.Sale;
 import com.the_ajou.service.SaleService;
+import com.the_ajou.web.dto.sale.SaleCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,5 +22,10 @@ public class SaleController {
     @GetMapping("/productList")
     public List<Sale> getProductList(){
         return getProductList();
+    }
+
+    @PostMapping("/createProduct")
+    public int createProduct(@RequestBody SaleCreateDTO saleCreateDTO){
+        return saleService.registerProduct(saleCreateDTO);
     }
 }

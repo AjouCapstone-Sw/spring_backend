@@ -73,7 +73,7 @@ public class UserService {
         }
     }
 
-    @Transactional
+
     public void changePassword(String email, String newPassword){
         User user = userRepository.findByEmail(email);
         user.setPassword(newPassword);
