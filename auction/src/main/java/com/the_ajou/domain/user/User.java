@@ -68,4 +68,8 @@ public class User {
         this.gender = gender;
         this.birth = birth;
     }
+
+    public void updatePoint(int point){
+        this.point = this.point + point;
+    }
 }

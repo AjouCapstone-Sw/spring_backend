@@ -5,14 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/category/CategoryCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/sale/SaleCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/payment_history/PaymentHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/payment_history/PaymentHistoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/payment/PaymentCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/library.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/machuda_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/back_button.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/check_option.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/correct_option.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/previous_page_button.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/problem_list.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/result_correct.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/result_wrong.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/right_pen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/wrong_option.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/wrong_pen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/puzzle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/puzzle_store.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/PuzzleRespository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/appbody.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/email_login.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/library.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/login_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/payment.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/payment_result.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/purchase_history.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/purchase_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/puzzle_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_body.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_info.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_option.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_repository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/purchase_history.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/puzzle_store.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/statics.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/study_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/tabbar.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/SaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/SaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/Sale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/SaleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/SaleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
