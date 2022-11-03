@@ -1,4 +1,4 @@
-package com.the_ajou.web.dto.sale;
+package com.the_ajou.web.dao.sale;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class SaleCreateDTO {
+public class SaleResponseDAO {
     int userId;
     int categoryId;
     String title;
@@ -20,8 +20,8 @@ public class SaleCreateDTO {
     private List<String> images;
 
     @Builder
-    SaleCreateDTO(int userId, int categoryId, String title, String content, String startAt,
-                  int startPrice, int field, int endPrice, List<String> images){
+    SaleResponseDAO(int userId, int categoryId, String title, String content, String startAt,
+                    int startPrice, int field, int endPrice, List<String> images){
         this.userId = userId;
         this.categoryId = categoryId;
         this.title = title;

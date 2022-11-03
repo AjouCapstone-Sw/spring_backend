@@ -7,16 +7,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class CategoryCreateDTO {
-    String categoryName;
-    String createdAt;
-    String updatedAt;
-    char status;
+    String name;
 
     @Builder
-    CategoryCreateDTO(String categoryName, String createdAt, String updatedAt, char status){
-        this.categoryName = categoryName;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
+    CategoryCreateDTO(String name){
+        this.name = name;
     }
 }

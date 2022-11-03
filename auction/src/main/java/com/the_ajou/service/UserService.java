@@ -4,6 +4,7 @@ import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
+import com.the_ajou.web.dto.user.UserUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ public class UserService {
                     .point(0)
                     .gender(userCreateDTO.getGender())
                     .birth(userCreateDTO.getBirth())
+                    .name(userCreateDTO.getName())
                     .build();
 
             userRepository.save(user);
@@ -55,9 +57,8 @@ public class UserService {
 
     @Transactional
     public User findUserById(int id){
-        User user = userRepository.findById(id)
+        return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("없는 사용자 입니다"));
-        return user;
     }
 
     @Transactional
@@ -73,10 +74,21 @@ public class UserService {
         }
     }
 
-
+    @Transactional
     public void changePassword(String email, String newPassword){
         User user = userRepository.findByEmail(email);
         user.setPassword(newPassword);
+        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         userRepository.save(user);
+    }
+
+    @Transactional
+    public int updateUser(int id, UserUpdateDTO userUpdateDTO){
+        User user = userRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
+        user.updateUser(userUpdateDTO);
+
+        return id;
     }
 }

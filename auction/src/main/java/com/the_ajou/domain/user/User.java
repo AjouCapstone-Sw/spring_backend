@@ -1,5 +1,6 @@
 package com.the_ajou.domain.user;
 
+import com.the_ajou.web.dto.user.UserUpdateDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -51,11 +53,14 @@ public class User {
     private char gender;
 
     @Column(name = "birth")
-    private Date birth;
+    private String birth;
+
+    @Column(name = "name")
+    private String name;
 
 
     @Builder
-    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, int status, String nickname, int point, char gender, Date birth){
+    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, int status, String nickname, int point, char gender, String birth, String name){
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
@@ -67,9 +72,25 @@ public class User {
         this.point = point;
         this.gender = gender;
         this.birth = birth;
+        this.name = name;
     }
 
     public void updatePoint(int point){
         this.point = this.point + point;
+    }
+
+    public void updateUser(UserUpdateDTO userUpdateDTO){
+        if(userUpdateDTO.getPhoneNum() != null)
+            this.phoneNum = userUpdateDTO.getPhoneNum();
+        if(userUpdateDTO.getAddress() != null)
+            this.address = userUpdateDTO.getAddress();
+        if(userUpdateDTO.getNickname() != null)
+            this.nickname = userUpdateDTO.getNickname();
+        if(userUpdateDTO.getGender() != ' ')
+            this.gender = userUpdateDTO.getGender();
+        if(userUpdateDTO.getBirth() != null)
+            this.birth = userUpdateDTO.getBirth();
+
+        this.updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

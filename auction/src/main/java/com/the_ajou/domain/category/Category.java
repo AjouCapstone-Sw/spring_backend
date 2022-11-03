@@ -18,8 +18,8 @@ public class Category {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "categoryName")
-    private String categoryName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "createdAt")
     private String createdAt;
@@ -31,8 +31,8 @@ public class Category {
     private char status;
 
     @Builder
-    Category(String categoryName, String createdAt, String updatedAt, char status){
-        this.categoryName = categoryName;
+    Category(String name, String createdAt, String updatedAt, char status){
+        this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.status = status;

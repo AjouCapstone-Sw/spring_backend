@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @RequiredArgsConstructor
 @Service
 public class CategoryService {
@@ -15,11 +18,23 @@ public class CategoryService {
     @Transactional
     public int createCategory(CategoryCreateDTO categoryCreateDTO){
         Category category = Category.builder()
-                .categoryName(categoryCreateDTO.getCategoryName())
-                .createdAt(categoryCreateDTO.getCreatedAt())
-                .updatedAt(categoryCreateDTO.getUpdatedAt())
-                .status(categoryCreateDTO.getStatus())
+                .name(categoryCreateDTO.getName())
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .status('N')
                 .build();
+        categoryRepository.save(category);
+
+        return category.getId();
+    }
+
+    @Transactional
+    public int deleteCategory(int id){
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+
+        category.setStatus('Y');
+        category.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         categoryRepository.save(category);
 
         return category.getId();

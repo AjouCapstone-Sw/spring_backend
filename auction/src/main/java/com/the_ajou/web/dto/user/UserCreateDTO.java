@@ -4,10 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import java.sql.Date;
-import java.sql.Timestamp;
-
 
 @Getter
 @NoArgsConstructor
@@ -18,11 +14,12 @@ public class UserCreateDTO {
     private String address;
     private String nickname;
     private char gender;
-    private Date birth;
+    private String birth;
+    private String name;
 
 
     @Builder
-    public UserCreateDTO(String email, String password, String phoneNum, String address, String nickname, char gender, Date birth){
+    public UserCreateDTO(String email, String password, String phoneNum, String address, String nickname, char gender, String birth, String name){
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
@@ -30,5 +27,6 @@ public class UserCreateDTO {
         this.nickname = nickname;
         this.gender = gender;
         this.birth = birth;
+        this.name = name;
     }
 }

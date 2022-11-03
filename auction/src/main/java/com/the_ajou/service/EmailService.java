@@ -16,8 +16,8 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Transactional
     public String sendMail(String email){
-
         String code = UUID.randomUUID().toString().substring(0,6);
 
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
