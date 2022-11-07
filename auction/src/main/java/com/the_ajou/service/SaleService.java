@@ -8,12 +8,14 @@ import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.sale.SaleResponseDAO;
 import com.the_ajou.web.dto.sale.SaleCreateDTO;
+import com.the_ajou.web.dto.sale.SaleUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.IllegalFormatWidthException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -61,6 +63,8 @@ public class SaleService {
         List<SaleResponseDAO> saleResponseDAOS = new LinkedList<>();
 
         for(Sale sale : sales){
+            if(sale.getStatus() == 'Y')
+                continue;
             List<String> images = new LinkedList<>();
 
             if(!sale.getSaleImage1().isBlank())
@@ -93,9 +97,10 @@ public class SaleService {
     @Transactional
     public int createSale(SaleCreateDTO saleCreateDTO){
         User user = userRepository.findById(saleCreateDTO.getUserId())
-                .orElseThrow();
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
         Category category = categoryRepository.findById(saleCreateDTO.getCategoryId())
-                .orElseThrow();
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
 
         int imagesLength = saleCreateDTO.getImages().size();
 
@@ -107,10 +112,9 @@ public class SaleService {
                 .startAt(saleCreateDTO.getStartAt())
                 .startPrice(saleCreateDTO.getStartPrice())
                 .field(saleCreateDTO.getField())
-                .endPrice(saleCreateDTO.getEndPrice())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .status('Y')
+                .status('N')
                 .buyerId(0)
                 .saleImage1(0 < imagesLength ?  saleCreateDTO.getImages().get(0) : "")
                 .saleImage2(1 < imagesLength ? saleCreateDTO.getImages().get(1) : "")
@@ -136,5 +140,29 @@ public class SaleService {
         saleRepository.save(sale);
 
         return sale.getId();
+    }
+
+    @Transactional
+    public int updateSale(int saleId, SaleUpdateDTO saleUpdateDTO){
+        Sale sale = saleRepository.findById(saleId)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+        Category category = categoryRepository.findById(saleUpdateDTO.getCategoryId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+
+        int imagesLength = saleUpdateDTO.getImages().size();
+
+        sale.setCategory(category);
+        sale.setTitle(saleUpdateDTO.getTitle());
+        sale.setContent(saleUpdateDTO.getContent());
+        sale.setStartAt(saleUpdateDTO.getStartAt());
+        sale.setStartPrice(saleUpdateDTO.getStartPrice());
+        sale.setField(saleUpdateDTO.getField());
+        sale.setSaleImage1(0 < imagesLength ?  saleUpdateDTO.getImages().get(0) : "");
+        sale.setSaleImage2(1 < imagesLength ?  saleUpdateDTO.getImages().get(1) : "");
+        sale.setSaleImage3(2 < imagesLength ?  saleUpdateDTO.getImages().get(2) : "");
+        sale.setSaleImage4(3 < imagesLength ?  saleUpdateDTO.getImages().get(3) : "");
+        sale.setSaleImage5(4 < imagesLength ?  saleUpdateDTO.getImages().get(4) : "");
+
+        return 1;
     }
 }

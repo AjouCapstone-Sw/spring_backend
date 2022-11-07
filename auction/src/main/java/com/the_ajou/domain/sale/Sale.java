@@ -58,19 +58,19 @@ public class Sale {
     @Column(name = "buyerId")
     private int buyerId;
 
-    @Column(name = "sale_img1")
+    @Column(name = "saleImg1")
     private String saleImage1 = "";
 
-    @Column(name = "sale_img2")
+    @Column(name = "saleImg2")
     private String saleImage2 = "";
 
-    @Column(name = "sale_img3")
+    @Column(name = "saleImg3")
     private String saleImage3 = "";
 
-    @Column(name = "sale_img4")
+    @Column(name = "saleImg4")
     private String saleImage4 = "";
 
-    @Column(name = "sale_img5")
+    @Column(name = "saleImg5")
     private String saleImage5 = "";
 
     @Builder

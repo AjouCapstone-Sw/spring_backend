@@ -33,7 +33,7 @@ public class UserController {
         userService.changePassword(email, newPassword);
     }
 
-    @PatchMapping("/user/update/{id}")
+    @PatchMapping("/user/update")
     public int updateUser(@RequestParam int id, @RequestBody UserUpdateDTO userUpdateDTO){
         return userService.updateUser(id, userUpdateDTO);
     }

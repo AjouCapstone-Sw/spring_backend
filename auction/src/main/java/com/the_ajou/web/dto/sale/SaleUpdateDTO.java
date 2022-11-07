@@ -8,8 +8,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class SaleCreateDTO {
-    int userId;
+public class SaleUpdateDTO {
     int categoryId;
     String title;
     String content;
@@ -19,9 +18,8 @@ public class SaleCreateDTO {
     private List<String> images;
 
     @Builder
-    SaleCreateDTO(int userId, int categoryId, String title, String content, String startAt,
+    SaleUpdateDTO(int categoryId, String title, String content, String startAt,
                   int startPrice, int field,  List<String> images){
-        this.userId = userId;
         this.categoryId = categoryId;
         this.title = title;
         this.content = content;

@@ -80,6 +80,7 @@ public class User {
     }
 
     public void updateUser(UserUpdateDTO userUpdateDTO){
+
         if(userUpdateDTO.getPhoneNum() != null)
             this.phoneNum = userUpdateDTO.getPhoneNum();
         if(userUpdateDTO.getAddress() != null)

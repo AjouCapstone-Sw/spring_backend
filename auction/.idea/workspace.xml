@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase/Purchase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase/PurchaseRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PurchaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PointLogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PurchaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/pointLog/PointLogResponseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/purchase/PurchaseResponseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/sale/SaleResponseDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/purchase/PurchaseCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserUpdateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/sale/SaleUpdateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tdd/BowlingGameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tdd/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/library.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/machuda_logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/back_button.svg" beforeDir="false" />
@@ -53,26 +45,17 @@
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/payment_history/PaymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/point_log/PointLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/payment_history/PaymentHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/point_log/PointLogRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/sale/Sale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/SaleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PaymentController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/SaleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/category/CategoryCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/category/CategoryCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/payment/PaymentCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/point_log/PointLogCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/category/CategoryCreateDTO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/sale/SaleCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/sale/SaleCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/UserCreateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/MySQLConnectionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserCreateTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +176,7 @@
       <module name="auction.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.the_ajou.*" />
+          <option name="PATTERN" value="tdd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -201,64 +184,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BowlingGameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auction.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.the_ajou.*" />
+          <option name="PATTERN" value="tdd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.the_ajou.auction" />
-      <option name="MAIN_CLASS_NAME" value="com.the_ajou.auction.UserCreateTest" />
+      <option name="PACKAGE_NAME" value="tdd" />
+      <option name="MAIN_CLASS_NAME" value="tdd.BowlingGameTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserCreateTest.UserCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BowlingGameTest.allOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auction.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.the_ajou.*" />
+          <option name="PATTERN" value="tdd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.the_ajou.auction" />
-      <option name="MAIN_CLASS_NAME" value="com.the_ajou.auction.UserCreateTest" />
-      <option name="METHOD_NAME" value="UserCreateTest" />
+      <option name="PACKAGE_NAME" value="tdd" />
+      <option name="MAIN_CLASS_NAME" value="tdd.BowlingGameTest" />
+      <option name="METHOD_NAME" value="allOne" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserCreateTest.UserFindTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BowlingGameTest.testGutterGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auction.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.the_ajou.auction.*" />
+          <option name="PATTERN" value="tdd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.the_ajou.auction" />
-      <option name="MAIN_CLASS_NAME" value="com.the_ajou.auction.UserCreateTest" />
-      <option name="METHOD_NAME" value="UserFindTest" />
+      <option name="PACKAGE_NAME" value="tdd" />
+      <option name="MAIN_CLASS_NAME" value="tdd.BowlingGameTest" />
+      <option name="METHOD_NAME" value="testGutterGame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.userCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BowlingGameTest.testOneSpare" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="auction.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.the_ajou.auction.*" />
+          <option name="PATTERN" value="tdd.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.the_ajou.auction" />
-      <option name="MAIN_CLASS_NAME" value="com.the_ajou.auction.UserTest" />
-      <option name="METHOD_NAME" value="userCreateTest" />
+      <option name="PACKAGE_NAME" value="tdd" />
+      <option name="MAIN_CLASS_NAME" value="tdd.BowlingGameTest" />
+      <option name="METHOD_NAME" value="testOneSpare" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -267,10 +250,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AuctionApplication" />
-        <item itemvalue="JUnit.UserTest.userCreateTest" />
-        <item itemvalue="JUnit.UserCreateTest" />
-        <item itemvalue="JUnit.UserCreateTest.UserFindTest" />
-        <item itemvalue="JUnit.UserCreateTest.UserCreateTest" />
+        <item itemvalue="JUnit.BowlingGameTest" />
+        <item itemvalue="JUnit.BowlingGameTest.testOneSpare" />
+        <item itemvalue="JUnit.BowlingGameTest.testGutterGame" />
+        <item itemvalue="JUnit.BowlingGameTest.allOne" />
       </list>
     </recent_temporary>
   </component>

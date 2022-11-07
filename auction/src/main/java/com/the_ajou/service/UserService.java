@@ -6,14 +6,10 @@ import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
 import com.the_ajou.web.dto.user.UserUpdateDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -86,6 +82,11 @@ public class UserService {
     public int updateUser(int id, UserUpdateDTO userUpdateDTO){
         User user = userRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        User nickCheck = userRepository.findBynickname(userUpdateDTO.getNickname());
+
+        if(nickCheck != null)
+            return -1;
+
 
         user.updateUser(userUpdateDTO);
 

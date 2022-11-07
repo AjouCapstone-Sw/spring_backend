@@ -2,7 +2,6 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.category.Category;
 import com.the_ajou.domain.category.CategoryRepository;
-import com.the_ajou.web.dto.category.CategoryCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +15,9 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Transactional
-    public int createCategory(CategoryCreateDTO categoryCreateDTO){
+    public int createCategory(String name){
         Category category = Category.builder()
-                .name(categoryCreateDTO.getName())
+                .name(name)
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .status('N')
