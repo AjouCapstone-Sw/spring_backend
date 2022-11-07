@@ -37,4 +37,9 @@ public class UserController {
     public int updateUser(@RequestParam int id, @RequestBody UserUpdateDTO userUpdateDTO){
         return userService.updateUser(id, userUpdateDTO);
     }
+
+    @PatchMapping("/user/delete")
+    public int deleteUser(int id){
+        return userService.deleteUser(id);
+    }
 }

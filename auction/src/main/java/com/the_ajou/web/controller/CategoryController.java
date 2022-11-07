@@ -14,8 +14,8 @@ public class CategoryController {
         return categoryService.createCategory(name);
     }
 
-    @PatchMapping("/category/{id}")
-    public int deleteCategory(@RequestParam int id){
+    @PatchMapping("/category")
+    public int deleteCategory(int id){
         return categoryService.deleteCategory(id);
     }
 }

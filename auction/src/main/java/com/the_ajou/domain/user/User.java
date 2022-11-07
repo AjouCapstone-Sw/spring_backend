@@ -35,7 +35,7 @@ public class User {
     private String address;
 
     @Column(name = "status")
-    private int status;
+    private char status;
 
     @Column(name = "nickname")
     private String nickname;
@@ -60,7 +60,7 @@ public class User {
 
 
     @Builder
-    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, int status, String nickname, int point, char gender, String birth, String name){
+    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, char status, String nickname, int point, char gender, String birth, String name){
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;

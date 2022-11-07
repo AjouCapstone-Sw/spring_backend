@@ -1,6 +1,5 @@
 package com.the_ajou.web.controller;
 
-import com.the_ajou.domain.sale.Sale;
 import com.the_ajou.service.SaleService;
 import com.the_ajou.web.dao.sale.SaleResponseDAO;
 import com.the_ajou.web.dto.sale.SaleCreateDTO;

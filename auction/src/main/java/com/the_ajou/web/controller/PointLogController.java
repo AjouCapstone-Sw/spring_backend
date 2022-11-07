@@ -14,13 +14,13 @@ import java.util.List;
 public class PointLogController {
     private final PointLogService pointLogService;
 
-    @GetMapping("/log/{userId}")
-    List<PointLogResponseDAO> getLogsByUserId(@RequestParam int userId){
+    @GetMapping("/log/userId")
+    List<PointLogResponseDAO> getLogsByUserId(int userId){
         return pointLogService.findByUserId(userId);
     }
 
-    @GetMapping("/log/{id}")
-    PointLogResponseDAO getPointLog(@RequestParam int id){
+    @GetMapping("/log/id")
+    PointLogResponseDAO getPointLog(int id){
         return pointLogService.findById(id);
     }
 
@@ -29,8 +29,8 @@ public class PointLogController {
         return pointLogService.createPointLog(pointLogCreateDTO);
     }
 
-    @PatchMapping("/log/charge/{id}")
-    int updatePoint(@RequestParam int id, int chargePoint){
+    @PatchMapping("/log/charge")
+    int updatePoint(int id, int chargePoint){
         return pointLogService.chargePoint(id, chargePoint);
     }
 }

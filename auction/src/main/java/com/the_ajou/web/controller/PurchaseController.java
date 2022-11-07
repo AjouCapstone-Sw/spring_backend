@@ -18,18 +18,18 @@ public class PurchaseController {
         return purchaseService.createPurchaseHistory(purchaseCreateDTO);
     }
 
-    @GetMapping("/purchase/{userId}")
-    List<PurchaseResponseDAO> getPurchasesByUserId(@RequestParam int userId){
+    @GetMapping("/purchase/list")
+    List<PurchaseResponseDAO> getPurchasesByUserId(int userId){
         return purchaseService.getPurchasesByUserId(userId);
     }
 
-    @GetMapping("/purchase/{id}")
-    PurchaseResponseDAO getPurchaseById(@RequestParam int purchaseId){
+    @GetMapping("/purchase")
+    PurchaseResponseDAO getPurchaseById(int purchaseId){
         return purchaseService.getPurchase(purchaseId);
     }
 
-    @PatchMapping("/purchase/delete/{id}")
-    int updatePurchase(@RequestParam int id){
+    @PatchMapping("/purchase/delete")
+    int updatePurchase(int id){
         return purchaseService.deletePurchase(id);
     }
 

@@ -33,7 +33,7 @@ public class UserService {
                     .address(userCreateDTO.getAddress())
                     .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                     .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                    .status(1)
+                    .status('N')
                     .nickname(userCreateDTO.getNickname())
                     .point(0)
                     .gender(userCreateDTO.getGender())
@@ -86,10 +86,16 @@ public class UserService {
 
         if(nickCheck != null)
             return -1;
-
-
         user.updateUser(userUpdateDTO);
-
         return id;
+    }
+
+    @Transactional
+    public int deleteUser(int id){
+        User user = userRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        user.setStatus('Y');
+
+        return user.getId();
     }
 }

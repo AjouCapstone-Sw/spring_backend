@@ -10,13 +10,11 @@ public class PurchaseCreateDTO {
     int saleId;
     int userId;
     String purchaseAddress;
-    char status;
 
     @Builder
-    PurchaseCreateDTO(int saleId, int userId, String purchaseAddress, char status){
+    PurchaseCreateDTO(int saleId, int userId, String purchaseAddress){
         this.saleId = saleId;
         this.userId = userId;
         this.purchaseAddress = purchaseAddress;
-        this.status = status;
     }
 }

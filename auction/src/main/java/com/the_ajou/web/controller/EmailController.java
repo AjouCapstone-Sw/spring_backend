@@ -13,8 +13,8 @@ public class EmailController {
     private final EmailService emailService;
 
     @CrossOrigin
-    @GetMapping("/email/{email}")
-    public String sendEmail(@PathVariable("email") String email){
+    @GetMapping("/email")
+    public String sendEmail(String email){
         return emailService.sendMail(email);
     }
 }

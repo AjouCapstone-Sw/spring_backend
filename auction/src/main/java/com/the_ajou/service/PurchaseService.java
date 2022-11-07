@@ -37,7 +37,7 @@ public class PurchaseService {
                 .purchaseAddress(purchaseCreateDTO.getPurchaseAddress())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .status(purchaseCreateDTO.getStatus())
+                .status('N')
                 .build();
 
         purchaseRepository.save(purchase);
@@ -52,6 +52,8 @@ public class PurchaseService {
         List<PurchaseResponseDAO> purchaseResponseDAOs = new LinkedList<>();
 
         for(Purchase purchase : purchases){
+            if(purchase.getStatus() == 'Y')
+                continue;
             PurchaseResponseDAO purchaseResponseDAO = PurchaseResponseDAO.builder()
                     .saleId(purchase.getSale().getId())
                     .userId(purchase.getUser().getId())
@@ -87,9 +89,7 @@ public class PurchaseService {
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 구매내역입니다."));
 
         purchase.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        purchase.setStatus('N');
-
-        purchaseRepository.save(purchase);
+        purchase.setStatus('Y');
 
         return purchase.getId();
     }

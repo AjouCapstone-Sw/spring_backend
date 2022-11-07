@@ -156,6 +156,7 @@ public class SaleService {
         sale.setContent(saleUpdateDTO.getContent());
         sale.setStartAt(saleUpdateDTO.getStartAt());
         sale.setStartPrice(saleUpdateDTO.getStartPrice());
+        sale.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         sale.setField(saleUpdateDTO.getField());
         sale.setSaleImage1(0 < imagesLength ?  saleUpdateDTO.getImages().get(0) : "");
         sale.setSaleImage2(1 < imagesLength ?  saleUpdateDTO.getImages().get(1) : "");
