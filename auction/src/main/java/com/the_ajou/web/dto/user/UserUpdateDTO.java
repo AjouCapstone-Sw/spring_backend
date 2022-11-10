@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class UserUpdateDTO {
+    private int userId;
     private String phoneNum;
     private String address;
     private String nickname;

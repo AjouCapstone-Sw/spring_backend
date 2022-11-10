@@ -13,18 +13,23 @@ import java.util.List;
 public class PointController {
     private final PointService pointService;
 
+    @GetMapping("/point/history/userId")
+    List<PointResponseDAO> findPointHistoryByUserId(int userId){
+        return pointService.findPointHistoryByUserId(userId);
+    }
+
+    @GetMapping("/point/history/id")
+    PointResponseDAO getPointHistory(int id){
+        return pointService.findHistoryById(id);
+    }
+
+    @PostMapping("/point/charge")
+    boolean updatePoint(@RequestBody PointCreateDTO pointCreateDTO){
+        return pointService.chargePoint(pointCreateDTO);
+    }
+
     @GetMapping("/point/userId")
-    List<PointResponseDAO> getsByUserId(int userId){
-        return pointService.findByUserId(userId);
-    }
-
-    @GetMapping("/point")
-    PointResponseDAO getPoint(int id){
-        return pointService.findById(id);
-    }
-
-    @PatchMapping("/point/charge")
-    int updatePoint(int id, int chargePoint){
-        return pointService.chargePoint(id, chargePoint);
+    int getPoint(int userId){
+        return pointService.getPointByUserId(userId);
     }
 }

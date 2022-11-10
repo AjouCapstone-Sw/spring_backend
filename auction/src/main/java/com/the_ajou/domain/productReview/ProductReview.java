@@ -1,4 +1,4 @@
-package com.the_ajou.domain.purchase;
+package com.the_ajou.domain.productReview;
 
 import com.the_ajou.domain.product.Product;
 import com.the_ajou.domain.user.User;
@@ -12,9 +12,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "purchase")
-public class Purchase {
-
+@Entity(name = "productReview")
+public class ProductReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,18 +27,21 @@ public class Purchase {
     @JoinColumn(name = "productId")
     private Product product;
 
+    @Column(name = "review")
+    private String review;
+
+    @Column(name = "score")
+    private int score;
+
     @Column(name = "createdAt")
     private String createdAt;
 
-    @Column(name = "updatedAt")
-    private String updatedAt;
-
-
     @Builder
-    Purchase(User user, Product product, String createdAt, String updatedAt){
+    ProductReview(User user, Product product, String review, int score, String createdAt){
         this.user = user;
         this.product = product;
+        this.review = review;
+        this.score = score;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 }

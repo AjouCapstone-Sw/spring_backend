@@ -2,6 +2,7 @@ package com.the_ajou.web.controller;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.service.UserService;
+import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
 import com.the_ajou.web.dto.user.UserUpdateDTO;
@@ -29,13 +30,13 @@ public class UserController {
     }
 
     @PostMapping("/api/v1/auth/pw")
-    public void changePassword(String email, String newPassword){
-        userService.changePassword(email, newPassword);
+    public void changePassword(@RequestBody UserLoginDTO userLoginDTO){
+        userService.changePassword(userLoginDTO);
     }
 
     @PatchMapping("/user/update")
-    public int updateUser(@RequestParam int id, @RequestBody UserUpdateDTO userUpdateDTO){
-        return userService.updateUser(id, userUpdateDTO);
+    public boolean updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
+        return userService.updateUser(userUpdateDTO);
     }
 
     @PatchMapping("/user/delete")
@@ -46,5 +47,10 @@ public class UserController {
     @GetMapping("/api/v1/auth/searchId")
     public boolean findEmail(String email){
         return userService.findEmail(email);
+    }
+
+    @PatchMapping("/api/v1/auction/address")
+    public boolean updateAddress(@RequestBody UserAddressUpdateDTO userAddressUpdateDTO){
+        return userService.updateAddress(userAddressUpdateDTO);
     }
 }

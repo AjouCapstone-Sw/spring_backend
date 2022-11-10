@@ -6,5 +6,6 @@ import java.util.List;
 
 @Repository
 public interface PointRepository extends JpaRepository<Point, Integer> {
-    List<Point> findByUserId(int userId);
+    List<Point> findListByUserId(int userId);
+    Point findByUserId(int userId);
 }

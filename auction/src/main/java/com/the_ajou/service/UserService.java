@@ -2,6 +2,7 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
 import com.the_ajou.web.dto.user.UserUpdateDTO;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -71,23 +73,24 @@ public class UserService {
     }
 
     @Transactional
-    public void changePassword(String email, String newPassword){
-        User user = userRepository.findByEmail(email);
-        user.setPassword(newPassword);
+    public void changePassword(UserLoginDTO userLoginDTO){
+        User user = userRepository.findByEmail(userLoginDTO.getEmail());
+        user.setPassword(userLoginDTO.getPassword());
         user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         userRepository.save(user);
     }
 
     @Transactional
-    public int updateUser(int id, UserUpdateDTO userUpdateDTO){
-        User user = userRepository.findById(id)
+    public boolean updateUser(UserUpdateDTO userUpdateDTO){
+        User user = userRepository.findById(userUpdateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
         User nickCheck = userRepository.findBynickname(userUpdateDTO.getNickname());
 
         if(nickCheck != null)
-            return -1;
+            return false;
         user.updateUser(userUpdateDTO);
-        return id;
+
+        return true;
     }
 
     @Transactional
@@ -103,5 +106,15 @@ public class UserService {
     public boolean findEmail(String email){
         User user = userRepository.findByEmail(email);
         return user != null;
+    }
+
+    @Transactional
+    public boolean updateAddress(UserAddressUpdateDTO userAddressUpdateDTO){
+        User user = userRepository.findById(userAddressUpdateDTO.getUserId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
+        user.setAddress(userAddressUpdateDTO.getAddress());
+
+        return !Objects.equals(user.getAddress(), "");
     }
 }

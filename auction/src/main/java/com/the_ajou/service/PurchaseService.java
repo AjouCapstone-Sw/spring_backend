@@ -34,10 +34,8 @@ public class PurchaseService {
         Purchase purchase = Purchase.builder()
                 .product(product)
                 .user(user)
-                .purchaseAddress(purchaseCreateDTO.getPurchaseAddress())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .status('N')
                 .build();
 
         purchaseRepository.save(purchase);
@@ -52,15 +50,11 @@ public class PurchaseService {
         List<PurchaseResponseDAO> purchaseResponseDAOs = new LinkedList<>();
 
         for(Purchase purchase : purchases){
-            if(purchase.getStatus() == 'Y')
-                continue;
             PurchaseResponseDAO purchaseResponseDAO = PurchaseResponseDAO.builder()
                     .productId(purchase.getProduct().getId())
                     .userId(purchase.getUser().getId())
-                    .purchaseAddress(purchase.getPurchaseAddress())
                     .createAt(purchase.getCreatedAt())
                     .updateAt(purchase.getUpdatedAt())
-                    .status(purchase.getStatus())
                     .build();
             purchaseResponseDAOs.add(purchaseResponseDAO);
         }
@@ -76,21 +70,16 @@ public class PurchaseService {
         return PurchaseResponseDAO.builder()
                 .productId(purchase.getProduct().getId())
                 .userId(purchase.getUser().getId())
-                .purchaseAddress(purchase.getPurchaseAddress())
                 .createAt(purchase.getCreatedAt())
                 .updateAt(purchase.getUpdatedAt())
-                .status(purchase.getStatus())
                 .build();
     }
 
     @Transactional
-    public int deletePurchase(int purchaseId){
+    public void deletePurchase(int purchaseId){
         Purchase purchase = purchaseRepository.findById(purchaseId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 구매내역입니다."));
 
-        purchase.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        purchase.setStatus('Y');
-
-        return purchase.getId();
+        purchaseRepository.delete(purchase);
     }
 }

@@ -14,23 +14,23 @@ public class PurchaseController {
     private final PurchaseService purchaseService;
 
     @PostMapping("/purchase")
-    int createPurchaseLog(@RequestBody PurchaseCreateDTO purchaseCreateDTO){
+    private int createPurchaseLog(@RequestBody PurchaseCreateDTO purchaseCreateDTO){
         return purchaseService.createPurchaseHistory(purchaseCreateDTO);
     }
 
     @GetMapping("/purchase/list")
-    List<PurchaseResponseDAO> getPurchasesByUserId(int userId){
+    private List<PurchaseResponseDAO> getPurchasesByUserId(int userId){
         return purchaseService.getPurchasesByUserId(userId);
     }
 
     @GetMapping("/purchase")
-    PurchaseResponseDAO getPurchaseById(int purchaseId){
+    private PurchaseResponseDAO getPurchaseById(int purchaseId){
         return purchaseService.getPurchase(purchaseId);
     }
 
-    @PatchMapping("/purchase/delete")
-    int updatePurchase(int id){
-        return purchaseService.deletePurchase(id);
+    @DeleteMapping("/purchase/delete")
+    private void updatePurchase(int id){
+        purchaseService.deletePurchase(id);
     }
 
 }

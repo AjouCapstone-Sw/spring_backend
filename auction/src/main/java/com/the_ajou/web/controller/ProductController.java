@@ -39,8 +39,13 @@ public class ProductController {
         return productService.deleteProduct(id);
     }
 
-    @PatchMapping("/product/update")
-    public int updateProduct(int id, @RequestBody ProductUpdateDTO productsUpdateDTO){
-        return productService.updateProduct(id, productsUpdateDTO);
+    @PatchMapping("/api/v1/product/update")
+    public boolean updateProduct(@RequestBody ProductUpdateDTO productsUpdateDTO){
+        return productService.updateProduct(productsUpdateDTO);
+    }
+
+    @GetMapping("get /api/v1/product/search")
+    public List<ProductResponseDAO> getProductListBySearch(String keyword){
+        return productService.getProductBySearch(keyword);
     }
 }

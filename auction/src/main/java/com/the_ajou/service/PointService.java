@@ -2,8 +2,6 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.point.Point;
 import com.the_ajou.domain.point.PointRepository;
-import com.the_ajou.domain.purchase.PurchaseRepository;
-import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.point.PointResponseDAO;
@@ -25,8 +23,8 @@ public class PointService {
 
 
     @Transactional
-    public List<PointResponseDAO> findByUserId(int userId){
-        List<Point> points = pointRepository.findByUserId(userId);
+    public List<PointResponseDAO> findPointHistoryByUserId(int userId){
+        List<Point> points = pointRepository.findListByUserId(userId);
         List<PointResponseDAO> pointResponseDAOS = new LinkedList<>();
 
         for(Point point : points){
@@ -42,7 +40,7 @@ public class PointService {
     }
 
     @Transactional
-    public PointResponseDAO findById(int pointLogId){
+    public PointResponseDAO findHistoryById(int pointLogId){
         Point point = pointRepository.findById(pointLogId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않은 포인트 내역입니다."));
 
@@ -55,15 +53,30 @@ public class PointService {
     }
 
     @Transactional
-    public int chargePoint(int userId, int chargePoint){
-        User user = userRepository.findById(userId)
+    public boolean chargePoint(PointCreateDTO pointCreateDTO){
+        User user = userRepository.findById(pointCreateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        int point = user.getPoint();
+        int userPoint = user.getPoint();
 
-        user.updatePoint(point + chargePoint);
+        user.updatePoint(userPoint + pointCreateDTO.getPoint());
         user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
-        return user.getId();
+        Point point = Point.builder()
+                .user(user)
+                .point(pointCreateDTO.getPoint())
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .build();
+
+        pointRepository.save(point);
+
+        return true;
+    }
+
+    @Transactional
+    public int getPointByUserId(int userId){
+        Point point = pointRepository.findByUserId(userId);
+
+        return point.getPoint();
     }
 }
