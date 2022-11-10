@@ -69,9 +69,9 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
-        aws deploy create-deployment 
-        --application-name CodeDeploy-app
-        --deployment-group-name deploy-api-pipe
-        --file-exists-behavior OVERWRITE 
-        --s3-location bucket=s3-20221018,bundleType=zip,key=api-server.zip
+        aws deploy create-deployment \
+        --application-name CodeDeploy-app \
+        --deployment-group-name deploy-api-pipe \
+        --file-exists-behavior OVERWRITE \
+        --s3-location bucket=s3-20221018,bundleType=zip,key=api-server.zip \
         --region ap-northeast-2
