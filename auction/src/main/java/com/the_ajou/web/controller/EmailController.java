@@ -13,7 +13,7 @@ public class EmailController {
     private final EmailService emailService;
 
     @CrossOrigin
-    @GetMapping("/email")
+    @GetMapping("/api/v1/auth/emailValidation")
     public String sendEmail(String email){
         return emailService.sendMail(email);
     }

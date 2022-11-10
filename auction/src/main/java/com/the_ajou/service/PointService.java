@@ -1,15 +1,13 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.point_log.PointLog;
-import com.the_ajou.domain.point_log.PointLogRepository;
-import com.the_ajou.domain.purchase.Purchase;
+import com.the_ajou.domain.point.Point;
+import com.the_ajou.domain.point.PointRepository;
 import com.the_ajou.domain.purchase.PurchaseRepository;
-import com.the_ajou.domain.sale.Sale;
-import com.the_ajou.domain.sale.SaleRepository;
+import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.pointLog.PointLogResponseDAO;
-import com.the_ajou.web.dto.point_log.PointLogCreateDTO;
+import com.the_ajou.web.dto.point.PointCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,43 +19,43 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class PointLogService {
-    private final PointLogRepository pointLogRepository;
-    private final SaleRepository saleRepository;
+public class PointService {
+    private final PointRepository pointRepository;
+    private final ProductRepository productRepository;
     private final PurchaseRepository purchaseRepository;
     private final UserRepository userRepository;
 
     @Transactional
-    public int createPointLog(PointLogCreateDTO pointLogCreateDTO){
-        User user = userRepository.findById(pointLogCreateDTO.getUserId())
+    public int createPointLog(PointCreateDTO pointCreateDTO){
+        User user = userRepository.findById(pointCreateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
 
-        PointLog pointLog = PointLog.builder()
+        Point point = Point.builder()
                 .user(user)
-                .purchaseId(pointLogCreateDTO.getPurchaseId())
-                .type(pointLogCreateDTO.getType())
-                .pointChange(pointLogCreateDTO.getPointCharge())
+                .purchaseId(pointCreateDTO.getPurchaseId())
+                .type(pointCreateDTO.getType())
+                .pointChange(pointCreateDTO.getPointCharge())
                 .build();
 
-        pointLogRepository.save(pointLog);
+        pointRepository.save(point);
 
-        return pointLog.getId();
+        return point.getId();
     }
 
     @Transactional
     public List<PointLogResponseDAO> findByUserId(int userId){
-        List<PointLog> pointLogs = pointLogRepository.findByUserId(userId);
+        List<Point> points = pointRepository.findByUserId(userId);
         List<PointLogResponseDAO> pointLogResponseDAOS = new LinkedList<>();
 
-        for(PointLog pointLog : pointLogs){
+        for(Point point : points){
             PointLogResponseDAO pointLogResponseDAO = PointLogResponseDAO.builder()
-                    .id(pointLog.getId())
-                    .userId(pointLog.getUser().getId())
-                    .purchaseId(pointLog.getPurchaseId())
+                    .id(point.getId())
+                    .userId(point.getUser().getId())
+                    .purchaseId(point.getPurchaseId())
                     .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                    .type(pointLog.getType())
-                    .pointChange(pointLog.getPointChange())
+                    .type(point.getType())
+                    .pointChange(point.getPointChange())
                     .build();
             pointLogResponseDAOS.add(pointLogResponseDAO);
         }
@@ -66,16 +64,16 @@ public class PointLogService {
 
     @Transactional
     public PointLogResponseDAO findById(int pointLogId){
-        PointLog pointLog = pointLogRepository.findById(pointLogId)
+        Point point = pointRepository.findById(pointLogId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않은 포인트 내역입니다."));
 
         return PointLogResponseDAO.builder()
-                .id(pointLog.getId())
-                .userId(pointLog.getUser().getId())
-                .purchaseId(pointLog.getPurchaseId())
+                .id(point.getId())
+                .userId(point.getUser().getId())
+                .purchaseId(point.getPurchaseId())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .type(pointLog.getType())
-                .pointChange(pointLog.getPointChange())
+                .type(point.getType())
+                .pointChange(point.getPointChange())
                 .build();
     }
 

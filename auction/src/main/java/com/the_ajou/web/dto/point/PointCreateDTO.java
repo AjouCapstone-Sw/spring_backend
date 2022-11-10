@@ -1,4 +1,4 @@
-package com.the_ajou.web.dto.point_log;
+package com.the_ajou.web.dto.point;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,19 +6,17 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class PointLogCreateDTO {
+public class PointCreateDTO {
     int userId;
-    int saleId;
+    int productId;
     int purchaseId;
-    char type;
     int pointCharge;
 
     @Builder
-    PointLogCreateDTO(int userId, int saleId, int purchaseId, char type, int pointCharge){
+    PointCreateDTO(int userId, int productId, int purchaseId, int pointCharge){
         this.userId = userId;
-        this.saleId = saleId;
+        this.productId = productId;
         this.purchaseId = purchaseId;
-        this.type = type;
         this.pointCharge = pointCharge;
     }
 }

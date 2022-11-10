@@ -63,10 +63,10 @@ public class UserService {
         //if(passwordEncoder.matches(user.getPassword(), userLoginDTO.getPassword())){
         if(user.getPassword().equals(userLoginDTO.getPassword())){
             System.out.println("OK");
-            return 1;
+            return user.getId();
         }else{
             System.out.println("FAIL");
-            return 0;
+            return -1;
         }
     }
 
@@ -97,5 +97,11 @@ public class UserService {
         user.setStatus('Y');
 
         return user.getId();
+    }
+
+    @Transactional
+    public boolean findEmail(String email){
+        User user = userRepository.findByEmail(email);
+        return user != null;
     }
 }

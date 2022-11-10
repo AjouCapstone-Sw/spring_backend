@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class PurchaseResponseDAO {
-    int saleId;
+    int productId;
     int userId;
     String purchaseAddress;
     String createAt;
@@ -15,8 +15,8 @@ public class PurchaseResponseDAO {
     char status;
 
     @Builder
-    PurchaseResponseDAO(int saleId, int userId, String purchaseAddress, String createAt, String updateAt, char status){
-        this.saleId = saleId;
+    PurchaseResponseDAO(int productId, int userId, String purchaseAddress, String createAt, String updateAt, char status){
+        this.productId = productId;
         this.userId = userId;
         this.purchaseAddress = purchaseAddress;
         this.createAt = createAt;

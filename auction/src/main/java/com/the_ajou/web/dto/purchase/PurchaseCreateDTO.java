@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class PurchaseCreateDTO {
-    int saleId;
+    int productId;
     int userId;
     String purchaseAddress;
 
     @Builder
-    PurchaseCreateDTO(int saleId, int userId, String purchaseAddress){
-        this.saleId = saleId;
+    PurchaseCreateDTO(int productId, int userId, String purchaseAddress){
+        this.productId = productId;
         this.userId = userId;
         this.purchaseAddress = purchaseAddress;
     }

@@ -1,7 +1,5 @@
-package com.the_ajou.domain.point_log;
+package com.the_ajou.domain.point;
 
-import com.the_ajou.domain.purchase.Purchase;
-import com.the_ajou.domain.sale.Sale;
 import com.the_ajou.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity(name = "payment_history")
-public class PointLog {
+public class Point {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +36,7 @@ public class PointLog {
     private int pointChange;
 
     @Builder
-    PointLog(User user,  int purchaseId, String createdAt, char type, int pointChange){
+    Point(User user, int purchaseId, String createdAt, char type, int pointChange){
         this.user = user;
         this.purchaseId = purchaseId;
         this.createdAt = createdAt;

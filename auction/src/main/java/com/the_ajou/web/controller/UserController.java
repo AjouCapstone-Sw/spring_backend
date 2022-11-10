@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/user/signup")
+    @PostMapping("/api/v1/auth/signup")
     public int signupUser(@RequestBody UserCreateDTO userCreateDTO){
         return userService.signUp(userCreateDTO);
     }
@@ -23,12 +23,12 @@ public class UserController {
         return userService.findUserById(id);
     }
 
-    @PostMapping("/user/login")
+    @PostMapping("/api/v1/auth/login")
     public int login(@RequestBody UserLoginDTO userLoginDTO){
         return userService.login(userLoginDTO);
     }
 
-    @PostMapping("/user/change-password")
+    @PostMapping("/api/v1/auth/pw")
     public void changePassword(String email, String newPassword){
         userService.changePassword(email, newPassword);
     }
@@ -41,5 +41,10 @@ public class UserController {
     @PatchMapping("/user/delete")
     public int deleteUser(int id){
         return userService.deleteUser(id);
+    }
+
+    @GetMapping("/api/v1/auth/searchId")
+    public boolean findEmail(String email){
+        return userService.findEmail(email);
     }
 }

@@ -1,9 +1,8 @@
 package com.the_ajou.web.controller;
 
-import com.the_ajou.domain.point_log.PointLog;
-import com.the_ajou.service.PointLogService;
+import com.the_ajou.service.PointService;
 import com.the_ajou.web.dao.pointLog.PointLogResponseDAO;
-import com.the_ajou.web.dto.point_log.PointLogCreateDTO;
+import com.the_ajou.web.dto.point.PointCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,26 +10,26 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class PointLogController {
-    private final PointLogService pointLogService;
+public class PointController {
+    private final PointService pointService;
 
     @GetMapping("/log/userId")
     List<PointLogResponseDAO> getLogsByUserId(int userId){
-        return pointLogService.findByUserId(userId);
+        return pointService.findByUserId(userId);
     }
 
     @GetMapping("/log/id")
     PointLogResponseDAO getPointLog(int id){
-        return pointLogService.findById(id);
+        return pointService.findById(id);
     }
 
     @PostMapping("/log")
-    int createLog(@RequestBody PointLogCreateDTO pointLogCreateDTO){
-        return pointLogService.createPointLog(pointLogCreateDTO);
+    int createLog(@RequestBody PointCreateDTO pointCreateDTO){
+        return pointService.createPointLog(pointCreateDTO);
     }
 
     @PatchMapping("/log/charge")
     int updatePoint(int id, int chargePoint){
-        return pointLogService.chargePoint(id, chargePoint);
+        return pointService.chargePoint(id, chargePoint);
     }
 }

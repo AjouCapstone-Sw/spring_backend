@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### TDD 강의 ###
+src/test/java/tdd/

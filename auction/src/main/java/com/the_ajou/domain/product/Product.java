@@ -1,4 +1,4 @@
-package com.the_ajou.domain.sale;
+package com.the_ajou.domain.product;
 
 
 import com.the_ajou.domain.category.Category;
@@ -13,8 +13,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "sale")
-public class Sale {
+@Entity(name = "product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -40,8 +40,8 @@ public class Sale {
     @Column(name = "startPrice")
     private int startPrice;
 
-    @Column(name = "field")
-    private int field;
+    @Column(name = "instant")
+    private int instant;
 
     @Column(name = "endPrice")
     private int endPrice;
@@ -58,25 +58,25 @@ public class Sale {
     @Column(name = "buyerId")
     private int buyerId;
 
-    @Column(name = "saleImg1")
-    private String saleImage1 = "";
+    @Column(name = "productImg1")
+    private String productImage1 = "";
 
-    @Column(name = "saleImg2")
-    private String saleImage2 = "";
+    @Column(name = "productImg2")
+    private String productImage2 = "";
 
-    @Column(name = "saleImg3")
-    private String saleImage3 = "";
+    @Column(name = "productImg3")
+    private String productImage3 = "";
 
-    @Column(name = "saleImg4")
-    private String saleImage4 = "";
+    @Column(name = "productImg4")
+    private String productImage4 = "";
 
-    @Column(name = "saleImg5")
-    private String saleImage5 = "";
+    @Column(name = "productImg5")
+    private String productImage5 = "";
 
     @Builder
-    Sale(User user, Category category, String title, String content, String startAt, int startPrice,
-         int field, int endPrice, String createdAt, String updatedAt, char status, int buyerId,
-        String saleImage1, String saleImage2, String saleImage3, String saleImage4, String saleImage5
+    Product(User user, Category category, String title, String content, String startAt, int startPrice,
+            int instant, int endPrice, String createdAt, String updatedAt, char status, int buyerId,
+            String productImage1, String productImage2, String productImage3, String productImage4, String productImage5
     ){
         this.user = user;
         this.category = category;
@@ -84,16 +84,16 @@ public class Sale {
         this.content = content;
         this.startAt = startAt;
         this.startPrice = startPrice;
-        this.field = field;
+        this.instant = instant;
         this.endPrice = endPrice;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.status = status;
         this.buyerId = buyerId;
-        this.saleImage1 = saleImage1;
-        this.saleImage2 = saleImage2;
-        this.saleImage3 = saleImage3;
-        this.saleImage4 = saleImage4;
-        this.saleImage5 = saleImage5;
+        this.productImage1 = productImage1;
+        this.productImage2 = productImage2;
+        this.productImage3 = productImage3;
+        this.productImage4 = productImage4;
+        this.productImage5 = productImage5;
     }
 }

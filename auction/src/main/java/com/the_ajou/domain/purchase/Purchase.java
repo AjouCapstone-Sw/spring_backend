@@ -1,6 +1,6 @@
 package com.the_ajou.domain.purchase;
 
-import com.the_ajou.domain.sale.Sale;
+import com.the_ajou.domain.product.Product;
 import com.the_ajou.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,8 +25,8 @@ public class Purchase {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "saleId")
-    private Sale sale;
+    @JoinColumn(name = "productId")
+    private Product product;
 
     @Column(name = "purchaseAddress")
     private String purchaseAddress;
@@ -41,9 +41,9 @@ public class Purchase {
     private char status;
 
     @Builder
-    Purchase(User user, Sale sale, String purchaseAddress, String createdAt, String updatedAt, char status){
+    Purchase(User user, Product product, String purchaseAddress, String createdAt, String updatedAt, char status){
         this.user = user;
-        this.sale = sale;
+        this.product = product;
         this.purchaseAddress = purchaseAddress;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;

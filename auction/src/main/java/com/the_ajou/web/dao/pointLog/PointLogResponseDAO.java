@@ -10,17 +10,17 @@ public class PointLogResponseDAO {
     int id;
     int userId;
     int purchaseId;
-    int saleId;
+    int productId;
     String createdAt;
     char type;
     int pointChange;
 
     @Builder
-    PointLogResponseDAO(int id, int userId, int purchaseId, int saleId, String createdAt, char type, int pointChange){
+    PointLogResponseDAO(int id, int userId, int purchaseId, int productId, String createdAt, char type, int pointChange){
         this.id = id;
         this.userId = userId;
         this.purchaseId = purchaseId;
-        this.saleId = saleId;
+        this.productId = productId;
         this.createdAt = createdAt;
         this.type = type;
         this.pointChange = pointChange;

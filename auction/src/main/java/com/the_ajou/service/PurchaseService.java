@@ -2,8 +2,8 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.purchase.Purchase;
 import com.the_ajou.domain.purchase.PurchaseRepository;
-import com.the_ajou.domain.sale.Sale;
-import com.the_ajou.domain.sale.SaleRepository;
+import com.the_ajou.domain.product.Product;
+import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.purchase.PurchaseResponseDAO;
@@ -20,19 +20,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PurchaseService {
-    private final SaleRepository saleRepository;
+    private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final PurchaseRepository purchaseRepository;
 
     @Transactional
     public int createPurchaseHistory(PurchaseCreateDTO purchaseCreateDTO){
-        Sale sale = saleRepository.findById(purchaseCreateDTO.getSaleId())
+        Product product = productRepository.findById(purchaseCreateDTO.getProductId())
                 .orElseThrow(()->new IllegalArgumentException("상품이 존재하지 않습니다."));
         User user = userRepository.findById(purchaseCreateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("해당 사용자가 존재하지 않습니다."));
 
         Purchase purchase = Purchase.builder()
-                .sale(sale)
+                .product(product)
                 .user(user)
                 .purchaseAddress(purchaseCreateDTO.getPurchaseAddress())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
@@ -55,7 +55,7 @@ public class PurchaseService {
             if(purchase.getStatus() == 'Y')
                 continue;
             PurchaseResponseDAO purchaseResponseDAO = PurchaseResponseDAO.builder()
-                    .saleId(purchase.getSale().getId())
+                    .productId(purchase.getProduct().getId())
                     .userId(purchase.getUser().getId())
                     .purchaseAddress(purchase.getPurchaseAddress())
                     .createAt(purchase.getCreatedAt())
@@ -74,7 +74,7 @@ public class PurchaseService {
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 구매내역입니다."));
 
         return PurchaseResponseDAO.builder()
-                .saleId(purchase.getSale().getId())
+                .productId(purchase.getProduct().getId())
                 .userId(purchase.getUser().getId())
                 .purchaseAddress(purchase.getPurchaseAddress())
                 .createAt(purchase.getCreatedAt())
