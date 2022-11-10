@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "payment_history")
+@Entity(name = "point")
 public class Point {
 
     @Id
@@ -23,24 +23,17 @@ public class Point {
     @JoinColumn(name = "userId")
     private User user;
 
-    @Column(name = "purchaseId")
-    private int purchaseId;
 
     @Column(name = "createdAt")
     private String createdAt;
 
-    @Column(name = "type")
-    private char type;
-
-    @Column(name = "pointChange")
-    private int pointChange;
+    @Column(name = "point")
+    private int point;
 
     @Builder
-    Point(User user, int purchaseId, String createdAt, char type, int pointChange){
+    Point(User user, String createdAt, int point){
         this.user = user;
-        this.purchaseId = purchaseId;
         this.createdAt = createdAt;
-        this.type = type;
-        this.pointChange = pointChange;
+        this.point = point;
     }
 }

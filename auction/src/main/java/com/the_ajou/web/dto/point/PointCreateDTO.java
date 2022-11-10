@@ -8,15 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PointCreateDTO {
     int userId;
-    int productId;
-    int purchaseId;
-    int pointCharge;
+    int point;
 
     @Builder
-    PointCreateDTO(int userId, int productId, int purchaseId, int pointCharge){
+    PointCreateDTO(int userId, int point){
         this.userId = userId;
-        this.productId = productId;
-        this.purchaseId = purchaseId;
-        this.pointCharge = pointCharge;
+        this.point = point;
     }
 }

@@ -6,7 +6,7 @@ import com.the_ajou.domain.purchase.PurchaseRepository;
 import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
-import com.the_ajou.web.dao.pointLog.PointLogResponseDAO;
+import com.the_ajou.web.dao.point.PointResponseDAO;
 import com.the_ajou.web.dto.point.PointCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,59 +21,36 @@ import java.util.List;
 @Service
 public class PointService {
     private final PointRepository pointRepository;
-    private final ProductRepository productRepository;
-    private final PurchaseRepository purchaseRepository;
     private final UserRepository userRepository;
 
-    @Transactional
-    public int createPointLog(PointCreateDTO pointCreateDTO){
-        User user = userRepository.findById(pointCreateDTO.getUserId())
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
-
-
-        Point point = Point.builder()
-                .user(user)
-                .purchaseId(pointCreateDTO.getPurchaseId())
-                .type(pointCreateDTO.getType())
-                .pointChange(pointCreateDTO.getPointCharge())
-                .build();
-
-        pointRepository.save(point);
-
-        return point.getId();
-    }
 
     @Transactional
-    public List<PointLogResponseDAO> findByUserId(int userId){
+    public List<PointResponseDAO> findByUserId(int userId){
         List<Point> points = pointRepository.findByUserId(userId);
-        List<PointLogResponseDAO> pointLogResponseDAOS = new LinkedList<>();
+        List<PointResponseDAO> pointResponseDAOS = new LinkedList<>();
 
         for(Point point : points){
-            PointLogResponseDAO pointLogResponseDAO = PointLogResponseDAO.builder()
+            PointResponseDAO pointResponseDAO = PointResponseDAO.builder()
                     .id(point.getId())
                     .userId(point.getUser().getId())
-                    .purchaseId(point.getPurchaseId())
-                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                    .type(point.getType())
-                    .pointChange(point.getPointChange())
+                    .createdAt(point.getCreatedAt())
+                    .point(point.getPoint())
                     .build();
-            pointLogResponseDAOS.add(pointLogResponseDAO);
+            pointResponseDAOS.add(pointResponseDAO);
         }
-        return pointLogResponseDAOS;
+        return pointResponseDAOS;
     }
 
     @Transactional
-    public PointLogResponseDAO findById(int pointLogId){
+    public PointResponseDAO findById(int pointLogId){
         Point point = pointRepository.findById(pointLogId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않은 포인트 내역입니다."));
 
-        return PointLogResponseDAO.builder()
+        return PointResponseDAO.builder()
                 .id(point.getId())
                 .userId(point.getUser().getId())
-                .purchaseId(point.getPurchaseId())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .type(point.getType())
-                .pointChange(point.getPointChange())
+                .createdAt(point.getCreatedAt())
+                .point(point.getPoint())
                 .build();
     }
 
@@ -81,7 +58,10 @@ public class PointService {
     public int chargePoint(int userId, int chargePoint){
         User user = userRepository.findById(userId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
-        user.updatePoint(chargePoint);
+
+        int point = user.getPoint();
+
+        user.updatePoint(point + chargePoint);
         user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         return user.getId();
