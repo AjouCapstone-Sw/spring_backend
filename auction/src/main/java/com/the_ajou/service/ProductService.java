@@ -82,6 +82,7 @@ public class ProductService {
                 .endTime(endTimeStr)
                 .startPrice(product.getStartPrice())
                 .instant(product.getInstant())
+                .buyNowPrice(product.getBuyNowPrice())
                 .duration(product.getDuration())
                 .bidPrice(product.getBidPrice())
                 .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
@@ -123,10 +124,11 @@ public class ProductService {
                     e.printStackTrace();
                 }
 
+
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
-                        .buyNowPrice(product.getInstant() == 1 ? product.getStartPrice() : 0)
+                        .buyNowPrice(product.getBuyNowPrice())
                         .live(before && after)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
@@ -183,7 +185,7 @@ public class ProductService {
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
-                        .buyNowPrice(product.getInstant() == 1 ? product.getStartPrice() : 0)
+                        .buyNowPrice(product.getBuyNowPrice())
                         .live(before && after)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
@@ -217,6 +219,7 @@ public class ProductService {
                 .bidPrice(productCreateDTO.getBidPrice())
                 .startPrice(productCreateDTO.getStartPrice())
                 .instant(productCreateDTO.getInstant())
+                .buyNowPrice(productCreateDTO.getBuyNowPrice())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .endPrice(productCreateDTO.getInstant() == 1 ? productCreateDTO.getStartPrice() : 0)
@@ -295,7 +298,7 @@ public class ProductService {
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
-                        .buyNowPrice(product.getInstant() == 1 ? product.getStartPrice() : 0)
+                        .buyNowPrice(product.getBuyNowPrice())
                         .live(0<= timeDiff && timeDiff <= product.getDuration())
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())

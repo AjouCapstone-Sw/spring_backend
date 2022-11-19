@@ -52,6 +52,9 @@ public class Product {
     @Column(name = "endPrice")
     private int endPrice;
 
+    @Column(name = "buyNowPrice")
+    private int buyNowPrice;
+
     @Column(name = "createdAt")
     private String createdAt;
 
@@ -81,7 +84,7 @@ public class Product {
 
     @Builder
     Product(User user, Category category, String title, String description, String startTime, int duration,int startPrice, int bidPrice,
-            int instant, int endPrice, String createdAt, String updatedAt, char status, int buyerId,
+            int instant, int endPrice, String createdAt, String updatedAt, char status, int buyerId, int buyNowPrice,
             String productImage1, String productImage2, String productImage3, String productImage4, String productImage5
     ){
         this.user = user;
@@ -94,6 +97,7 @@ public class Product {
         this.instant = instant;
         this.bidPrice = bidPrice;
         this.endPrice = endPrice;
+        this.buyNowPrice = buyNowPrice;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.status = status;

@@ -18,11 +18,12 @@ public class ProductCreateDTO {
     int duration;
     int bidPrice;
     int instant;
+    int buyNowPrice;
     private List<String> productImages;
 
     @Builder
     ProductCreateDTO(int userId, int categoryId, String title, String description, String startTime, int duration,int bidPrice,
-                     int startPrice, int instant, List<String> productImages){
+                     int startPrice, int instant, int buyNowPrice,List<String> productImages){
         this.userId = userId;
         this.categoryId = categoryId;
         this.title = title;
@@ -32,6 +33,7 @@ public class ProductCreateDTO {
         this.startPrice = startPrice;
         this.bidPrice = bidPrice;
         this.instant = instant;
+        this.buyNowPrice = buyNowPrice;
         this.productImages = productImages;
     }
 }
