@@ -267,6 +267,7 @@ public class ProductService {
         product.setInstant(productUpdateDTO.getInstant());
         product.setDuration(productUpdateDTO.getDuration());
         product.setBidPrice(productUpdateDTO.getBidPrice());
+        product.setBuyNowPrice(productUpdateDTO.getBuyNowPrice());
         product.setEndPrice(productUpdateDTO.getInstant() == 1 ? productUpdateDTO.getStartPrice() : 0);
         product.setProductImage1(0 < imagesLength ?  productUpdateDTO.getImages().get(0) : "");
         product.setProductImage2(1 < imagesLength ?  productUpdateDTO.getImages().get(1) : "");
