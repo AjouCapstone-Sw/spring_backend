@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ubuntu/app
+REPOSITORY=/home/ubuntu/api-server
 
 echo "> 현재 구동 중인 api-server pid 확인"
 
