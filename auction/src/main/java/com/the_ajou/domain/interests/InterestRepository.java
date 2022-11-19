@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InterestRepository extends JpaRepository<Interest, Integer> {
+    Interest findByProductIdAndUserId(int productId, int userId);
 }

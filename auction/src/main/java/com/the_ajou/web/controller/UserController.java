@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/api/v1/auth/signup")
+    @PostMapping("/auth/signup")
     public int signupUser(@RequestBody UserCreateDTO userCreateDTO){
         return userService.signUp(userCreateDTO);
     }
 
-    @GetMapping("/user/id")
-    public User findUserById(@RequestParam int id) {
+    @GetMapping("/user/{id}")
+    public User findUserById(@PathVariable("id") int id) {
         return userService.findUserById(id);
     }
 
-    @PostMapping("/api/v1/auth/login")
+    @PostMapping("/auth/login")
     public int login(@RequestBody UserLoginDTO userLoginDTO){
         return userService.login(userLoginDTO);
     }
 
-    @PostMapping("/api/v1/auth/pw")
+    @PostMapping("/auth/pw")
     public void changePassword(@RequestBody UserLoginDTO userLoginDTO){
         userService.changePassword(userLoginDTO);
     }
@@ -39,17 +39,17 @@ public class UserController {
         return userService.updateUser(userUpdateDTO);
     }
 
-    @PatchMapping("/user/delete")
-    public int deleteUser(int id){
+    @PatchMapping("/user/delete/{id}")
+    public int deleteUser(@PathVariable("id") int id){
         return userService.deleteUser(id);
     }
 
-    @GetMapping("/api/v1/auth/searchId")
-    public boolean findEmail(String email){
+    @GetMapping("/auth/search/{email}")
+    public boolean findEmail(@PathVariable("email") String email){
         return userService.findEmail(email);
     }
 
-    @PatchMapping("/api/v1/auction/address")
+    @PatchMapping("/user/registerAddress")
     public boolean updateAddress(@RequestBody UserAddressUpdateDTO userAddressUpdateDTO){
         return userService.updateAddress(userAddressUpdateDTO);
     }

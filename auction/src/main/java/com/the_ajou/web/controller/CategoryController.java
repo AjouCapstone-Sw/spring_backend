@@ -17,13 +17,13 @@ public class CategoryController {
         return categoryService.createCategory(name);
     }
 
-    @PatchMapping("/category")
+    @PatchMapping("/category/delete")
     public int deleteCategory(int id){
         return categoryService.deleteCategory(id);
     }
 
-    @GetMapping("/api/v1/category")
-    public List<CategoryDAO> getCategories(){
+    @GetMapping("/category/getAll")
+    public List<CategoryDAO> getCategories() {
         return categoryService.getCategories();
     }
 }

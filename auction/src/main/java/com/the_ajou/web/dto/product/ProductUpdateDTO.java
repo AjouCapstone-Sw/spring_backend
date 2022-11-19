@@ -12,21 +12,25 @@ public class ProductUpdateDTO {
     int productId;
     int categoryId;
     String title;
-    String content;
-    String startAt;
+    String description;
+    String startTime;
     int startPrice;
     int instant;
+    int duration;
+    int bidPrice;
     private List<String> images;
 
     @Builder
-    ProductUpdateDTO(int productId, int categoryId, String title, String content, String startAt,
-                     int startPrice, int instant, List<String> images){
+    ProductUpdateDTO(int productId, int categoryId, String title, String description, String startTime,
+                     int startPrice, int duration, int bidPrice,int instant, List<String> images){
         this.productId = productId;
         this.categoryId = categoryId;
         this.title = title;
-        this.content = content;
-        this.startAt = startAt;
+        this.description = description;
+        this.startTime = startTime;
+        this.duration = duration;
         this.startPrice = startPrice;
+        this.bidPrice = bidPrice;
         this.instant = instant;
         this.images = images;
     }

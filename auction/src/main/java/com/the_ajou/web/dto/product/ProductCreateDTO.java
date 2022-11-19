@@ -12,22 +12,26 @@ public class ProductCreateDTO {
     int userId;
     int categoryId;
     String title;
-    String content;
-    String startAt;
+    String description;
+    String startTime;
     int startPrice;
+    int duration;
+    int bidPrice;
     int instant;
-    private List<String> images;
+    private List<String> productImages;
 
     @Builder
-    ProductCreateDTO(int userId, int categoryId, String title, String content, String startAt,
-                     int startPrice, int instant, List<String> images){
+    ProductCreateDTO(int userId, int categoryId, String title, String description, String startTime, int duration,int bidPrice,
+                     int startPrice, int instant, List<String> productImages){
         this.userId = userId;
         this.categoryId = categoryId;
         this.title = title;
-        this.content = content;
-        this.startAt = startAt;
+        this.description = description;
+        this.startTime = startTime;
+        this.duration = duration;
         this.startPrice = startPrice;
+        this.bidPrice = bidPrice;
         this.instant = instant;
-        this.images = images;
+        this.productImages = productImages;
     }
 }

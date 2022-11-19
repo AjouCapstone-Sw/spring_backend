@@ -2,11 +2,13 @@ package com.the_ajou.web.controller;
 
 import com.the_ajou.service.ProductService;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
+import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
 import com.the_ajou.web.dto.product.ProductCreateDTO;
 import com.the_ajou.web.dto.product.ProductUpdateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -14,18 +16,18 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/api/v1/product")
-    public ProductResponseDAO getProduct(int productId){
+    @GetMapping("/product/{productId}")
+    public ProductResponseDAO getProduct(@PathVariable("productId") int productId){
         return productService.getProduct(productId);
     }
 
-    @GetMapping("/productList")
-    public List<ProductResponseDAO> getProductList(){
+    @GetMapping("/product/list")
+    public List<ProductSearchResponseDAO> getProductList(){
         return productService.getProductList();
     }
 
-    @GetMapping("/productList/category")
-    public List<ProductResponseDAO> getProductListByCategoryId(int categoryId){
+    @GetMapping("/productList/{categoryId}")
+    public List<ProductSearchResponseDAO> getProductListByCategoryId(@PathVariable("categoryId") int categoryId){
         return productService.getProductListByCategoryId(categoryId);
     }
 
@@ -34,18 +36,18 @@ public class ProductController {
         return productService.createProduct(productCreateDTO);
     }
 
-    @PatchMapping("/product/delete")
-    public boolean deleteProduct(int id){
-        return productService.deleteProduct(id);
+    @PatchMapping("/product/delete/{productId}")
+    public boolean deleteProduct(@PathVariable("productId") int productId){
+        return productService.deleteProduct(productId);
     }
 
-    @PatchMapping("/api/v1/product/update")
+    @PatchMapping("/product/update")
     public boolean updateProduct(@RequestBody ProductUpdateDTO productsUpdateDTO){
         return productService.updateProduct(productsUpdateDTO);
     }
 
-    @GetMapping("get /api/v1/product/search")
-    public List<ProductResponseDAO> getProductListBySearch(String keyword){
+    @GetMapping("/product/search/{keyword}")
+    public List<ProductSearchResponseDAO> getProductSearchList(@PathVariable("keyword") String keyword) throws ParseException {
         return productService.getProductBySearch(keyword);
     }
 }

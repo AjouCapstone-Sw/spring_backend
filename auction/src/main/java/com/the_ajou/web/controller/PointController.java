@@ -13,13 +13,13 @@ import java.util.List;
 public class PointController {
     private final PointService pointService;
 
-    @GetMapping("/point/history/userId")
-    List<PointResponseDAO> findPointHistoryByUserId(int userId){
+    @GetMapping("/point/history/{userId}")
+    List<PointResponseDAO> findPointHistoryByUserId(@PathVariable("userId") int userId){
         return pointService.findPointHistoryByUserId(userId);
     }
 
-    @GetMapping("/point/history/id")
-    PointResponseDAO getPointHistory(int id){
+    @GetMapping("/point/history/{id}")
+    PointResponseDAO getPointHistory(@PathVariable("id") int id){
         return pointService.findHistoryById(id);
     }
 
@@ -28,8 +28,8 @@ public class PointController {
         return pointService.chargePoint(pointCreateDTO);
     }
 
-    @GetMapping("/point/userId")
-    int getPoint(int userId){
+    @GetMapping("/point/{userId}")
+    int getPoint(@PathVariable("userId") int userId){
         return pointService.getPointByUserId(userId);
     }
 }

@@ -5,10 +5,7 @@ import com.the_ajou.service.AuctionReviewService;
 import com.the_ajou.web.dao.auctionReview.AuctionReviewDAO;
 import com.the_ajou.web.dto.auctionReview.AuctionReviewCreateDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +14,13 @@ import java.util.List;
 public class AuctionReviewController {
     private final AuctionReviewService auctionReviewService;
 
-    @PostMapping("/api/v1/review/auction")
+    @PostMapping("/review/auction")
     private boolean createReview(@RequestBody AuctionReviewCreateDTO auctionReviewCreateDTO){
         return auctionReviewService.createAuctionReview(auctionReviewCreateDTO);
     }
 
-    @GetMapping("/api/v1/review/auction")
-    private List<AuctionReviewDAO> getReviews(int userId){
+    @GetMapping("/review/auction/{userId}")
+    private List<AuctionReviewDAO> getReviews(@PathVariable("userId")int userId){
         return auctionReviewService.getReviewByUserId(userId);
     }
 

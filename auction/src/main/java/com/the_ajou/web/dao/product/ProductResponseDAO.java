@@ -6,30 +6,36 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
+
 @Getter
 @NoArgsConstructor
 public class ProductResponseDAO {
-    int userId;
-    int categoryId;
+    int productId;
+    String seller;
     String title;
-    String content;
-    String startAt;
+    String description;
+    String startTime;
+    String endTime;
     int startPrice;
     int instant;
-    int endPrice;
-    private List<String> images;
+    boolean like;
+    boolean live;
+    private List<String> productImages;
 
     @Builder
-    ProductResponseDAO(int userId, int categoryId, String title, String content, String startAt,
-                       int startPrice, int instant, int endPrice, List<String> images){
-        this.userId = userId;
-        this.categoryId = categoryId;
+    ProductResponseDAO(int productId, String seller, String title, String description, String startTime, String endTime, int startPrice,
+                       int instant, boolean like, boolean live, List<String> productImages){
+        this.productId = productId;
+        this.seller = seller;
         this.title = title;
-        this.content = content;
-        this.startAt = startAt;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.startPrice = startPrice;
         this.instant = instant;
-        this.endPrice = endPrice;
-        this.images = images;
+        this.like = like;
+        this.live = live;
+        this.productImages = productImages;
     }
 }

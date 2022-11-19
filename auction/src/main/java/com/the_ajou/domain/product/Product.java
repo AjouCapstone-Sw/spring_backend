@@ -31,11 +31,17 @@ public class Product {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
-    private String content;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "startAt")
-    private String startAt;
+    @Column(name = "startTime")
+    private String startTime;
+
+    @Column(name = "duration")
+    private int duration;
+
+    @Column(name = "bidPrice")
+    private int bidPrice;
 
     @Column(name = "startPrice")
     private int startPrice;
@@ -74,17 +80,19 @@ public class Product {
     private String productImage5 = "";
 
     @Builder
-    Product(User user, Category category, String title, String content, String startAt, int startPrice,
+    Product(User user, Category category, String title, String description, String startTime, int duration,int startPrice, int bidPrice,
             int instant, int endPrice, String createdAt, String updatedAt, char status, int buyerId,
             String productImage1, String productImage2, String productImage3, String productImage4, String productImage5
     ){
         this.user = user;
         this.category = category;
         this.title = title;
-        this.content = content;
-        this.startAt = startAt;
+        this.description = description;
+        this.startTime = startTime;
+        this.duration = duration;
         this.startPrice = startPrice;
         this.instant = instant;
+        this.bidPrice = bidPrice;
         this.endPrice = endPrice;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
