@@ -25,6 +25,7 @@ fi
 #chmod +x $DEPLOY_JAR
 #pm2 start app.json >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
 
+
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 echo "> DEPLOY_JAR 배포"    >> /home/ubuntu/api-server/deploy.log
 chmod +x $DEPLOY_JAR
