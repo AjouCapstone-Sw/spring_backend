@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="파일 위치 수정 및 삭제">
       <change afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductSearchResponseDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/library.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/machuda_logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/back_button.svg" beforeDir="false" />
@@ -43,24 +42,8 @@
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/tabbar.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/interests/InterestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/interests/InterestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/AuctionReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/AuctionReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/EmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PointController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductResponseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductResponseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/product/ProductCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/product/ProductCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/product/ProductUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/product/ProductUpdateDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

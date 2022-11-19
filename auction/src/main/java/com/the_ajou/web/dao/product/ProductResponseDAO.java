@@ -19,12 +19,14 @@ public class ProductResponseDAO {
     String endTime;
     int startPrice;
     int instant;
+    int duration;
+    int bidPrice;
     boolean like;
     boolean live;
     private List<String> productImages;
 
     @Builder
-    ProductResponseDAO(int productId, String seller, String title, String description, String startTime, String endTime, int startPrice,
+    ProductResponseDAO(int productId, String seller, String title, String description, String startTime, String endTime, int startPrice,int duration, int bidPrice,
                        int instant, boolean like, boolean live, List<String> productImages){
         this.productId = productId;
         this.seller = seller;
@@ -36,6 +38,8 @@ public class ProductResponseDAO {
         this.instant = instant;
         this.like = like;
         this.live = live;
+        this.duration = duration;
+        this.bidPrice = bidPrice;
         this.productImages = productImages;
     }
 }

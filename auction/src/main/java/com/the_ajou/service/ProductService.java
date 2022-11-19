@@ -82,6 +82,8 @@ public class ProductService {
                 .endTime(endTimeStr)
                 .startPrice(product.getStartPrice())
                 .instant(product.getInstant())
+                .duration(product.getDuration())
+                .bidPrice(product.getBidPrice())
                 .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                 .live(before && after)
                 .productImages(images)
@@ -121,8 +123,6 @@ public class ProductService {
                     e.printStackTrace();
                 }
 
-
-
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
@@ -142,8 +142,13 @@ public class ProductService {
 
     @Transactional
     public List<ProductSearchResponseDAO> getProductListByCategoryId(int categoryId){
-        List<Product> products = productRepository.findAllByCategoryId(categoryId);
+        List<Product> products;
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+
+        if(categoryId == 1)
+            products = productRepository.findAll();
+        else
+            products = productRepository.findAllByCategoryId(categoryId);
 
         for(Product product : products){
             if(product.getStatus() == 'N'){
@@ -303,4 +308,5 @@ public class ProductService {
 
         return productSearchResponseDAOS;
     }
+
 }
