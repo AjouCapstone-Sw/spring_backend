@@ -8,6 +8,10 @@ public class UserAddressUpdateDTO {
     private int userId;
     private String address;
 
+    public UserAddressUpdateDTO() {
+
+    }
+
     @Builder
     UserAddressUpdateDTO(int userId, String address){
         this.userId = userId;
