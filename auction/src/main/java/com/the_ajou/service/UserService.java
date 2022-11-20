@@ -2,6 +2,7 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.product.ProductEndPriceUpdateDTO;
 import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
 import com.the_ajou.web.dto.user.UserCreateDTO;
@@ -61,15 +62,19 @@ public class UserService {
     }
 
     @Transactional
-    public String login(UserLoginDTO userLoginDTO){
+    public UserLoginDAO login(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
         //if(passwordEncoder.matches(user.getPassword(), userLoginDTO.getPassword())){
         if(user.getPassword().equals(userLoginDTO.getPassword())){
-            System.out.println("OK");
-            return user.getNickName();
+            return UserLoginDAO.builder()
+                    .userId(user.getId())
+                    .nickName(user.getNickName())
+                    .build();
         }else{
-            System.out.println("FAIL");
-            return "fail";
+            return UserLoginDAO.builder()
+                    .userId(0)
+                    .nickName("")
+                    .build();
         }
     }
 
@@ -117,5 +122,11 @@ public class UserService {
         user.setAddress(userAddressUpdateDTO.getAddress());
 
         return !Objects.equals(user.getAddress(), "");
+    }
+
+    @Transactional
+    public int getUserId(String nickName){
+        User user = userRepository.findBynickName(nickName);
+        return user.getId();
     }
 }

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="fix commit">
-      <change beforePath="$PROJECT_DIR$/../../spring_backend" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring_backend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,10 +99,13 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Properties" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase" />
     </key>
@@ -112,15 +115,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.AuctionApplication">
-    <configuration name="AuctionApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.the_ajou.AuctionApplication" />
-      <module name="auction.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tdd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="AuctionApplication" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.java.the_ajou.AuctionApplication" />
+      <module name="auction" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,9 +185,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.AuctionApplication" />
+      <item itemvalue="JUnit.BowlingGameTest" />
+      <item itemvalue="JUnit.BowlingGameTest.allOne" />
+      <item itemvalue="JUnit.BowlingGameTest.testGutterGame" />
+      <item itemvalue="JUnit.BowlingGameTest.testOneSpare" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AuctionApplication" />
         <item itemvalue="JUnit.BowlingGameTest" />
         <item itemvalue="JUnit.BowlingGameTest.testOneSpare" />
         <item itemvalue="JUnit.BowlingGameTest.testGutterGame" />
@@ -294,6 +297,10 @@
     <MESSAGE value="구매 API 생성" />
     <MESSAGE value="fix commit" />
     <option name="LAST_COMMIT_MESSAGE" value="fix commit" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction$AuctionApplication.ic" NAME="AuctionApplication Coverage Results" MODIFIED="1664167514945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

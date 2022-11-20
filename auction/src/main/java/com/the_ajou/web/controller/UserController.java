@@ -2,6 +2,7 @@ package com.the_ajou.web.controller;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.service.UserService;
+import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/auth/login")
-    public String login(@RequestBody UserLoginDTO userLoginDTO){
+    public UserLoginDAO login(@RequestBody UserLoginDTO userLoginDTO){
         return userService.login(userLoginDTO);
     }
 
@@ -52,5 +53,10 @@ public class UserController {
     @PatchMapping("/user/registerAddress")
     public boolean updateAddress(@RequestBody UserAddressUpdateDTO userAddressUpdateDTO){
         return userService.updateAddress(userAddressUpdateDTO);
+    }
+
+    @GetMapping("/user/getId/{nickName}")
+    public int getUserId(@PathVariable("nickName") String nickName){
+        return userService.getUserId(nickName);
     }
 }
