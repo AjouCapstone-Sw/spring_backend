@@ -28,7 +28,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.jetbrains:annotations:20.1.0'
-	annotationProcessor 'com.amazonaws:aws-java-sdk-s3:1.12.342'
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.342'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
