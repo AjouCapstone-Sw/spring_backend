@@ -13,7 +13,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Service
 public class UploadService {
-    @Value("${secrets.AWS_SECRET_ACCESS_KEY}")
+    @Value("${S3_BUCKET_NAME}")
     private String bucket;
 
     private final AmazonS3 amazonS3;
