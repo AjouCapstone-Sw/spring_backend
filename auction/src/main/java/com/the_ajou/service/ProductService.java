@@ -9,9 +9,10 @@ import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
 import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
-import com.the_ajou.web.dto.product.ProductCreateDTO;
-import com.the_ajou.web.dto.product.ProductUpdateDTO;
+import com.the_ajou.web.dto.product.*;
+import com.the_ajou.web.dto.purchase.PurchaseCreateDTO;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,7 @@ public class ProductService {
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final InterestRepository interestRepository;
+    private final PurchaseService purchaseService;
 
     @Transactional
     public ProductResponseDAO getProduct(int id){
@@ -332,4 +334,46 @@ public class ProductService {
         return productSearchResponseDAOS;
     }
 
+    @Transactional
+    public boolean instantPurchase(ProductInstantPurchaseDTO productInstantPurchaseDTO){
+        Product product = productRepository.findById(productInstantPurchaseDTO.getProductId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+        User buyer = userRepository.findById(productInstantPurchaseDTO.getBuyerId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
+        product.setStatus('Y');
+        buyer.setPoint(buyer.getPoint() - product.getBuyNowPrice());
+
+        PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
+                .buyerId(productInstantPurchaseDTO.getBuyerId())
+                .productId(productInstantPurchaseDTO.getProductId())
+                .price(product.getBuyNowPrice())
+                .build();
+
+        purchaseService.createPurchaseHistory(purchaseCreateDTO);
+
+        return true;
+    }
+
+    @Transactional
+    public boolean auctionPurchase(ProductAuctionPurchaseDTO productAuctionPurchaseDTO){
+        Product product = productRepository.findById(productAuctionPurchaseDTO.getProductId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+        User buyer = userRepository.findById(productAuctionPurchaseDTO.getBuyerId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
+        product.setStatus('Y');
+        product.setEndPrice(productAuctionPurchaseDTO.getEndPrice());
+        buyer.setPoint(buyer.getPoint() - productAuctionPurchaseDTO.getEndPrice());
+
+        PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
+                .buyerId(productAuctionPurchaseDTO.getBuyerId())
+                .productId(productAuctionPurchaseDTO.getProductId())
+                .price(productAuctionPurchaseDTO.getEndPrice())
+                .build();
+
+        purchaseService.createPurchaseHistory(purchaseCreateDTO);
+
+        return true;
+    }
 }

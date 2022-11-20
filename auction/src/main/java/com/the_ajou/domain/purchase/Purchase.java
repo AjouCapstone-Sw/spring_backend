@@ -21,12 +21,15 @@ public class Purchase {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @JoinColumn(name = "buyerId")
+    private User buyer;
 
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;
+
+    @Column(name = "price")
+    private int price;
 
     @Column(name = "createdAt")
     private String createdAt;
@@ -36,9 +39,10 @@ public class Purchase {
 
 
     @Builder
-    Purchase(User user, Product product, String createdAt, String updatedAt){
-        this.user = user;
+    Purchase(User buyer, Product product, int price, String createdAt, String updatedAt){
+        this.buyer = buyer;
         this.product = product;
+        this.price = price;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }

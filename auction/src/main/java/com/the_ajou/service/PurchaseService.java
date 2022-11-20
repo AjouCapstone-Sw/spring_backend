@@ -28,12 +28,13 @@ public class PurchaseService {
     public int createPurchaseHistory(PurchaseCreateDTO purchaseCreateDTO){
         Product product = productRepository.findById(purchaseCreateDTO.getProductId())
                 .orElseThrow(()->new IllegalArgumentException("상품이 존재하지 않습니다."));
-        User user = userRepository.findById(purchaseCreateDTO.getUserId())
+        User buyer = userRepository.findById(purchaseCreateDTO.getBuyerId())
                 .orElseThrow(()->new IllegalArgumentException("해당 사용자가 존재하지 않습니다."));
 
         Purchase purchase = Purchase.builder()
                 .product(product)
-                .user(user)
+                .buyer(buyer)
+                .price(purchaseCreateDTO.getPrice())
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                 .build();
@@ -45,14 +46,15 @@ public class PurchaseService {
 
 
     @Transactional
-    public List<PurchaseResponseDAO> getPurchasesByUserId(int userId){
-        List<Purchase> purchases = purchaseRepository.getPurchasesByUserId(userId);
+    public List<PurchaseResponseDAO> getPurchasesByBuyerId(int buyerId){
+        List<Purchase> purchases = purchaseRepository.getPurchasesByBuyerId(buyerId);
         List<PurchaseResponseDAO> purchaseResponseDAOs = new LinkedList<>();
 
         for(Purchase purchase : purchases){
             PurchaseResponseDAO purchaseResponseDAO = PurchaseResponseDAO.builder()
                     .productId(purchase.getProduct().getId())
-                    .userId(purchase.getUser().getId())
+                    .buyerId(purchase.getBuyer().getId())
+                    .price(purchase.getPrice())
                     .createAt(purchase.getCreatedAt())
                     .updateAt(purchase.getUpdatedAt())
                     .build();
@@ -69,7 +71,8 @@ public class PurchaseService {
 
         return PurchaseResponseDAO.builder()
                 .productId(purchase.getProduct().getId())
-                .userId(purchase.getUser().getId())
+                .buyerId(purchase.getBuyer().getId())
+                .price(purchase.getPrice())
                 .createAt(purchase.getCreatedAt())
                 .updateAt(purchase.getUpdatedAt())
                 .build();

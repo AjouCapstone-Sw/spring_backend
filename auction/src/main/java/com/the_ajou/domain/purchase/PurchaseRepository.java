@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
-    List<Purchase> getPurchasesByUserId(int userId);
+    List<Purchase> getPurchasesByBuyerId(int userId);
 }

@@ -8,16 +8,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PurchaseResponseDAO {
     int productId;
-    int userId;
+    int buyerId;
+    int price;
     String purchaseAddress;
     String createAt;
     String updateAt;
     char status;
 
     @Builder
-    PurchaseResponseDAO(int productId, int userId, String purchaseAddress, String createAt, String updateAt, char status){
+    PurchaseResponseDAO(int productId, int buyerId, int price, String purchaseAddress, String createAt, String updateAt, char status){
         this.productId = productId;
-        this.userId = userId;
+        this.buyerId = buyerId;
+        this.price = price;
         this.purchaseAddress = purchaseAddress;
         this.createAt = createAt;
         this.updateAt = updateAt;

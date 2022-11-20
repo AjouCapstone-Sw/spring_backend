@@ -8,13 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PurchaseCreateDTO {
     int productId;
-    int userId;
+    int buyerId;
+    int price;
     String purchaseAddress;
 
     @Builder
-    PurchaseCreateDTO(int productId, int userId, String purchaseAddress){
+    PurchaseCreateDTO(int productId, int buyerId, int price, String purchaseAddress){
         this.productId = productId;
-        this.userId = userId;
+        this.buyerId = buyerId;
+        this.price = price;
         this.purchaseAddress = purchaseAddress;
     }
 }

@@ -4,46 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="파일 위치 수정 및 삭제">
-      <change afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/library.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/machuda_logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/back_button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/check_option.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/correct_option.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/previous_page_button.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/problem_list.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/result_correct.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/result_wrong.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/right_pen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/wrong_option.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/problem/wrong_pen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/puzzle.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/assets/puzzle_store.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/PuzzleRespository.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/appbody.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/email_login.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/library.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/login_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/payment.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/payment_result.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/purchase_history.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/purchase_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/payment/puzzle_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_body.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_info.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_option.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/problem_repository.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/purchase_history.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/puzzle_store.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/statics.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/study_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/tabbar.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../kg_inicis/lib/url.dart" beforeDir="false" />
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="fix commit">
+      <change beforePath="$PROJECT_DIR$/../../spring_backend" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring_backend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductResponseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductResponseDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +58,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -128,7 +94,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="introduce.parameter.lambda" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/settings.gradle" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -141,6 +107,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.the_ajou.web.dto.product" />
       <recent name="com.the_ajou.web.dao.sale" />
     </key>
   </component>
@@ -254,7 +221,56 @@
       <option name="project" value="LOCAL" />
       <updated>1668079132017</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="buyNowPrice 생성 및 추가, 수정">
+      <created>1668881583291</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668881583291</updated>
+    </task>
+    <task id="LOCAL-00004" summary="buyNowPrice 생성 및 추가, 수정">
+      <created>1668881662091</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668881662091</updated>
+    </task>
+    <task id="LOCAL-00005" summary="api 내부 변수명 변경 및 수정">
+      <created>1668949601972</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668949601972</updated>
+    </task>
+    <task id="LOCAL-00006" summary="api login return change">
+      <created>1668951553171</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668951553171</updated>
+    </task>
+    <task id="LOCAL-00007" summary="구매 API 생성">
+      <created>1668955377188</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668955377188</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix commit">
+      <created>1668962664370</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668962664370</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix commit">
+      <created>1668963291059</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668963291059</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,7 +288,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="API 생성 및 리펙토링" />
     <MESSAGE value="파일 위치 수정 및 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="파일 위치 수정 및 삭제" />
+    <MESSAGE value="buyNowPrice 생성 및 추가, 수정" />
+    <MESSAGE value="api 내부 변수명 변경 및 수정" />
+    <MESSAGE value="api login return change" />
+    <MESSAGE value="구매 API 생성" />
+    <MESSAGE value="fix commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction$AuctionApplication.ic" NAME="AuctionApplication Coverage Results" MODIFIED="1664167514945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

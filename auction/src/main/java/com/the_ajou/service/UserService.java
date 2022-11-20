@@ -2,6 +2,7 @@ package com.the_ajou.service;
 
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.web.dto.product.ProductEndPriceUpdateDTO;
 import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
 import com.the_ajou.web.dto.user.UserCreateDTO;
 import com.the_ajou.web.dto.user.UserLoginDTO;

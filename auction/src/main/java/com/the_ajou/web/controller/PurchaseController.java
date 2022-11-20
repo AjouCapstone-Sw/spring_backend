@@ -20,7 +20,7 @@ public class PurchaseController {
 
     @GetMapping("/purchase/list/{userId}")
     private List<PurchaseResponseDAO> getPurchasesByUserId(@PathVariable("userId") int userId){
-        return purchaseService.getPurchasesByUserId(userId);
+        return purchaseService.getPurchasesByBuyerId(userId);
     }
 
     @GetMapping("/purchase/{purchaseId}")
