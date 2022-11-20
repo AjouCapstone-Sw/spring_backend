@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -37,8 +36,8 @@ public class User {
     @Column(name = "status")
     private char status;
 
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "nickName")
+    private String nickName;
 
     @Column(name = "point")
     private int point;
@@ -60,7 +59,7 @@ public class User {
 
 
     @Builder
-    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, char status, String nickname, int point, char gender, String birth, String name){
+    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, char status, String nickName, int point, char gender, String birth, String name){
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
@@ -68,7 +67,7 @@ public class User {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.status = status;
-        this.nickname = nickname;
+        this.nickName = nickName;
         this.point = point;
         this.gender = gender;
         this.birth = birth;
@@ -81,15 +80,17 @@ public class User {
 
     public void updateUser(UserUpdateDTO userUpdateDTO){
 
-        if(userUpdateDTO.getPhoneNum() != null)
+        if(!Objects.equals(userUpdateDTO.getPhoneNum(), ""))
             this.phoneNum = userUpdateDTO.getPhoneNum();
-        if(userUpdateDTO.getAddress() != null)
+        if(!Objects.equals(userUpdateDTO.getName(), ""))
+            this.name = userUpdateDTO.getName();
+        if(!Objects.equals(userUpdateDTO.getAddress(), ""))
             this.address = userUpdateDTO.getAddress();
-        if(userUpdateDTO.getNickname() != null)
-            this.nickname = userUpdateDTO.getNickname();
-        if(userUpdateDTO.getGender() != ' ')
+        if(!Objects.equals(userUpdateDTO.getNickName(), ""))
+            this.nickName = userUpdateDTO.getNickName();
+        if(userUpdateDTO.getGender() == 'M' || userUpdateDTO.getGender() == 'F')
             this.gender = userUpdateDTO.getGender();
-        if(userUpdateDTO.getBirth() != null)
+        if(!Objects.equals(userUpdateDTO.getBirth(), ""))
             this.birth = userUpdateDTO.getBirth();
 
         this.updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

@@ -75,7 +75,7 @@ public class ProductService {
 
         return ProductResponseDAO.builder()
                 .productId(product.getId())
-                .seller(product.getUser().getNickname())
+                .seller(product.getUser().getNickName())
                 .title(product.getTitle())
                 .description(product.getDescription())
                 .startTime(product.getStartTime())
@@ -253,22 +253,41 @@ public class ProductService {
     public boolean updateProduct(ProductUpdateDTO productUpdateDTO){
         Product product = productRepository.findById(productUpdateDTO.getProductId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
-        Category category = categoryRepository.findById(productUpdateDTO.getCategoryId())
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+
 
         int imagesLength = productUpdateDTO.getImages().size();
 
-        product.setCategory(category);
-        product.setTitle(productUpdateDTO.getTitle());
-        product.setDescription(productUpdateDTO.getDescription());
-        product.setStartTime(productUpdateDTO.getStartTime());
-        product.setStartPrice(productUpdateDTO.getStartPrice());
+        if(productUpdateDTO.getCategoryId() != 0) {
+            Category category = categoryRepository.findById(productUpdateDTO.getCategoryId())
+                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+            product.setCategory(category);
+        }
+
+        if(!Objects.equals(productUpdateDTO.getTitle(), ""))
+            product.setTitle(productUpdateDTO.getTitle());
+
+        if(!Objects.equals(productUpdateDTO.getDescription(), ""))
+            product.setDescription(productUpdateDTO.getDescription());
+
+        if(!Objects.equals(productUpdateDTO.getStartTime(), ""))
+            product.setStartTime(productUpdateDTO.getStartTime());
+
+        if(productUpdateDTO.getStartPrice() != 0)
+            product.setStartPrice(productUpdateDTO.getStartPrice());
+
         product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
         product.setInstant(productUpdateDTO.getInstant());
-        product.setDuration(productUpdateDTO.getDuration());
-        product.setBidPrice(productUpdateDTO.getBidPrice());
-        product.setBuyNowPrice(productUpdateDTO.getBuyNowPrice());
-        product.setEndPrice(productUpdateDTO.getInstant() == 1 ? productUpdateDTO.getStartPrice() : 0);
+
+        if(productUpdateDTO.getDuration() != 0)
+            product.setDuration(productUpdateDTO.getDuration());
+
+        if(productUpdateDTO.getBidPrice() != 0)
+            product.setBidPrice(productUpdateDTO.getBidPrice());
+
+        if(productUpdateDTO.getBuyNowPrice() != 0)
+            product.setBuyNowPrice(productUpdateDTO.getBuyNowPrice());
+
         product.setProductImage1(0 < imagesLength ?  productUpdateDTO.getImages().get(0) : "");
         product.setProductImage2(1 < imagesLength ?  productUpdateDTO.getImages().get(1) : "");
         product.setProductImage3(2 < imagesLength ?  productUpdateDTO.getImages().get(2) : "");

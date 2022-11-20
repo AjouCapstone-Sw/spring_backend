@@ -25,7 +25,7 @@ public class UserService {
     @Transactional
     public int signUp(UserCreateDTO userCreateDTO){
         User checkUser = userRepository.findByEmail(userCreateDTO.getEmail());
-        User nickNameCheck = userRepository.findBynickname(userCreateDTO.getNickname());
+        User nickNameCheck = userRepository.findBynickName(userCreateDTO.getNickName());
 
         if(checkUser == null && nickNameCheck == null){
             User user = User.builder()
@@ -36,7 +36,7 @@ public class UserService {
                     .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                     .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
                     .status('N')
-                    .nickname(userCreateDTO.getNickname())
+                    .nickName(userCreateDTO.getNickName())
                     .point(0)
                     .gender(userCreateDTO.getGender())
                     .birth(userCreateDTO.getBirth())
@@ -60,15 +60,15 @@ public class UserService {
     }
 
     @Transactional
-    public int login(UserLoginDTO userLoginDTO){
+    public String login(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
         //if(passwordEncoder.matches(user.getPassword(), userLoginDTO.getPassword())){
         if(user.getPassword().equals(userLoginDTO.getPassword())){
             System.out.println("OK");
-            return user.getId();
+            return user.getNickName();
         }else{
             System.out.println("FAIL");
-            return -1;
+            return "fail";
         }
     }
 
@@ -84,7 +84,7 @@ public class UserService {
     public boolean updateUser(UserUpdateDTO userUpdateDTO){
         User user = userRepository.findById(userUpdateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
-        User nickCheck = userRepository.findBynickname(userUpdateDTO.getNickname());
+        User nickCheck = userRepository.findBynickName(userUpdateDTO.getNickName());
 
         if(nickCheck != null)
             return false;

@@ -10,7 +10,8 @@ public class UserUpdateDTO {
     private int userId;
     private String phoneNum;
     private String address;
-    private String nickname;
+    private String nickName;
     private char gender;
     private String birth;
+    private String name;
 }
