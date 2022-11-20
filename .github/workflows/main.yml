@@ -9,9 +9,8 @@ on:
 env:
   S3_BUCKET_NAME: s3-20221018
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  RESOURCE_PATH: ./auction/src/main/resources/application.yml
+  RESOURCE_PATH: ./src/main/resources/application.yml
   
-
 defaults:
   run:
     working-directory: auction
@@ -42,12 +41,6 @@ jobs:
       run: chmod +x ./gradlew
     
     - name: Build with Gradle
-      env:
-        S3_BUCKET_NAME: s3-20221018
-        RESOURCE_PATH: ./src/main/resources/application.yml
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ secrets.AWS_REGION }}
       run: ./gradlew clean build
       
     # 디렉토리 생성
