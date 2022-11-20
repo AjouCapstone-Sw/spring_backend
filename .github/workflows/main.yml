@@ -8,6 +8,10 @@ on:
 
 env:
   S3_BUCKET_NAME: s3-20221018
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  
 
 defaults:
   run:
