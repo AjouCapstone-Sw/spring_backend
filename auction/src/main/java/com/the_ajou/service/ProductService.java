@@ -54,6 +54,8 @@ public class ProductService {
 
         boolean before = false;
         boolean after = false;
+        boolean now = false;
+
         String endTimeStr = "";
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
@@ -67,6 +69,7 @@ public class ProductService {
             startTime = simpleDateFormat.parse(product.getStartTime());
             endTime = simpleDateFormat.parse(endTimeStr);
             nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+            now = nowTime.equals(startTime) || nowTime.equals(endTime);
             before = nowTime.after(startTime);
             after = nowTime.before(endTime);
 
@@ -87,7 +90,7 @@ public class ProductService {
                 .duration(product.getDuration())
                 .bidPrice(product.getBidPrice())
                 .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                .live(before && after)
+                .live(before && after || now)
                 .productImages(images)
                 .build();
     }

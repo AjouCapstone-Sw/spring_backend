@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="api refactor">
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="시간 형식 변경 및 live status 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/AuctionReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/AuctionReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669001720344</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="시간 형식 변경 및 live status 수정">
+      <created>1669005250712</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669005250712</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -341,7 +340,8 @@
     <MESSAGE value="구매 API 생성" />
     <MESSAGE value="fix commit" />
     <MESSAGE value="api refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="api refactor" />
+    <MESSAGE value="시간 형식 변경 및 live status 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="시간 형식 변경 및 live status 수정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
