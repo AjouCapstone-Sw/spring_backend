@@ -93,6 +93,6 @@ public class User {
         if(!Objects.equals(userUpdateDTO.getBirth(), ""))
             this.birth = userUpdateDTO.getBirth();
 
-        this.updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 }

@@ -60,12 +60,12 @@ public class PointService {
         int userPoint = user.getPoint();
 
         user.updatePoint(userPoint + pointCreateDTO.getPoint());
-        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
         Point point = Point.builder()
                 .user(user)
                 .point(pointCreateDTO.getPoint())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build();
 
         pointRepository.save(point);

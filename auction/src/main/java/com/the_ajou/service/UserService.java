@@ -35,8 +35,8 @@ public class UserService {
                     .password(userCreateDTO.getPassword())
                     .phoneNum(userCreateDTO.getPhoneNum())
                     .address(userCreateDTO.getAddress())
-                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                    .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                    .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                     .status('N')
                     .nickName(userCreateDTO.getNickName())
                     .point(0)
@@ -82,7 +82,7 @@ public class UserService {
     public void changePassword(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
         user.setPassword(userLoginDTO.getPassword());
-        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         userRepository.save(user);
     }
 

@@ -31,7 +31,7 @@ public class AuctionReviewService {
                 .user(user)
                 .review(auctionReviewCreateDTO.getReview())
                 .score(auctionReviewCreateDTO.getScore())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build();
 
         auctionReviewRepository.save(auctionReview);

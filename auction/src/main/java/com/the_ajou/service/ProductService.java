@@ -12,7 +12,6 @@ import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
 import com.the_ajou.web.dto.product.*;
 import com.the_ajou.web.dto.purchase.PurchaseCreateDTO;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,7 +56,7 @@ public class ProductService {
         boolean after = false;
         String endTimeStr = "";
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
         try {
             endTime = simpleDateFormat.parse(product.getStartTime());
             calendar.setTime(endTime);
@@ -104,11 +103,13 @@ public class ProductService {
                 Date endTime;
                 Date nowTime;
 
+
                 boolean before = false;
                 boolean after = false;
+                boolean now = false;
                 String endTimeStr = "";
                 Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
                 try {
                     endTime = simpleDateFormat.parse(product.getStartTime());
                     calendar.setTime(endTime);
@@ -119,6 +120,7 @@ public class ProductService {
                     startTime = simpleDateFormat.parse(product.getStartTime());
                     endTime = simpleDateFormat.parse(endTimeStr);
                     nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
                     before = nowTime.after(startTime);
                     after = nowTime.before(endTime);
 
@@ -131,7 +133,7 @@ public class ProductService {
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after)
+                        .live(before && after || now)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -160,11 +162,13 @@ public class ProductService {
                 Date endTime;
                 Date nowTime;
 
+
                 boolean before = false;
                 boolean after = false;
+                boolean now = false;
                 String endTimeStr = "";
                 Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
                 try {
                     endTime = simpleDateFormat.parse(product.getStartTime());
                     calendar.setTime(endTime);
@@ -175,6 +179,7 @@ public class ProductService {
                     startTime = simpleDateFormat.parse(product.getStartTime());
                     endTime = simpleDateFormat.parse(endTimeStr);
                     nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
                     before = nowTime.after(startTime);
                     after = nowTime.before(endTime);
 
@@ -188,7 +193,7 @@ public class ProductService {
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after)
+                        .live(before && after || now)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -222,8 +227,8 @@ public class ProductService {
                 .startPrice(productCreateDTO.getStartPrice())
                 .instant(productCreateDTO.getInstant())
                 .buyNowPrice(productCreateDTO.getBuyNowPrice())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .endPrice(productCreateDTO.getInstant() == 1 ? productCreateDTO.getStartPrice() : 0)
                 .status('N')
                 .buyerId(0)
@@ -246,7 +251,7 @@ public class ProductService {
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         product.setStatus('Y');
-        product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
         return product.getStatus() == 'Y';
     }
@@ -277,7 +282,7 @@ public class ProductService {
         if(productUpdateDTO.getStartPrice() != 0)
             product.setStartPrice(productUpdateDTO.getStartPrice());
 
-        product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
         product.setInstant(productUpdateDTO.getInstant());
 
@@ -308,20 +313,40 @@ public class ProductService {
             if(product.getCategory().getName().contains(keyword) || product.getTitle().contains(keyword)){
 
                 Date startTime;
-                Date current;
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                startTime = f.parse(product.getStartTime());
-                current = f.parse(simpleDateFormat.format(new Date()));
-                long timeDiff = (current.getTime() - startTime.getTime()) / 60000;
+                Date endTime;
+                Date nowTime;
 
+
+                boolean before = false;
+                boolean after = false;
+                boolean now = false;
+                String endTimeStr = "";
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+                try {
+                    endTime = simpleDateFormat.parse(product.getStartTime());
+                    calendar.setTime(endTime);
+                    calendar.add(Calendar.MINUTE, product.getDuration());
+
+                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+
+                    startTime = simpleDateFormat.parse(product.getStartTime());
+                    endTime = simpleDateFormat.parse(endTimeStr);
+                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
+                    before = nowTime.after(startTime);
+                    after = nowTime.before(endTime);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(0<= timeDiff && timeDiff <= product.getDuration())
+                        .live(before && after || now)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();

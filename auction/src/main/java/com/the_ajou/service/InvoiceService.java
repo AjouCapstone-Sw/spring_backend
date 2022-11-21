@@ -29,7 +29,7 @@ public class InvoiceService {
                 .product(product)
                 .shippingCompany(invoiceCreateDTO.getShippingCompany())
                 .invoice(invoiceCreateDTO.getInvoice())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build();
 
         invoiceRepository.save(invoice);

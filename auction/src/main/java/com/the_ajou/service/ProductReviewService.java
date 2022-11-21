@@ -38,7 +38,7 @@ public class ProductReviewService {
                 .product(product)
                 .review(productReviewCreateDTO.getReview())
                 .score(productReviewCreateDTO.getScore())
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .build();
 
         productReviewRepository.save(productReview);
@@ -60,7 +60,7 @@ public class ProductReviewService {
                     .productId(productReview.getProduct().getId())
                     .review(productReview.getReview())
                     .score(productReview.getScore())
-                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                    .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                     .build();
 
             productReviewDAOS.add(review);

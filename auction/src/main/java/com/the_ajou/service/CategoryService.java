@@ -22,8 +22,8 @@ public class CategoryService {
     public int createCategory(String name){
         Category category = Category.builder()
                 .name(name)
-                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-                .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .status('N')
                 .build();
         categoryRepository.save(category);
@@ -37,7 +37,7 @@ public class CategoryService {
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
 
         category.setStatus('Y');
-        category.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        category.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         categoryRepository.save(category);
 
         return category.getId();
