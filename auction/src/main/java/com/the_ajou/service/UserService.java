@@ -127,6 +127,9 @@ public class UserService {
     @Transactional
     public int getUserId(String nickName){
         User user = userRepository.findBynickName(nickName);
-        return user.getId();
+        if(user != null)
+            return user.getId();
+        else
+            return 0;
     }
 }
