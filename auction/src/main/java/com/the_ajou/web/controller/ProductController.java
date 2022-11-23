@@ -15,47 +15,47 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/product/{productId}")
+    @GetMapping("/api/product/{productId}")
     public ProductResponseDAO getProduct(@PathVariable("productId") int productId){
         return productService.getProduct(productId);
     }
 
-    @GetMapping("/product/list")
+    @GetMapping("/api/product/list")
     public List<ProductSearchResponseDAO> getProductList(){
         return productService.getProductList();
     }
 
-    @GetMapping("/productList/{categoryId}")
+    @GetMapping("/api/productList/{categoryId}")
     public List<ProductSearchResponseDAO> getProductListByCategoryId(@PathVariable("categoryId") int categoryId){
         return productService.getProductListByCategoryId(categoryId);
     }
 
-    @PostMapping("/product/create")
+    @PostMapping("/api/product/create")
     public int createProduct(@RequestBody ProductCreateDTO productCreateDTO){
         return productService.createProduct(productCreateDTO);
     }
 
-    @PatchMapping("/product/delete/{productId}")
+    @PatchMapping("/api/product/delete/{productId}")
     public boolean deleteProduct(@PathVariable("productId") int productId){
         return productService.deleteProduct(productId);
     }
 
-    @PatchMapping("/product/update")
+    @PatchMapping("/api/product/update")
     public boolean updateProduct(@RequestBody ProductUpdateDTO productsUpdateDTO){
         return productService.updateProduct(productsUpdateDTO);
     }
 
-    @GetMapping("/product/search/{keyword}")
+    @GetMapping("/api/product/search/{keyword}")
     public List<ProductSearchResponseDAO> getProductSearchList(@PathVariable("keyword") String keyword) throws ParseException {
         return productService.getProductBySearch(keyword);
     }
 
-    @PostMapping("/product/instantPurchase")
+    @PostMapping("/api/product/instantPurchase")
     public boolean instantPurchase(@RequestBody ProductInstantPurchaseDTO productInstantPurchaseDTO){
         return productService.instantPurchase(productInstantPurchaseDTO);
     }
 
-    @PostMapping("/product/auctionPurchase")
+    @PostMapping("/api/product/auctionPurchase")
     public boolean auctionPurchase(@RequestBody ProductAuctionPurchaseDTO productAuctionPurchaseDTO){
         return productService.auctionPurchase(productAuctionPurchaseDTO);
     }

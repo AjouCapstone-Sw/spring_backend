@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class InvoiceController {
     private final InvoiceService invoiceService;
 
-    @PostMapping("/auction/invoice")
+    @PostMapping("/api/auction/invoice")
     private boolean createInvoice(@RequestBody InvoiceCreateDTO invoiceCreateDTO){
         return invoiceService.createInvoice(invoiceCreateDTO);
     }

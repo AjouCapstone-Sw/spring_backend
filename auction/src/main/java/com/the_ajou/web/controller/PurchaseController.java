@@ -13,22 +13,22 @@ import java.util.List;
 public class PurchaseController {
     private final PurchaseService purchaseService;
 
-    @PostMapping("/purchase/create")
+    @PostMapping("/api/purchase/create")
     private int createPurchaseLog(@RequestBody PurchaseCreateDTO purchaseCreateDTO){
         return purchaseService.createPurchaseHistory(purchaseCreateDTO);
     }
 
-    @GetMapping("/purchase/list/{userId}")
+    @GetMapping("/api/purchase/list/{userId}")
     private List<PurchaseResponseDAO> getPurchasesByUserId(@PathVariable("userId") int userId){
         return purchaseService.getPurchasesByBuyerId(userId);
     }
 
-    @GetMapping("/purchase/{purchaseId}")
+    @GetMapping("/api/purchase/{purchaseId}")
     private PurchaseResponseDAO getPurchaseById(@PathVariable("purchaseId") int purchaseId){
         return purchaseService.getPurchase(purchaseId);
     }
 
-    @DeleteMapping("/purchase/delete/{purchaseId}")
+    @DeleteMapping("/api/purchase/delete/{purchaseId}")
     private void updatePurchase(@PathVariable("purchaseId")int purchaseId){
         purchaseService.deletePurchase(purchaseId);
     }

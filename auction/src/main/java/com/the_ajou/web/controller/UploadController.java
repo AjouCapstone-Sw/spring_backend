@@ -14,7 +14,7 @@ import java.io.IOException;
 public class UploadController {
     private final UploadService s3Upload;
 
-    @PostMapping("/upload")
+    @PostMapping("/api/upload")
     public String uploadFile(@RequestParam("images") MultipartFile multipartFile) throws IOException {
         return s3Upload.upload(multipartFile);
     }

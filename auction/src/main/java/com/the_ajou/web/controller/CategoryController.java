@@ -12,17 +12,17 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @PostMapping("/category/create")
+    @PostMapping("/api/category/create")
     public int createCategory(String name){
         return categoryService.createCategory(name);
     }
 
-    @PatchMapping("/category/delete")
+    @PatchMapping("/api/category/delete")
     public int deleteCategory(int id){
         return categoryService.deleteCategory(id);
     }
 
-    @GetMapping("/category/getAll")
+    @GetMapping("/api/category/getAll")
     public List<CategoryDAO> getCategories() {
         return categoryService.getCategories();
     }

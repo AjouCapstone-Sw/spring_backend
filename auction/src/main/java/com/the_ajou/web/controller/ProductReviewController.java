@@ -13,12 +13,12 @@ import java.util.List;
 public class ProductReviewController {
     private final ProductReviewService productReviewService;
 
-    @PostMapping("/review/product")
+    @PostMapping("/api/review/product")
     private boolean createReview(@RequestBody ProductReviewCreateDTO productReviewCreateDTO){
         return productReviewService.createProductReview(productReviewCreateDTO);
     }
 
-    @GetMapping("/review/product/{userId}")
+    @GetMapping("/api/review/product/{userId}")
     private List<ProductReviewDAO> getProductReviewByUserId(@PathVariable("userId") int userId){
         return productReviewService.getReviewByUserId(userId);
     }

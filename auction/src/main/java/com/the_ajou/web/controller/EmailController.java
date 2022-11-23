@@ -10,7 +10,7 @@ public class EmailController {
     private final EmailService emailService;
 
     @CrossOrigin
-    @GetMapping("/auth/emailValidation")
+    @GetMapping("/api/auth/emailValidation")
     public String sendEmail(String email){
         return emailService.sendMail(email);
     }
