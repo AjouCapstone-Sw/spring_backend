@@ -1,4 +1,4 @@
-package com.the_ajou.service;
+package com.the_ajou.auction;
 
 import com.the_ajou.domain.category.Category;
 import com.the_ajou.domain.category.CategoryRepository;
@@ -7,32 +7,44 @@ import com.the_ajou.domain.product.Product;
 import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.service.PurchaseService;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
 import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
-import com.the_ajou.web.dto.product.*;
 import com.the_ajou.web.dto.purchase.PurchaseCreateDTO;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-@RequiredArgsConstructor
-@Service
-public class ProductService {
-    private final ProductRepository productRepository;
-    private final UserRepository userRepository;
-    private final CategoryRepository categoryRepository;
-    private final InterestRepository interestRepository;
-    private final PurchaseService purchaseService;
+import static org.assertj.core.api.Assertions.*;
+
+@SpringBootTest
+@WebAppConfiguration
+class ProductServiceTest {
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private InterestRepository interestRepository;
+    @Autowired
+    private PurchaseService purchaseService;
 
     @Transactional
-    public ProductResponseDAO getProduct(int id){
-        Product product = productRepository.findById(id)
+    @Rollback
+    @Test
+    void getProduct(){
+        Product product = productRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         List<String> images = new LinkedList<>();
@@ -56,7 +68,7 @@ public class ProductService {
         boolean after = false;
         boolean now = false;
 
-        String endTimeStr = null;
+        String endTimeStr = "";
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
         try {
@@ -77,7 +89,7 @@ public class ProductService {
             e.printStackTrace();
         }
 
-        return ProductResponseDAO.builder()
+        ProductResponseDAO productResponseDAO = ProductResponseDAO.builder()
                 .productId(product.getId())
                 .seller(product.getUser().getNickName())
                 .title(product.getTitle())
@@ -93,10 +105,14 @@ public class ProductService {
                 .live(before && after || now)
                 .productImages(images)
                 .build();
+
+        assertThat(productResponseDAO).isNotNull();
     }
 
     @Transactional
-    public List<ProductSearchResponseDAO> getProductList(){
+    @Rollback
+    @Test
+    void getProductList(){
         List<Product> products = productRepository.findAll();
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
@@ -110,7 +126,7 @@ public class ProductService {
                 boolean before = false;
                 boolean after = false;
                 boolean now = false;
-                String endTimeStr;
+                String endTimeStr = "";
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
                 try {
@@ -144,20 +160,16 @@ public class ProductService {
             }
         }
 
-        Collections.reverse(productSearchResponseDAOS);
-
-        return productSearchResponseDAOS;
+        assertThat(productSearchResponseDAOS).isNotEmpty();
     }
 
-    @Transactional
-    public List<ProductSearchResponseDAO> getProductListByCategoryId(int categoryId){
-        List<Product> products;
-        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
-        if(categoryId == 1)
-            products = productRepository.findAll();
-        else
-            products = productRepository.findAllByCategoryId(categoryId);
+    @Transactional
+    @Rollback
+    @Test
+    void getProductListByCategoryId(){
+        List<Product> products = productRepository.findAllByCategoryId(3);
+        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
         for(Product product : products){
             if(product.getStatus() == 'N'){
@@ -169,7 +181,7 @@ public class ProductService {
                 boolean before = false;
                 boolean after = false;
                 boolean now = false;
-                String endTimeStr;
+                String endTimeStr = "";
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
                 try {
@@ -189,9 +201,6 @@ public class ProductService {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
-
-
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
@@ -204,116 +213,107 @@ public class ProductService {
             }
         }
 
-        Collections.reverse(productSearchResponseDAOS);
-
-        return productSearchResponseDAOS;
+        assertThat(productSearchResponseDAOS).isNotEmpty();
     }
 
     @Transactional
-    public int createProduct(ProductCreateDTO productCreateDTO){
-        User user = userRepository.findById(productCreateDTO.getUserId())
+    @Rollback
+    @Test
+    void createProduct(){
+        User user = userRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        Category category = categoryRepository.findById(productCreateDTO.getCategoryId())
+        Category category = categoryRepository.findById(3)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
-
-        int imagesLength = productCreateDTO.getProductImages().size();
 
         Product product = Product.builder()
                 .user(user)
                 .category(category)
-                .title(productCreateDTO.getTitle())
-                .description(productCreateDTO.getDescription())
-                .startTime(productCreateDTO.getStartTime())
-                .duration(productCreateDTO.getDuration())
-                .bidPrice(productCreateDTO.getBidPrice())
-                .startPrice(productCreateDTO.getStartPrice())
-                .instant(productCreateDTO.getInstant())
-                .buyNowPrice(productCreateDTO.getBuyNowPrice())
+                .title("Test Title")
+                .description("Test Description")
+                .startTime("2022-11-11 11:11")
+                .duration(11)
+                .bidPrice(100)
+                .startPrice(2000)
+                .instant(0)
+                .buyNowPrice(0)
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
-                .endPrice(productCreateDTO.getInstant() == 1 ? productCreateDTO.getStartPrice() : 0)
+                .endPrice(0)
                 .status('N')
                 .buyerId(0)
-                .productImage1(0 < imagesLength ?  productCreateDTO.getProductImages().get(0) : "")
-                .productImage2(1 < imagesLength ? productCreateDTO.getProductImages().get(1) : "")
-                .productImage3(2 < imagesLength ? productCreateDTO.getProductImages().get(2) : "")
-                .productImage4(3 < imagesLength ? productCreateDTO.getProductImages().get(3) : "")
-                .productImage5(4 < imagesLength ? productCreateDTO.getProductImages().get(4) : "")
+                .productImage1("TEST IMAGE 1")
+                .productImage2("TEST IMAGE 2")
+                .productImage3("TEST IMAGE 3")
+                .productImage4("TEST IMAGE 4")
+                .productImage5("TEST IMAGE 5")
                 .build();
 
         productRepository.save(product);
 
-
-        return product.getId();
+        assertThat(product).isNotNull();
     }
 
     @Transactional
-    public boolean deleteProduct(int productId){
-        Product product = productRepository.findById(productId)
+    @Rollback
+    @Test
+    void deleteProduct(){
+        Product product = productRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         product.setStatus('Y');
         product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-        return product.getStatus() == 'Y';
+        assertThat(product.getStatus()).isEqualTo('Y');
     }
 
     @Transactional
-    public boolean updateProduct(ProductUpdateDTO productUpdateDTO){
-        Product product = productRepository.findById(productUpdateDTO.getProductId())
+    @Rollback
+    @Test
+    void updateProduct(){
+        Product product = productRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
+        Category category = categoryRepository.findById(3)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
+        product.setCategory(category);
 
-        int imagesLength = productUpdateDTO.getImages().size();
+        product.setTitle("Test Title");
 
-        if(productUpdateDTO.getCategoryId() != 0) {
-            Category category = categoryRepository.findById(productUpdateDTO.getCategoryId())
-                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 카테고리입니다."));
-            product.setCategory(category);
-        }
+        product.setDescription("Test Description");
 
-        if(!Objects.equals(productUpdateDTO.getTitle(), ""))
-            product.setTitle(productUpdateDTO.getTitle());
+        product.setStartTime("2022-11-11 11:11");
 
-        if(!Objects.equals(productUpdateDTO.getDescription(), ""))
-            product.setDescription(productUpdateDTO.getDescription());
-
-        if(!Objects.equals(productUpdateDTO.getStartTime(), ""))
-            product.setStartTime(productUpdateDTO.getStartTime());
-
-        if(productUpdateDTO.getStartPrice() != 0)
-            product.setStartPrice(productUpdateDTO.getStartPrice());
+        product.setStartPrice(10000);
 
         product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-        product.setInstant(productUpdateDTO.getInstant());
+        product.setInstant(1);
 
-        if(productUpdateDTO.getDuration() != 0)
-            product.setDuration(productUpdateDTO.getDuration());
+        product.setDuration(30);
 
-        if(productUpdateDTO.getBidPrice() != 0)
-            product.setBidPrice(productUpdateDTO.getBidPrice());
+        product.setBidPrice(500);
 
-        if(productUpdateDTO.getBuyNowPrice() != 0)
-            product.setBuyNowPrice(productUpdateDTO.getBuyNowPrice());
+        product.setBuyNowPrice(50000);
 
-        product.setProductImage1(0 < imagesLength ?  productUpdateDTO.getImages().get(0) : "");
-        product.setProductImage2(1 < imagesLength ?  productUpdateDTO.getImages().get(1) : "");
-        product.setProductImage3(2 < imagesLength ?  productUpdateDTO.getImages().get(2) : "");
-        product.setProductImage4(3 < imagesLength ?  productUpdateDTO.getImages().get(3) : "");
-        product.setProductImage5(4 < imagesLength ?  productUpdateDTO.getImages().get(4) : "");
+        product.setProductImage1("Test Image1");
+        product.setProductImage2("Test Image2");
+        product.setProductImage3("Test Image3");
+        product.setProductImage4("Test Image4");
+        product.setProductImage5("Test Image5");
 
-        return product.getId() == productUpdateDTO.getProductId();
+        assertThat(product.getTitle()).isEqualTo("Test Title");
     }
 
     @Transactional
-    public List<ProductSearchResponseDAO> getProductBySearch(String keyword){
+    @Rollback
+    @Test
+    void getProductBySearch(){
         List<Product> products = productRepository.findAll();
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
         for(Product product : products){
-            if(product.getCategory().getName().contains(keyword) || product.getTitle().contains(keyword)){
+            if(product.getCategory().getName().contains("자동차") || product.getTitle().contains("자동차")){
 
                 Date startTime;
                 Date endTime;
@@ -323,7 +323,7 @@ public class ProductService {
                 boolean before = false;
                 boolean after = false;
                 boolean now = false;
-                String endTimeStr;
+                String endTimeStr = "";
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
                 try {
@@ -357,51 +357,53 @@ public class ProductService {
             }
         }
 
-        Collections.reverse(productSearchResponseDAOS);
-
-        return productSearchResponseDAOS;
+        Assertions.assertThat(productSearchResponseDAOS).isNotEmpty();
     }
 
     @Transactional
-    public boolean instantPurchase(ProductInstantPurchaseDTO productInstantPurchaseDTO){
-        Product product = productRepository.findById(productInstantPurchaseDTO.getProductId())
+    @Rollback
+    @Test
+    void instantPurchase(){
+        Product product = productRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
-        User buyer = userRepository.findById(productInstantPurchaseDTO.getBuyerId())
+        User buyer = userRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
         product.setStatus('Y');
         buyer.setPoint(buyer.getPoint() - product.getBuyNowPrice());
 
         PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
-                .buyerId(productInstantPurchaseDTO.getBuyerId())
-                .productId(productInstantPurchaseDTO.getProductId())
+                .buyerId(buyer.getId())
+                .productId(product.getId())
                 .price(product.getBuyNowPrice())
                 .build();
 
         purchaseService.createPurchaseHistory(purchaseCreateDTO);
 
-        return true;
+        assertThat(purchaseCreateDTO).isNotNull();
     }
 
     @Transactional
-    public boolean auctionPurchase(ProductAuctionPurchaseDTO productAuctionPurchaseDTO){
-        Product product = productRepository.findById(productAuctionPurchaseDTO.getProductId())
+    @Rollback
+    @Test
+    void auctionPurchase(){
+        Product product = productRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
-        User buyer = userRepository.findById(productAuctionPurchaseDTO.getBuyerId())
+        User buyer = userRepository.findById(1)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
         product.setStatus('Y');
-        product.setEndPrice(productAuctionPurchaseDTO.getEndPrice());
-        buyer.setPoint(buyer.getPoint() - productAuctionPurchaseDTO.getEndPrice());
+        product.setEndPrice(1000000);
+        buyer.setPoint(buyer.getPoint() - 1000000);
 
         PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
-                .buyerId(productAuctionPurchaseDTO.getBuyerId())
-                .productId(productAuctionPurchaseDTO.getProductId())
-                .price(productAuctionPurchaseDTO.getEndPrice())
+                .buyerId(buyer.getId())
+                .productId(product.getId())
+                .price(1000000)
                 .build();
 
         purchaseService.createPurchaseHistory(purchaseCreateDTO);
 
-        return true;
+        assertThat(purchaseCreateDTO).isNotNull();
     }
 }

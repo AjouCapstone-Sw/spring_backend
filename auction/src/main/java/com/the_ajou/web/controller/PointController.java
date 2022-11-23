@@ -18,10 +18,10 @@ public class PointController {
         return pointService.findPointHistoryByUserId(userId);
     }
 
-    @GetMapping("/api/point/history/{id}")
-    PointResponseDAO getPointHistory(@PathVariable("id") int id){
-        return pointService.findHistoryById(id);
-    }
+//    @GetMapping("/api/point/history/{id}")
+//    PointResponseDAO getPointHistory(@PathVariable("id") int id){
+//        return pointService.findHistoryById(id);
+//    }
 
     @PostMapping("/api/point/charge")
     boolean updatePoint(@RequestBody PointCreateDTO pointCreateDTO){
