@@ -20,11 +20,6 @@ public class AuctionApplication {
 	public void setTimeZone(){
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 	}
-	@Bean
-	RouterFunction<ServerResponse> routerFunction() {
-		return route(GET("/swagger"), req ->
-				ServerResponse.temporaryRedirect(URI.create("swagger-ui/index.                                                                                                                                                                                                                                                                html")).build());
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(AuctionApplication.class, args);
