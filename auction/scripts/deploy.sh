@@ -22,9 +22,9 @@ fi
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 chmod +x $DEPLOY_JAR
 
-#echo "> pm2 배포"    >> /home/ubuntu/api-server/deploy.log
-#pm2 start $DEPLOY_PATH/app.json >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
+echo "> pm2 배포"    >> /home/ubuntu/api-server/deploy.log
+pm2 start /home/ubuntu/api-server/app.json >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
 
 
-echo "> DEPLOY_JAR 배포"    >> /home/ubuntu/api-server/deploy.log
-nohup java -jar $DEPLOY_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
+# echo "> DEPLOY_JAR 배포"    >> /home/ubuntu/api-server/deploy.log
+# nohup java -jar $DEPLOY_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
