@@ -76,6 +76,8 @@ public class ProductService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        
+        boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
         return ProductResponseDAO.builder()
                 .productId(product.getId())
@@ -90,7 +92,7 @@ public class ProductService {
                 .duration(product.getDuration())
                 .bidPrice(product.getBidPrice())
                 .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                .live(before && after || now)
+                .live(isLive)
                 .productImages(images)
                 .build();
     }
@@ -101,7 +103,7 @@ public class ProductService {
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
         for(Product product : products){
-            if(product.getStatus() == 'N'){
+            if(product.getStatus() == 'Y'){
                 Date startTime;
                 Date endTime;
                 Date nowTime;
@@ -131,12 +133,13 @@ public class ProductService {
                     e.printStackTrace();
                 }
 
+                boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after || now)
+                        .live(isLive)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -160,7 +163,7 @@ public class ProductService {
             products = productRepository.findAllByCategoryId(categoryId);
 
         for(Product product : products){
-            if(product.getStatus() == 'N'){
+            if(product.getStatus() == 'Y'){
                 Date startTime;
                 Date endTime;
                 Date nowTime;
@@ -190,13 +193,13 @@ public class ProductService {
                     e.printStackTrace();
                 }
 
-
+                boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after || now)
+                        .live(isLive)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -233,7 +236,8 @@ public class ProductService {
                 .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .updatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
                 .endPrice(productCreateDTO.getInstant() == 1 ? productCreateDTO.getStartPrice() : 0)
-                .status('N')
+                .status('Y')
+                .userIn(0)
                 .buyerId(0)
                 .productImage1(0 < imagesLength ?  productCreateDTO.getProductImages().get(0) : "")
                 .productImage2(1 < imagesLength ? productCreateDTO.getProductImages().get(1) : "")
@@ -253,10 +257,10 @@ public class ProductService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
-        product.setStatus('Y');
+        product.setStatus('N');
         product.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-        return product.getStatus() == 'Y';
+        return product.getStatus() == 'N';
     }
 
     @Transactional
@@ -313,47 +317,50 @@ public class ProductService {
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
         for(Product product : products){
-            if(product.getCategory().getName().contains(keyword) || product.getTitle().contains(keyword)){
+            if(product.getStatus() == 'Y'){
+                if(product.getCategory().getName().contains(keyword) || product.getTitle().contains(keyword)){
 
-                Date startTime;
-                Date endTime;
-                Date nowTime;
+                    Date startTime;
+                    Date endTime;
+                    Date nowTime;
 
 
-                boolean before = false;
-                boolean after = false;
-                boolean now = false;
-                String endTimeStr;
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
-                try {
-                    endTime = simpleDateFormat.parse(product.getStartTime());
-                    calendar.setTime(endTime);
-                    calendar.add(Calendar.MINUTE, product.getDuration());
+                    boolean before = false;
+                    boolean after = false;
+                    boolean now = false;
+                    String endTimeStr;
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+                    try {
+                        endTime = simpleDateFormat.parse(product.getStartTime());
+                        calendar.setTime(endTime);
+                        calendar.add(Calendar.MINUTE, product.getDuration());
 
-                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+                        endTimeStr = simpleDateFormat.format(calendar.getTime());
 
-                    startTime = simpleDateFormat.parse(product.getStartTime());
-                    endTime = simpleDateFormat.parse(endTimeStr);
-                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
-                    before = nowTime.after(startTime);
-                    after = nowTime.before(endTime);
+                        startTime = simpleDateFormat.parse(product.getStartTime());
+                        endTime = simpleDateFormat.parse(endTimeStr);
+                        nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                        now = nowTime.equals(startTime) || nowTime.equals(endTime);
+                        before = nowTime.after(startTime);
+                        after = nowTime.before(endTime);
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    boolean isLive = (before && after || now) && product.getUserIn() == 1;
+
+                    ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                            .productId(product.getId())
+                            .title(product.getTitle())
+                            .buyNowPrice(product.getBuyNowPrice())
+                            .live(isLive)
+                            .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                            .image(product.getProductImage1())
+                            .build();
+                    productSearchResponseDAOS.add(productSearchResponseDAO);
                 }
-
-
-                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
-                        .title(product.getTitle())
-                        .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after || now)
-                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                        .image(product.getProductImage1())
-                        .build();
-                productSearchResponseDAOS.add(productSearchResponseDAO);
             }
         }
 
@@ -369,7 +376,8 @@ public class ProductService {
         User buyer = userRepository.findById(productInstantPurchaseDTO.getBuyerId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        product.setStatus('Y');
+        product.setStatus('S');
+        product.setBuyerId(buyer.getId());
         buyer.setPoint(buyer.getPoint() - product.getBuyNowPrice());
 
         PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
@@ -390,7 +398,8 @@ public class ProductService {
         User buyer = userRepository.findById(productAuctionPurchaseDTO.getBuyerId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        product.setStatus('Y');
+        product.setStatus('S');
+        product.setBuyerId(buyer.getId());
         product.setEndPrice(productAuctionPurchaseDTO.getEndPrice());
         buyer.setPoint(buyer.getPoint() - productAuctionPurchaseDTO.getEndPrice());
 
@@ -403,5 +412,25 @@ public class ProductService {
         purchaseService.createPurchaseHistory(purchaseCreateDTO);
 
         return true;
+    }
+
+    @Transactional
+    public boolean auctionFail(int productId){
+        Product product = productRepository.findById(productId)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+
+        product.setStatus('F');
+
+        return product.getStatus() == 'F';
+    }
+
+    @Transactional
+    public boolean sellerIn(int productId){
+        Product product = productRepository.findById(productId)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+
+        product.setUserIn(1);
+
+        return product.getUserIn() == 1;
     }
 }

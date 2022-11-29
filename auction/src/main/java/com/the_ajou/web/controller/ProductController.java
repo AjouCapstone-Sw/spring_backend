@@ -60,4 +60,13 @@ public class ProductController {
         return productService.auctionPurchase(productAuctionPurchaseDTO);
     }
 
+    @PatchMapping("/api/product/auctionFail/{productId}")
+    public boolean auctionFail(@PathVariable("productId") int productId){
+        return productService.auctionFail(productId);
+    }
+
+    @PatchMapping("api/product/auction/sellerIn")
+    public boolean sellerIn(int productId){
+        return productService.sellerIn(productId);
+    }
 }

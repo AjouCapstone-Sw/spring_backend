@@ -3,10 +3,7 @@ package com.the_ajou.web.controller;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.service.UserService;
 import com.the_ajou.web.dao.user.UserLoginDAO;
-import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
-import com.the_ajou.web.dto.user.UserCreateDTO;
-import com.the_ajou.web.dto.user.UserLoginDTO;
-import com.the_ajou.web.dto.user.UserUpdateDTO;
+import com.the_ajou.web.dto.user.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +42,9 @@ public class UserController {
         return userService.deleteUser(id);
     }
 
-    @GetMapping("/api/auth/search/{email}")
-    public boolean findEmail(@PathVariable("email") String email){
-        return userService.findEmail(email);
+    @PostMapping("/api/auth/findEmail")
+    public String findEmail(@RequestBody UserFindDTO userFindDTO){
+        return userService.findEmail(userFindDTO);
     }
 
     @PatchMapping("/api/user/registerAddress")

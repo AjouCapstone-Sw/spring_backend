@@ -3,15 +3,13 @@ package com.the_ajou.service;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.user.UserLoginDAO;
-import com.the_ajou.web.dto.user.UserAddressUpdateDTO;
-import com.the_ajou.web.dto.user.UserCreateDTO;
-import com.the_ajou.web.dto.user.UserLoginDTO;
-import com.the_ajou.web.dto.user.UserUpdateDTO;
+import com.the_ajou.web.dto.user.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
@@ -107,9 +105,13 @@ public class UserService {
     }
 
     @Transactional
-    public boolean findEmail(String email){
-        User user = userRepository.findByEmail(email);
-        return user != null;
+    public String findEmail(UserFindDTO userFindDTO) {
+        User user = userRepository.findBynickName(userFindDTO.getNickName());
+
+        if(user != null && Objects.equals(user.getBirth(), userFindDTO.getBirth()))
+            return user.getEmail();
+
+        return "fail";
     }
 
     @Transactional

@@ -23,7 +23,7 @@ public class AuctionApplication {
 	@Bean
 	RouterFunction<ServerResponse> routerFunction() {
 		return route(GET("/swagger"), req ->
-				ServerResponse.temporaryRedirect(URI.create("swagger-ui/index.html")).build());
+				ServerResponse.temporaryRedirect(URI.create("swagger-ui/index.                                                                                                                                                                                                                                                                html")).build());
 	}
 
 	public static void main(String[] args) {

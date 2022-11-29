@@ -63,6 +63,7 @@ public class Product {
 
     @Column(name = "status")
     private char status;
+    // 'Y'는 판매 가능, 'N'은 삭제, 'F'은 유찰, 'S'은 판매 가능
 
     @Column(name = "buyerId")
     private int buyerId;
@@ -82,9 +83,13 @@ public class Product {
     @Column(name = "productImg5")
     private String productImage5 = "";
 
+    @Column(name = "userIn")
+    private int userIn;
+    //'Y'는 사용자 입장, 'N'은 입장 전
+
     @Builder
     Product(User user, Category category, String title, String description, String startTime, int duration,int startPrice, int bidPrice,
-            int instant, int endPrice, String createdAt, String updatedAt, char status, int buyerId, int buyNowPrice,
+            int instant, int userIn,int endPrice, String createdAt, String updatedAt, char status, int buyerId, int buyNowPrice,
             String productImage1, String productImage2, String productImage3, String productImage4, String productImage5
     ){
         this.user = user;
@@ -107,5 +112,6 @@ public class Product {
         this.productImage3 = productImage3;
         this.productImage4 = productImage4;
         this.productImage5 = productImage5;
+        this.userIn = userIn;
     }
 }
