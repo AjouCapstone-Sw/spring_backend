@@ -459,6 +459,7 @@ public class ProductService {
 
         product.setStatus('S');
         product.setBuyerId(buyer.getId());
+        product.setUserIn(0);
         product.setEndPrice(productAuctionPurchaseDTO.getEndPrice());
         buyer.setPoint(buyer.getPoint() - productAuctionPurchaseDTO.getEndPrice());
 
@@ -479,6 +480,7 @@ public class ProductService {
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         product.setStatus('F');
+        product.setUserIn(0);
 
         return product.getStatus() == 'F';
     }

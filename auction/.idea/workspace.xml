@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="Like 상품 list API 생성, Like 관련 API 수정" />
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="InterestServiceTest 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +142,7 @@
       <recent name="com.the_ajou.web.dao.sale" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.InterestServiceTest.deleteInterest">
+  <component name="RunManager" selected="Application.AuctionApplication">
     <configuration name="AuctionApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.the_ajou.AuctionApplication" />
       <module name="auction.main" />
@@ -262,8 +265,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.InterestServiceTest.deleteInterest" />
         <item itemvalue="Gradle.Tests in 'auction.test'" />
+        <item itemvalue="Gradle.InterestServiceTest.deleteInterest" />
         <item itemvalue="Gradle.UserServiceTest" />
         <item itemvalue="Gradle.PurchaseServiceTest" />
         <item itemvalue="Gradle.PurchaseServiceTest.deletePurchase" />
@@ -419,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669799247875</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="InterestServiceTest 수정">
+      <created>1669799974420</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1669799974420</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,7 +463,8 @@
     <MESSAGE value="email 찾기 로직 수정, 경매에 판매자 api &amp; 유찰 처리 api 생성" />
     <MESSAGE value="swagger 주소 수정" />
     <MESSAGE value="Like 상품 list API 생성, Like 관련 API 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="Like 상품 list API 생성, Like 관련 API 수정" />
+    <MESSAGE value="InterestServiceTest 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="InterestServiceTest 수정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

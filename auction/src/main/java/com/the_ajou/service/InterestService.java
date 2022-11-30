@@ -20,19 +20,25 @@ public class InterestService {
 
     @Transactional
     public boolean createInterest(InterestCreateDTO interestCreateDTO){
-        User user = userRepository.findById(interestCreateDTO.getUserId())
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        Interest existingInterest = interestRepository.findByProductIdAndUserId(interestCreateDTO.getProductId(), interestCreateDTO.getUserId());
 
-        Product product = productRepository.findById(interestCreateDTO.getProductId())
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+        if(existingInterest == null){
+            User user = userRepository.findById(interestCreateDTO.getUserId())
+                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        Interest interest = Interest.builder()
-                .user(user)
-                .product(product)
-                .build();
-        interestRepository.save(interest);
+            Product product = productRepository.findById(interestCreateDTO.getProductId())
+                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
-        return interest.getId() != -1;
+            Interest interest = Interest.builder()
+                    .user(user)
+                    .product(product)
+                    .build();
+            interestRepository.save(interest);
+
+            return true;
+        }
+
+        return false;
     }
 
     @Transactional
