@@ -23,7 +23,7 @@ public class InterestService {
         User user = userRepository.findById(interestCreateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        Product product = productRepository.findById(interestCreateDTO.getProjectId())
+        Product product = productRepository.findById(interestCreateDTO.getProductId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         Interest interest = Interest.builder()
@@ -36,15 +36,13 @@ public class InterestService {
     }
 
     @Transactional
-    public boolean deleteInterest(int interestId){
-        Interest interest = interestRepository.findById(interestId)
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 관심 등록입니다."));
+    public boolean deleteInterest(InterestCreateDTO interestCreateDTO){
+        Interest interest = interestRepository.findByProductIdAndUserId(interestCreateDTO.getProductId(), interestCreateDTO.getUserId());
 
-        interestRepository.delete(interest);
-
-        Interest tempInterest = interestRepository.findById(interestId)
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 관심 등록입니다."));
-
-        return tempInterest == null;
+        if(interest != null){
+            interestRepository.delete(interest);
+            return true;
+        }
+        return false;
     }
 }

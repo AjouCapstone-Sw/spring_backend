@@ -16,7 +16,7 @@ public class InterestController {
     }
 
     @DeleteMapping("/api/interest/delete")
-    private boolean deleteInterest(int interestId){
-        return interestService.deleteInterest(interestId);
+    private boolean deleteInterest(@RequestBody InterestCreateDTO interestCreateDTO){
+        return interestService.deleteInterest(interestCreateDTO);
     }
 }

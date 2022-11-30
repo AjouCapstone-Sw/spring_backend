@@ -30,6 +30,11 @@ public class ProductController {
         return productService.getProductListByCategoryId(categoryId);
     }
 
+    @GetMapping("/api/productList/like/{userId}")
+    public List<ProductSearchResponseDAO> getProductListByLike(@PathVariable("userId") int userId){
+        return productService.getProductListByLike(userId);
+    }
+
     @PostMapping("/api/product/create")
     public int createProduct(@RequestBody ProductCreateDTO productCreateDTO){
         return productService.createProduct(productCreateDTO);

@@ -3,7 +3,10 @@ package com.the_ajou.domain.interests;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface InterestRepository extends JpaRepository<Interest, Integer> {
     Interest findByProductIdAndUserId(int productId, int userId);
+    List<Interest> findAllByUserId(int userId);
 }

@@ -7,5 +7,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InterestCreateDTO {
     int userId;
-    int projectId;
+    int productId;
 }
