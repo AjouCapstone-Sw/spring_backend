@@ -6,7 +6,6 @@ import com.the_ajou.domain.product.Product;
 import com.the_ajou.domain.product.ProductRepository;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
-import com.the_ajou.web.dto.interest.InterestCreateDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @SpringBootTest
 @WebAppConfiguration
@@ -48,10 +49,9 @@ class InterestServiceTest {
     @Rollback
     @Test
     void deleteInterest(){
-        Interest interest = interestRepository.findById(1)
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 관심 등록입니다."));
+        List<Interest> interest = interestRepository.findAll();
 
-        interestRepository.delete(interest);
+        interestRepository.delete(interest.get(0));
 
         Assertions.assertThat(interest).isNotNull();
     }
