@@ -10,13 +10,8 @@ import org.springframework.web.bind.annotation.*;
 public class InterestController {
     private final InterestService interestService;
 
-    @PostMapping("/api/interest/create")
+    @RequestMapping(value = "/api/interest", method = {RequestMethod.POST, RequestMethod.DELETE})
     private boolean createInterest(@RequestBody InterestCreateDTO interestCreateDTO){
         return interestService.createInterest(interestCreateDTO);
-    }
-
-    @DeleteMapping("/api/interest/delete")
-    private boolean deleteInterest(@RequestBody InterestCreateDTO interestCreateDTO){
-        return interestService.deleteInterest(interestCreateDTO);
     }
 }

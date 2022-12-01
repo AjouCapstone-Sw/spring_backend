@@ -28,7 +28,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("The Ajou Swagger")
                 .description("the ajou swagger config")
-                .version("1.0.1")
+                .version("1.0.2")
                 .build();
     }
 }

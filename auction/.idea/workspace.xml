@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="interest 중복 생성 수정">
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="point api 수정, swagger 버전 변경">
       <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/point/PointResponseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/point/PointResponseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -439,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669817711079</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="point api 수정, swagger 버전 변경">
+      <created>1669859137089</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1669859137089</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,7 +481,8 @@
     <MESSAGE value="Like 상품 list API 생성, Like 관련 API 수정" />
     <MESSAGE value="InterestServiceTest 수정" />
     <MESSAGE value="interest 중복 생성 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="interest 중복 생성 수정" />
+    <MESSAGE value="point api 수정, swagger 버전 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="point api 수정, swagger 버전 변경" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

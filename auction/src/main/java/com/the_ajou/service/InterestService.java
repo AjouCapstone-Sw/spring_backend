@@ -20,33 +20,25 @@ public class InterestService {
 
     @Transactional
     public boolean createInterest(InterestCreateDTO interestCreateDTO){
+        User userCheck = userRepository.findById(interestCreateDTO.getUserId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
+        Product productCheck = productRepository.findById(interestCreateDTO.getProductId())
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
+
         Interest existingInterest = interestRepository.findByProductIdAndUserId(interestCreateDTO.getProductId(), interestCreateDTO.getUserId());
 
-        if(existingInterest == null){
-            User user = userRepository.findById(interestCreateDTO.getUserId())
-                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        if(userCheck != null && productCheck != null){
+            if(existingInterest == null){
+                Interest interest = Interest.builder()
+                        .user(userCheck)
+                        .product(productCheck)
+                        .build();
+                interestRepository.save(interest);
 
-            Product product = productRepository.findById(interestCreateDTO.getProductId())
-                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
-
-            Interest interest = Interest.builder()
-                    .user(user)
-                    .product(product)
-                    .build();
-            interestRepository.save(interest);
-
-            return true;
-        }
-
-        return false;
-    }
-
-    @Transactional
-    public boolean deleteInterest(InterestCreateDTO interestCreateDTO){
-        Interest interest = interestRepository.findByProductIdAndUserId(interestCreateDTO.getProductId(), interestCreateDTO.getUserId());
-
-        if(interest != null){
-            interestRepository.delete(interest);
+            }else{
+                interestRepository.delete(existingInterest);
+            }
             return true;
         }
         return false;
