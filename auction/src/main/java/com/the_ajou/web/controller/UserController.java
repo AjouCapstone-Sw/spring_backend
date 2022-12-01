@@ -28,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping("/api/auth/pw")
-    public void changePassword(@RequestBody UserLoginDTO userLoginDTO){
-        userService.changePassword(userLoginDTO);
+    public boolean changePassword(@RequestBody UserLoginDTO userLoginDTO){
+        return userService.changePassword(userLoginDTO);
     }
 
     @PatchMapping("/api/user/update")

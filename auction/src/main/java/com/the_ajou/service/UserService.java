@@ -76,10 +76,16 @@ public class UserService {
     }
 
     @Transactional
-    public void changePassword(UserLoginDTO userLoginDTO){
+    public boolean changePassword(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
-        user.setPassword(userLoginDTO.getPassword());
-        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+
+        if(user != null){
+            user.setPassword(userLoginDTO.getPassword());
+            user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+
+            return true;
+        }
+        return false;
     }
 
     @Transactional
