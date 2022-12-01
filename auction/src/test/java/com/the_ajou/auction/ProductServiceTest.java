@@ -149,7 +149,6 @@ class ProductServiceTest {
 
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(before && after || now)
@@ -202,7 +201,6 @@ class ProductServiceTest {
                     e.printStackTrace();
                 }
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(before && after || now)
@@ -346,7 +344,6 @@ class ProductServiceTest {
 
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(before && after || now)
