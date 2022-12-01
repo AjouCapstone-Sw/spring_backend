@@ -32,8 +32,8 @@ public class ProductService {
     private final PurchaseService purchaseService;
 
     @Transactional
-    public ProductResponseDAO getProduct(int id){
-        Product product = productRepository.findById(id)
+    public ProductResponseDAO getProduct(ProductInfoDTO productInfoDTO){
+        Product product = productRepository.findById(productInfoDTO.getProductId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         List<String> images = new LinkedList<>();
@@ -92,7 +92,7 @@ public class ProductService {
                 .buyNowPrice(product.getBuyNowPrice())
                 .duration(product.getDuration())
                 .bidPrice(product.getBidPrice())
-                .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                .like(interestRepository.findByProductIdAndUserId(product.getId(), productInfoDTO.getUserId()) != null)
                 .live(isLive)
                 .productImages(images)
                 .build();
@@ -137,7 +137,6 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -197,7 +196,6 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -255,7 +253,6 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -411,7 +408,6 @@ public class ProductService {
                     boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                     ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                            .productId(product.getId())
                             .title(product.getTitle())
                             .buyNowPrice(product.getBuyNowPrice())
                             .live(isLive)

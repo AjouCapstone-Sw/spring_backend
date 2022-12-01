@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="point api 수정, swagger 버전 변경">
-      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="password change api fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/product/ProductInfoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/InterestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductSearchResponseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/product/ProductSearchResponseDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +130,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Properties" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -144,7 +145,7 @@
       <recent name="com.the_ajou.web.dao.sale" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AuctionApplication">
+  <component name="RunManager" selected="Gradle.Tests in 'auction.test'">
     <configuration name="AuctionApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.the_ajou.AuctionApplication" />
       <module name="auction.main" />
@@ -445,7 +446,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669859137089</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="interest api 수정, swagger 버전 변경">
+      <created>1669877383251</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1669877383251</updated>
+    </task>
+    <task id="LOCAL-00025" summary="password change api fix">
+      <created>1669894725948</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1669894725948</updated>
+    </task>
+    <task id="LOCAL-00026" summary="password change api fix">
+      <created>1669894877672</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1669894877672</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,7 +504,9 @@
     <MESSAGE value="InterestServiceTest 수정" />
     <MESSAGE value="interest 중복 생성 수정" />
     <MESSAGE value="point api 수정, swagger 버전 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="point api 수정, swagger 버전 변경" />
+    <MESSAGE value="interest api 수정, swagger 버전 변경" />
+    <MESSAGE value="password change api fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="password change api fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

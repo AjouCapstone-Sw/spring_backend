@@ -15,9 +15,9 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/api/product/{productId}")
-    public ProductResponseDAO getProduct(@PathVariable("productId") int productId){
-        return productService.getProduct(productId);
+    @PostMapping("/api/product")
+    public ProductResponseDAO getProduct(@RequestBody ProductInfoDTO productInfoDTO){
+        return productService.getProduct(productInfoDTO);
     }
 
     @GetMapping("/api/product/list")
