@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="InterestServiceTest 수정">
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="interest 중복 생성 수정">
+      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/point/PointResponseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dao/point/PointResponseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -429,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669799974420</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="interest 중복 생성 수정">
+      <created>1669817711079</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1669817711079</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -464,7 +474,8 @@
     <MESSAGE value="swagger 주소 수정" />
     <MESSAGE value="Like 상품 list API 생성, Like 관련 API 수정" />
     <MESSAGE value="InterestServiceTest 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="InterestServiceTest 수정" />
+    <MESSAGE value="interest 중복 생성 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="interest 중복 생성 수정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

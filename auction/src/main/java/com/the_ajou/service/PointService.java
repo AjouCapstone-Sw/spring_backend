@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,13 +30,14 @@ public class PointService {
 
         for(Point point : points){
             PointResponseDAO pointResponseDAO = PointResponseDAO.builder()
-                    .id(point.getId())
-                    .userId(point.getUser().getId())
                     .createdAt(point.getCreatedAt())
                     .point(point.getPoint())
                     .build();
             pointResponseDAOS.add(pointResponseDAO);
         }
+
+        Collections.reverse(pointResponseDAOS);
+
         return pointResponseDAOS;
     }
 

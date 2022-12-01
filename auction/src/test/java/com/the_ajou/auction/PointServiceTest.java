@@ -36,8 +36,6 @@ class PointServiceTest {
 
         for(Point point : points){
             PointResponseDAO pointResponseDAO = PointResponseDAO.builder()
-                    .id(point.getId())
-                    .userId(point.getUser().getId())
                     .createdAt(point.getCreatedAt())
                     .point(point.getPoint())
                     .build();

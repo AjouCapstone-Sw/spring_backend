@@ -7,15 +7,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class PointResponseDAO {
-    int id;
-    int userId;
     String createdAt;
     int point;
 
     @Builder
-    PointResponseDAO(int id, int userId, String createdAt, int point){
-        this.id = id;
-        this.userId = userId;
+    PointResponseDAO(String createdAt, int point){
         this.createdAt = createdAt;
         this.point = point;
     }
