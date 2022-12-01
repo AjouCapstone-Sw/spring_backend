@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class ProductSearchResponseDAO {
+    int productId;
     String title;
     int buyNowPrice;
     boolean live;
@@ -16,8 +17,9 @@ public class ProductSearchResponseDAO {
     String image;
 
     @Builder
-    ProductSearchResponseDAO(String title, int buyNowPrice,
+    ProductSearchResponseDAO(int productId, String title, int buyNowPrice,
                        boolean live, boolean like, String image){
+        this.productId = productId;
         this.title = title;
         this.buyNowPrice = buyNowPrice;
         this.like = like;

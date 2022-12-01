@@ -137,6 +137,7 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -196,6 +197,7 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -253,6 +255,7 @@ public class ProductService {
                 boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                 ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                        .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
                         .live(isLive)
@@ -408,6 +411,7 @@ public class ProductService {
                     boolean isLive = (before && after || now) && product.getUserIn() == 1;
 
                     ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                            .productId(product.getId())
                             .title(product.getTitle())
                             .buyNowPrice(product.getBuyNowPrice())
                             .live(isLive)
