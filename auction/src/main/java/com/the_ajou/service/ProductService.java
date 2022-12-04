@@ -434,48 +434,46 @@ public class ProductService {
         List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
 
         for(Product product : products){
-            if(product.getStatus() == 'Y'){
-                    Date startTime;
-                    Date endTime;
-                    Date nowTime;
+            Date startTime;
+            Date endTime;
+            Date nowTime;
 
 
-                    boolean before = false;
-                    boolean after = false;
-                    boolean now = false;
-                    String endTimeStr;
-                    Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
-                    try {
-                        endTime = simpleDateFormat.parse(product.getStartTime());
-                        calendar.setTime(endTime);
-                        calendar.add(Calendar.MINUTE, product.getDuration());
+            boolean before = false;
+            boolean after = false;
+            boolean now = false;
+            String endTimeStr;
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+            try {
+                endTime = simpleDateFormat.parse(product.getStartTime());
+                calendar.setTime(endTime);
+                calendar.add(Calendar.MINUTE, product.getDuration());
 
-                        endTimeStr = simpleDateFormat.format(calendar.getTime());
+                endTimeStr = simpleDateFormat.format(calendar.getTime());
 
-                        startTime = simpleDateFormat.parse(product.getStartTime());
-                        endTime = simpleDateFormat.parse(endTimeStr);
-                        nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-                        now = nowTime.equals(startTime) || nowTime.equals(endTime);
-                        before = nowTime.after(startTime);
-                        after = nowTime.before(endTime);
+                startTime = simpleDateFormat.parse(product.getStartTime());
+                endTime = simpleDateFormat.parse(endTimeStr);
+                nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                now = nowTime.equals(startTime) || nowTime.equals(endTime);
+                before = nowTime.after(startTime);
+                after = nowTime.before(endTime);
 
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    boolean isLive = (before && after || now) && product.getUserIn() == 1;
-
-                    ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                            .productId(product.getId())
-                            .title(product.getTitle())
-                            .buyNowPrice(product.getBuyNowPrice())
-                            .live(isLive)
-                            .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                            .image(product.getProductImage1())
-                            .build();
-                    productSearchResponseDAOS.add(productSearchResponseDAO);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
+            boolean isLive = (before && after || now) && product.getUserIn() == 1;
+
+            ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                    .productId(product.getId())
+                    .title(product.getTitle())
+                    .buyNowPrice(product.getBuyNowPrice())
+                    .live(isLive)
+                    .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                    .image(product.getProductImage1())
+                    .build();
+            productSearchResponseDAOS.add(productSearchResponseDAO);
         }
 
         Collections.reverse(productSearchResponseDAOS);

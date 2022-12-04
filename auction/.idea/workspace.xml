@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="myPage API 생성">
-      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="Test Code 임시 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +139,7 @@
       <recent name="com.the_ajou.web.dao.sale" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'auction.test'">
+  <component name="RunManager" selected="Application.AuctionApplication">
     <configuration name="AuctionApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.the_ajou.AuctionApplication" />
       <module name="auction.main" />
@@ -486,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670116168078</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Test Code 임시 수정">
+      <created>1670116731169</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1670116731169</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -502,7 +505,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="API 생성 및 리펙토링" />
     <MESSAGE value="파일 위치 수정 및 삭제" />
     <MESSAGE value="buyNowPrice 생성 및 추가, 수정" />
     <MESSAGE value="api 내부 변수명 변경 및 수정" />
@@ -527,7 +529,8 @@
     <MESSAGE value="password change api fix" />
     <MESSAGE value="product API Fix" />
     <MESSAGE value="myPage API 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="myPage API 생성" />
+    <MESSAGE value="Test Code 임시 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test Code 임시 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
