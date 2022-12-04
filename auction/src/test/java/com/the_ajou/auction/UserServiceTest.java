@@ -79,9 +79,10 @@ class UserServiceTest {
     @Rollback
     @Test
     void changePassword(){
-        User user = userRepository.findByEmail("admin");
+        User user = userRepository.findById(1)
+                        .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+
         user.setPassword("Test Password");
-        user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
         assertThat(user.getPassword()).isEqualTo("Test Password");
     }
@@ -121,7 +122,7 @@ class UserServiceTest {
     @Rollback
     @Test
     void findEmail(){
-        User user = userRepository.findByEmail("admin");
+        User user = userRepository.findByEmail("test1@test1");
 
         assertThat(user).isNotNull();
     }
@@ -142,7 +143,7 @@ class UserServiceTest {
     @Rollback
     @Test
     void getUserId(){
-        User user = userRepository.findBynickName("the_ajou");
+        User user = userRepository.findBynickName("김영진");
 
         assertThat(user).isNotNull();
     }

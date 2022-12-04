@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="product API Fix">
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="myPage API 생성">
       <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +143,7 @@
       <recent name="com.the_ajou.web.dao.sale" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AuctionApplication">
+  <component name="RunManager" selected="Gradle.Tests in 'auction.test'">
     <configuration name="AuctionApplication" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.the_ajou.AuctionApplication" />
       <module name="auction.main" />
@@ -481,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669896419872</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="myPage API 생성">
+      <created>1670116168078</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1670116168078</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +526,8 @@
     <MESSAGE value="interest api 수정, swagger 버전 변경" />
     <MESSAGE value="password change api fix" />
     <MESSAGE value="product API Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="product API Fix" />
+    <MESSAGE value="myPage API 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="myPage API 생성" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
