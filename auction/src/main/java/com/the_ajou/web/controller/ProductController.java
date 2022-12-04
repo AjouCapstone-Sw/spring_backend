@@ -55,6 +55,16 @@ public class ProductController {
         return productService.getProductBySearch(keyword);
     }
 
+    @GetMapping("/api/product/sellList/{userId}")
+    public List<ProductSearchResponseDAO> getMySellList(@PathVariable("userId") int userId){
+        return productService.getMySellList(userId);
+    }
+
+    @GetMapping("/api/product/buyList/{userId}")
+    public List<ProductSearchResponseDAO> getMyBuyList(@PathVariable("userId") int userId){
+        return productService.getMyBuyList(userId);
+    }
+
     @PostMapping("/api/product/instantPurchase")
     public boolean instantPurchase(@RequestBody ProductInstantPurchaseDTO productInstantPurchaseDTO){
         return productService.instantPurchase(productInstantPurchaseDTO);
