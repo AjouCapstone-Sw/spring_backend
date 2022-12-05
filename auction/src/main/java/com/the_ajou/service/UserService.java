@@ -1,24 +1,22 @@
 package com.the_ajou.service;
-
+;
 import com.the_ajou.domain.user.User;
 import com.the_ajou.domain.user.UserRepository;
 import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.user.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Transactional
@@ -29,7 +27,7 @@ public class UserService {
         if(checkUser == null && nickNameCheck == null){
             User user = User.builder()
                     .email(userCreateDTO.getEmail())
-                    .password(userCreateDTO.getPassword())
+                    .password(passwordEncoder.encode(userCreateDTO.getPassword()))
                     .phoneNum(userCreateDTO.getPhoneNum())
                     .address(userCreateDTO.getAddress())
                     .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
@@ -61,8 +59,10 @@ public class UserService {
     @Transactional
     public UserLoginDAO login(UserLoginDTO userLoginDTO){
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
-        //if(passwordEncoder.matches(user.getPassword(), userLoginDTO.getPassword())){
-        if(user.getPassword().equals(userLoginDTO.getPassword())){
+
+        //System.out.println("----------------" + user.getEmail() + "----------------------");
+
+        if(passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())){
             return UserLoginDAO.builder()
                     .userId(user.getId())
                     .nickName(user.getNickName())
@@ -80,7 +80,7 @@ public class UserService {
         User user = userRepository.findByEmail(userLoginDTO.getEmail());
 
         if(user != null){
-            user.setPassword(userLoginDTO.getPassword());
+            user.setPassword(passwordEncoder.encode(userLoginDTO.getPassword()));
             user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
             return true;
