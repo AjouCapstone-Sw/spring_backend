@@ -1,11 +1,11 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.interests.Interest;
-import com.the_ajou.domain.interests.InterestRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.interests.Interest;
+import com.the_ajou.model.interests.InterestRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dto.interest.InterestCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

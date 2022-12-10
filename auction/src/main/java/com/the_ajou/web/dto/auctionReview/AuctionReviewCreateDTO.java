@@ -1,6 +1,5 @@
 package com.the_ajou.web.dto.auctionReview;
 
-import com.the_ajou.domain.auctionReview.AuctionReviewRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

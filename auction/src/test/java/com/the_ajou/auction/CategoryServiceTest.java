@@ -1,9 +1,8 @@
 package com.the_ajou.auction;
 
-import com.the_ajou.domain.category.Category;
-import com.the_ajou.domain.category.CategoryRepository;
+import com.the_ajou.model.category.Category;
+import com.the_ajou.model.category.CategoryRepository;
 import com.the_ajou.web.dao.category.CategoryDAO;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

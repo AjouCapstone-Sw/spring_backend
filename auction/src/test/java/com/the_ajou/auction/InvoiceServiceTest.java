@@ -1,9 +1,9 @@
 package com.the_ajou.auction;
 
-import com.the_ajou.domain.invoice.Invoice;
-import com.the_ajou.domain.invoice.InvoiceRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
+import com.the_ajou.model.invoice.Invoice;
+import com.the_ajou.model.invoice.InvoiceRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

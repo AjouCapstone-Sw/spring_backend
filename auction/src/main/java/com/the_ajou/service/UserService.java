@@ -1,13 +1,17 @@
 package com.the_ajou.service;
 ;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.user.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -53,37 +57,39 @@ public class UserService {
     @Transactional
     public User findUserById(int id){
         return userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("없는 사용자 입니다"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @Transactional
-    public UserLoginDAO login(UserLoginDTO userLoginDTO){
-        User user = userRepository.findByEmail(userLoginDTO.getEmail());
+    public Object login(UserLoginDTO userLoginDTO){
+        try {
+            User user = userRepository.findByEmail(userLoginDTO.getEmail());
 
-        //System.out.println("----------------" + user.getEmail() + "----------------------");
-
-        if(passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())){
-            return UserLoginDAO.builder()
-                    .userId(user.getId())
-                    .nickName(user.getNickName())
-                    .build();
-        }else{
-            return UserLoginDAO.builder()
-                    .userId(0)
-                    .nickName("")
-                    .build();
+            if(passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())){
+                return UserLoginDAO.builder()
+                        .userId(user.getId())
+                        .nickName(user.getNickName())
+                        .build();
+            }
+        }catch (Exception e){
+            return new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 이메일");
         }
+        return "false";
     }
 
     @Transactional
     public boolean changePassword(UserLoginDTO userLoginDTO){
-        User user = userRepository.findByEmail(userLoginDTO.getEmail());
+        try {
+            User user = userRepository.findByEmail(userLoginDTO.getEmail());
 
-        if(user != null){
-            user.setPassword(passwordEncoder.encode(userLoginDTO.getPassword()));
-            user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+            if(user != null){
+                user.setPassword(passwordEncoder.encode(userLoginDTO.getPassword()));
+                user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
-            return true;
+                return true;
+            }
+        }catch (Exception ignored) {
+
         }
         return false;
     }
@@ -103,11 +109,15 @@ public class UserService {
 
     @Transactional
     public int deleteUser(int id){
-        User user = userRepository.findById(id)
-                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
-        user.setStatus('Y');
+        try {
+            User user = userRepository.findById(id)
+                    .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+            user.setStatus('Y');
+            return user.getId();
+        }catch (Exception ignored){
 
-        return user.getId();
+        }
+        return 0;
     }
 
     @Transactional

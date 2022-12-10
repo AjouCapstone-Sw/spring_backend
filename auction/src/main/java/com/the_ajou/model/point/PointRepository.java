@@ -1,4 +1,4 @@
-package com.the_ajou.domain.point;
+package com.the_ajou.model.point;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.the_ajou.domain.user;
+package com.the_ajou.model.user;
 
 import com.the_ajou.web.dto.user.UserUpdateDTO;
 import lombok.Builder;

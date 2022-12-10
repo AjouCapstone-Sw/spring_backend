@@ -1,13 +1,15 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.category.Category;
-import com.the_ajou.domain.category.CategoryRepository;
-import com.the_ajou.domain.interests.Interest;
-import com.the_ajou.domain.interests.InterestRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.category.Category;
+import com.the_ajou.model.category.CategoryRepository;
+import com.the_ajou.model.interests.Interest;
+import com.the_ajou.model.interests.InterestRepository;
+import com.the_ajou.model.point.Point;
+import com.the_ajou.model.point.PointRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
 import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
 import com.the_ajou.web.dto.product.*;
@@ -30,6 +32,7 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final InterestRepository interestRepository;
     private final PurchaseService purchaseService;
+    private final PointRepository pointRepository;
 
     @Transactional
     public ProductResponseDAO getProduct(ProductInfoDTO productInfoDTO){
@@ -93,7 +96,7 @@ public class ProductService {
                 .duration(product.getDuration())
                 .bidPrice(product.getBidPrice())
                 .like(interestRepository.findByProductIdAndUserId(product.getId(), productInfoDTO.getUserId()) != null)
-                .live(isLive)
+                .live(product.getInstant() != 1 && isLive)
                 .productImages(images)
                 .build();
     }
@@ -140,7 +143,143 @@ public class ProductService {
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(isLive)
+                        .live(product.getInstant() != 1 && isLive)
+                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                        .image(product.getProductImage1())
+                        .build();
+                productSearchResponseDAOS.add(productSearchResponseDAO);
+            }
+        }
+
+        Collections.reverse(productSearchResponseDAOS);
+
+        return productSearchResponseDAOS;
+    }
+
+    @Transactional
+    public List<ProductSearchResponseDAO> getAuctionProductList(){
+        List<Product> products = productRepository.findAll();
+        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+
+        for(Product product : products){
+            if(product.getStatus() == 'Y' && product.getInstant() == 0){
+                Date startTime;
+                Date endTime;
+                Date nowTime;
+
+
+                boolean before = false;
+                boolean after = false;
+                boolean now = false;
+                String endTimeStr;
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+                try {
+                    endTime = simpleDateFormat.parse(product.getStartTime());
+                    calendar.setTime(endTime);
+                    calendar.add(Calendar.MINUTE, product.getDuration());
+
+                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+
+                    startTime = simpleDateFormat.parse(product.getStartTime());
+                    endTime = simpleDateFormat.parse(endTimeStr);
+                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
+                    before = nowTime.after(startTime);
+                    after = nowTime.before(endTime);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                boolean isLive = (before && after || now) && product.getUserIn() == 1;
+
+                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                        .productId(product.getId())
+                        .title(product.getTitle())
+                        .buyNowPrice(product.getBuyNowPrice())
+                        .live(product.getInstant() != 1 && isLive)
+                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                        .image(product.getProductImage1())
+                        .build();
+                productSearchResponseDAOS.add(productSearchResponseDAO);
+            }
+        }
+
+        Collections.reverse(productSearchResponseDAOS);
+
+        return productSearchResponseDAOS;
+    }
+
+    @Transactional
+    public List<ProductSearchResponseDAO> getAuctioningProductList(){
+        List<Product> products = productRepository.findAll();
+        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+
+        for(Product product : products){
+            if(product.getStatus() == 'Y'){
+                Date startTime;
+                Date endTime;
+                Date nowTime;
+
+
+                boolean before = false;
+                boolean after = false;
+                boolean now = false;
+                String endTimeStr;
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+                try {
+                    endTime = simpleDateFormat.parse(product.getStartTime());
+                    calendar.setTime(endTime);
+                    calendar.add(Calendar.MINUTE, product.getDuration());
+
+                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+
+                    startTime = simpleDateFormat.parse(product.getStartTime());
+                    endTime = simpleDateFormat.parse(endTimeStr);
+                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
+                    before = nowTime.after(startTime);
+                    after = nowTime.before(endTime);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                boolean isLive = (before && after || now) && product.getUserIn() == 1;
+
+                if(isLive){
+                    ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                            .productId(product.getId())
+                            .title(product.getTitle())
+                            .buyNowPrice(product.getBuyNowPrice())
+                            .live(product.getInstant() != 1 && isLive)
+                            .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+                            .image(product.getProductImage1())
+                            .build();
+                    productSearchResponseDAOS.add(productSearchResponseDAO);
+                }
+            }
+        }
+
+        Collections.reverse(productSearchResponseDAOS);
+
+        return productSearchResponseDAOS;
+    }
+
+    @Transactional
+    public List<ProductSearchResponseDAO> getInstanceProductList(){
+        List<Product> products = productRepository.findAll();
+        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+
+        for(Product product : products){
+            if(product.getStatus() == 'Y' && product.getInstant() == 1){
+                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+                        .productId(product.getId())
+                        .title(product.getTitle())
+                        .buyNowPrice(product.getBuyNowPrice())
+                        .live(false)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -200,7 +339,7 @@ public class ProductService {
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(isLive)
+                        .live(product.getInstant() != 1 && isLive)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -258,7 +397,7 @@ public class ProductService {
                         .productId(product.getId())
                         .title(product.getTitle())
                         .buyNowPrice(product.getBuyNowPrice())
-                        .live(isLive)
+                        .live(product.getInstant() != 1 && isLive)
                         .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
                         .image(product.getProductImage1())
                         .build();
@@ -553,6 +692,14 @@ public class ProductService {
                 .price(product.getBuyNowPrice())
                 .build();
 
+        Point point = Point.builder()
+                .user(buyer)
+                .point(-1 * product.getBuyNowPrice())
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .build();
+
+        pointRepository.save(point);
+
         purchaseService.createPurchaseHistory(purchaseCreateDTO);
 
         return true;
@@ -570,6 +717,14 @@ public class ProductService {
         product.setUserIn(0);
         product.setEndPrice(productAuctionPurchaseDTO.getEndPrice());
         buyer.setPoint(buyer.getPoint() - productAuctionPurchaseDTO.getEndPrice());
+
+        Point point = Point.builder()
+                .user(buyer)
+                .point(-1 * product.getEndPrice())
+                .createdAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+                .build();
+
+        pointRepository.save(point);
 
         PurchaseCreateDTO purchaseCreateDTO = PurchaseCreateDTO.builder()
                 .buyerId(productAuctionPurchaseDTO.getBuyerId())

@@ -1,9 +1,9 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.invoice.Invoice;
-import com.the_ajou.domain.invoice.InvoiceRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
+import com.the_ajou.model.invoice.Invoice;
+import com.the_ajou.model.invoice.InvoiceRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
 import com.the_ajou.web.dto.invoice.InvoiceCreateDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

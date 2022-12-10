@@ -1,9 +1,9 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.point.Point;
-import com.the_ajou.domain.point.PointRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.point.Point;
+import com.the_ajou.model.point.PointRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.point.PointResponseDAO;
 import com.the_ajou.web.dto.point.PointCreateDTO;
 import lombok.RequiredArgsConstructor;

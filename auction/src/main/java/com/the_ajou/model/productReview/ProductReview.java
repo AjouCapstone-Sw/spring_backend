@@ -1,6 +1,7 @@
-package com.the_ajou.domain.auctionReview;
+package com.the_ajou.model.productReview;
 
-import com.the_ajou.domain.user.User;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "auctionReview")
-public class AuctionReview {
+@Entity(name = "productReview")
+public class ProductReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,6 +22,10 @@ public class AuctionReview {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 
     @Column(name = "review")
     private String review;
@@ -32,8 +37,9 @@ public class AuctionReview {
     private String createdAt;
 
     @Builder
-    AuctionReview(User user, String review, int score, String createdAt){
+    ProductReview(User user, Product product, String review, int score, String createdAt){
         this.user = user;
+        this.product = product;
         this.review = review;
         this.score = score;
         this.createdAt = createdAt;

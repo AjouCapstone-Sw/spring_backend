@@ -1,7 +1,7 @@
 package com.the_ajou.auction;
 
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.user.UserUpdateDTO;
 import org.junit.jupiter.api.Test;

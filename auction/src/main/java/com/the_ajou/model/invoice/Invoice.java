@@ -1,6 +1,6 @@
-package com.the_ajou.domain.invoice;
+package com.the_ajou.model.invoice;
 
-import com.the_ajou.domain.product.Product;
+import com.the_ajou.model.product.Product;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

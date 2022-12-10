@@ -1,11 +1,11 @@
 package com.the_ajou.auction;
 
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
-import com.the_ajou.domain.purchase.Purchase;
-import com.the_ajou.domain.purchase.PurchaseRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
+import com.the_ajou.model.purchase.Purchase;
+import com.the_ajou.model.purchase.PurchaseRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.purchase.PurchaseResponseDAO;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

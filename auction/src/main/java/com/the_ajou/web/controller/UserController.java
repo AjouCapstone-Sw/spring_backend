@@ -1,11 +1,13 @@
 package com.the_ajou.web.controller;
 
-import com.the_ajou.domain.user.User;
+import com.the_ajou.model.user.User;
 import com.the_ajou.service.UserService;
 import com.the_ajou.web.dao.user.UserLoginDAO;
 import com.the_ajou.web.dto.user.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/api/auth/login")
-    public UserLoginDAO login(@RequestBody UserLoginDTO userLoginDTO){
+    public Object login(@RequestBody UserLoginDTO userLoginDTO){
         return userService.login(userLoginDTO);
     }
 

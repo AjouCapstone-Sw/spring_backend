@@ -1,4 +1,4 @@
-package com.the_ajou.domain.user;
+package com.the_ajou.model.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

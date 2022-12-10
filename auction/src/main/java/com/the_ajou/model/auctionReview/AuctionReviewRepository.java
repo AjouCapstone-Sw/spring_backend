@@ -1,6 +1,6 @@
-package com.the_ajou.domain.auctionReview;
+package com.the_ajou.model.auctionReview;
 
-import com.the_ajou.domain.user.User;
+import com.the_ajou.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

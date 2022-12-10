@@ -1,8 +1,8 @@
-package com.the_ajou.domain.product;
+package com.the_ajou.model.product;
 
 
-import com.the_ajou.domain.category.Category;
-import com.the_ajou.domain.user.User;
+import com.the_ajou.model.category.Category;
+import com.the_ajou.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

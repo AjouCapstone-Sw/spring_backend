@@ -1,6 +1,6 @@
-package com.the_ajou.domain.point;
+package com.the_ajou.model.point;
 
-import com.the_ajou.domain.user.User;
+import com.the_ajou.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

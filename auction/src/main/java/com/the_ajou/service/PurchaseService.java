@@ -1,11 +1,11 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.purchase.Purchase;
-import com.the_ajou.domain.purchase.PurchaseRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.purchase.Purchase;
+import com.the_ajou.model.purchase.PurchaseRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.purchase.PurchaseResponseDAO;
 import com.the_ajou.web.dto.purchase.PurchaseCreateDTO;
 import lombok.RequiredArgsConstructor;

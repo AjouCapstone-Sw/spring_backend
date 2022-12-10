@@ -1,4 +1,4 @@
-package com.the_ajou.domain.interests;
+package com.the_ajou.model.interests;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

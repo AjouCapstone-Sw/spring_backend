@@ -1,7 +1,7 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.category.Category;
-import com.the_ajou.domain.category.CategoryRepository;
+import com.the_ajou.model.category.Category;
+import com.the_ajou.model.category.CategoryRepository;
 import com.the_ajou.web.dao.category.CategoryDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 

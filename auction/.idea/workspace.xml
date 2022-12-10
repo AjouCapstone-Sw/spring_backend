@@ -4,15 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="MyPage API Fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SecurityConfig.java" afterDir="false" />
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="login api fix">
       <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/PasswordConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/auctionReview/AuctionReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/auctionReview/AuctionReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/auctionReview/AuctionReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/auctionReview/AuctionReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/category/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/category/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/category/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/interests/Interest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/interests/Interest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/interests/InterestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/interests/InterestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/invoice/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/invoice/Invoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/invoice/InvoiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/invoice/InvoiceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/point/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/point/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/point/PointRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/point/PointRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/productReview/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/productReview/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/productReview/ProductReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/productReview/ProductReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/purchase/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/purchase/PurchaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/purchase/PurchaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/domain/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/model/user/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/AuctionReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/AuctionReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InterestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/InvoiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PointService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/PurchaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/auctionReview/AuctionReviewCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/auctionReview/AuctionReviewCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/AuctionReviewServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/AuctionReviewServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/CategoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/CategoryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/InterestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/InterestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/InvoiceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/InvoiceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PointServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/ProductReviewServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/ProductReviewServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/ProductServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/ProductServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PurchaseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/PurchaseServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/the_ajou/auction/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,8 +304,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.InterestServiceTest.deleteInterest" />
         <item itemvalue="Gradle.Tests in 'auction.test'" />
+        <item itemvalue="Gradle.InterestServiceTest.deleteInterest" />
         <item itemvalue="Gradle.UserServiceTest" />
         <item itemvalue="Gradle.PurchaseServiceTest" />
         <item itemvalue="Gradle.PurchaseServiceTest.deletePurchase" />
@@ -505,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670119689560</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="login api fix">
+      <created>1670220017538</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1670220017538</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +561,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="buyNowPrice 생성 및 추가, 수정" />
     <MESSAGE value="api 내부 변수명 변경 및 수정" />
     <MESSAGE value="api login return change" />
     <MESSAGE value="구매 API 생성" />
@@ -546,21 +585,8 @@
     <MESSAGE value="myPage API 생성" />
     <MESSAGE value="Test Code 임시 수정" />
     <MESSAGE value="MyPage API Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyPage API Fix" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/the_ajou/service/ProductService.java</url>
-          <line>373</line>
-          <properties class="com.the_ajou.service.ProductService" method="getProductBySearch">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="login api fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="login api fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

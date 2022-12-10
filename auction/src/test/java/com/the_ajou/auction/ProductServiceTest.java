@@ -1,12 +1,12 @@
 package com.the_ajou.auction;
 
-import com.the_ajou.domain.category.Category;
-import com.the_ajou.domain.category.CategoryRepository;
-import com.the_ajou.domain.interests.InterestRepository;
-import com.the_ajou.domain.product.Product;
-import com.the_ajou.domain.product.ProductRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.category.Category;
+import com.the_ajou.model.category.CategoryRepository;
+import com.the_ajou.model.interests.InterestRepository;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.service.PurchaseService;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
 import com.the_ajou.web.dao.product.ProductSearchResponseDAO;

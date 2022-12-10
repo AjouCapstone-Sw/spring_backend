@@ -1,4 +1,4 @@
-package com.the_ajou.domain.category;
+package com.the_ajou.model.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.the_ajou.domain.product;
+package com.the_ajou.model.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

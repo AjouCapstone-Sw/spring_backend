@@ -1,9 +1,9 @@
 package com.the_ajou.service;
 
-import com.the_ajou.domain.auctionReview.AuctionReview;
-import com.the_ajou.domain.auctionReview.AuctionReviewRepository;
-import com.the_ajou.domain.user.User;
-import com.the_ajou.domain.user.UserRepository;
+import com.the_ajou.model.auctionReview.AuctionReview;
+import com.the_ajou.model.auctionReview.AuctionReviewRepository;
+import com.the_ajou.model.user.User;
+import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.auctionReview.AuctionReviewDAO;
 import com.the_ajou.web.dto.auctionReview.AuctionReviewCreateDTO;
 import lombok.RequiredArgsConstructor;
