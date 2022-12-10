@@ -22,8 +22,18 @@ fi
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 chmod +x $DEPLOY_JAR
 
+export NVM_DIR="/home/ubuntu/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+# This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. 
+"$NVM_DIR/bash_completion"  
+# This loads nvm bash_completion
+
+nvm use 16
+
 echo "> pm2 배포"    >> /home/ubuntu/api-server/deploy.log
-pm2 start /home/ubuntu/api-server/app.json >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
+cd /home/ubuntu/api-server
+pm2 start app.json >> /home/ubuntu/deploy.log 2>/home/ubuntu/api-server/deploy_err.log &
 
 
 # echo "> DEPLOY_JAR 배포"    >> /home/ubuntu/api-server/deploy.log
