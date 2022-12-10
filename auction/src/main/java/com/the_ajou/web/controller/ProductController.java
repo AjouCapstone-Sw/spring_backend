@@ -25,6 +25,21 @@ public class ProductController {
         return productService.getProductList();
     }
 
+    @GetMapping("/api/product/auctioning/list")
+    public List<ProductSearchResponseDAO> getAuctioningProductList(){
+        return productService.getAuctioningProductList();
+    }
+
+    @GetMapping("/api/product/instance/list")
+    public List<ProductSearchResponseDAO> getInstanceProductList(){
+        return productService.getInstanceProductList();
+    }
+
+    @GetMapping("/api/product/auction/list")
+    public List<ProductSearchResponseDAO> getAuctionProductList(){
+        return productService.getAuctionProductList();
+    }
+
     @GetMapping("/api/productList/{categoryId}")
     public List<ProductSearchResponseDAO> getProductListByCategoryId(@PathVariable("categoryId") int categoryId){
         return productService.getProductListByCategoryId(categoryId);
