@@ -18,9 +18,10 @@ import static org.springframework.web.servlet.function.RouterFunctions.route;
 @SpringBootApplication
 public class AuctionApplication {
 
-	@PostMapping
+	@PostConstruct
 	public void setTimeZone(){
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
+		System.out.println("[QWER] 현재 시간 : " + new Date());
 	}
 
 	public static void main(String[] args) {

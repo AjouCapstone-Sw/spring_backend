@@ -241,6 +241,12 @@ public class ProductService {
                     startTime = simpleDateFormat.parse(product.getStartTime());
                     endTime = simpleDateFormat.parse(endTimeStr);
                     nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+
+//                    System.out.println("[QWER] 현재 시간 : " + nowTime);
+//                    System.out.println("[QWER] 시작 시간 : " + startTime);
+//                    System.out.println("[QWER] 종료 시간 : " + endTime);
+//                    System.out.println("[QWER] ----------------------");
+
                     now = nowTime.equals(startTime) || nowTime.equals(endTime);
                     before = nowTime.after(startTime);
                     after = nowTime.before(endTime);
