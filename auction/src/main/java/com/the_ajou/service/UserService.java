@@ -1,5 +1,7 @@
 package com.the_ajou.service;
 ;
+import com.the_ajou.model.product.Product;
+import com.the_ajou.model.product.ProductRepository;
 import com.the_ajou.model.user.User;
 import com.the_ajou.model.user.UserRepository;
 import com.the_ajou.web.dao.user.UserLoginDAO;
@@ -14,12 +16,14 @@ import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final ProductRepository productRepository;
     private final PasswordEncoder passwordEncoder;
 
 
@@ -60,10 +64,35 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    private int getTotalPrice(){
+        List<Product> products = productRepository.findAll();
+        int totalPrice = 0;
+
+        for(Product product : products){
+            if(product.getStatus() == 'S'){
+                if(product.getInstant() == 1)
+                    totalPrice += product.getBuyNowPrice();
+                totalPrice += product.getEndPrice();
+            }
+        }
+        return totalPrice;
+    }
+
     @Transactional
     public Object login(UserLoginDTO userLoginDTO){
         try {
             User user = userRepository.findByEmail(userLoginDTO.getEmail());
+
+            if(userLoginDTO.getEmail().equals("admin@admin")){
+                List<User> users = userRepository.findAll();
+                int userCount = users.size();
+
+                return AdminInfo.builder()
+                        .totalPrice(getTotalPrice())
+                        .commission((int) (getTotalPrice() * 0.05))
+                        .userCount(userCount)
+                        .build();
+            }
 
             if(passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())){
                 return UserLoginDAO.builder()

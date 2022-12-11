@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="폴더 위치 이동 및 product api 생성 및 수정">
-      <change beforePath="$PROJECT_DIR$/.." beforeDir="false" afterPath="$PROJECT_DIR$/.." afterDir="false" />
+    <list default="true" id="dcc8a986-fb54-4c1c-bc34-55f83676c8dc" name="Changes" comment="product instanceBuy api fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/dto/user/AdminInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/web/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/the_ajou/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -514,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670670696027</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="product instanceBuy api fix">
+      <created>1670674569959</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1670674569959</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -530,7 +537,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="api login return change" />
     <MESSAGE value="구매 API 생성" />
     <MESSAGE value="fix commit" />
     <MESSAGE value="api refactor" />
@@ -555,7 +561,8 @@
     <MESSAGE value="MyPage API Fix" />
     <MESSAGE value="login api fix" />
     <MESSAGE value="폴더 위치 이동 및 product api 생성 및 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="폴더 위치 이동 및 product api 생성 및 수정" />
+    <MESSAGE value="product instanceBuy api fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="product instanceBuy api fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
