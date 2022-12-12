@@ -109,58 +109,58 @@ class ProductServiceTest {
         assertThat(productResponseDAO).isNotNull();
     }
 
-    @Transactional
-    @Rollback
-    @Test
-    void getProductList(){
-        List<Product> products = productRepository.findAll();
-        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
-
-        for(Product product : products){
-            if(product.getStatus() == 'N'){
-                Date startTime;
-                Date endTime;
-                Date nowTime;
-
-
-                boolean before = false;
-                boolean after = false;
-                boolean now = false;
-                String endTimeStr = "";
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
-                try {
-                    endTime = simpleDateFormat.parse(product.getStartTime());
-                    calendar.setTime(endTime);
-                    calendar.add(Calendar.MINUTE, product.getDuration());
-
-                    endTimeStr = simpleDateFormat.format(calendar.getTime());
-
-                    startTime = simpleDateFormat.parse(product.getStartTime());
-                    endTime = simpleDateFormat.parse(endTimeStr);
-                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
-                    before = nowTime.after(startTime);
-                    after = nowTime.before(endTime);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-
-                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .title(product.getTitle())
-                        .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after || now)
-                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                        .image(product.getProductImage1())
-                        .build();
-                productSearchResponseDAOS.add(productSearchResponseDAO);
-            }
-        }
-
-        //assertThat(productSearchResponseDAOS).isNotEmpty();
-    }
+//    @Transactional
+//    @Rollback
+//    @Test
+//    void getProductList(){
+//        List<Product> products = productRepository.findAll();
+//        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+//
+//        for(Product product : products){
+//            if(product.getStatus() == 'N'){
+//                Date startTime;
+//                Date endTime;
+//                Date nowTime;
+//
+//
+//                boolean before = false;
+//                boolean after = false;
+//                boolean now = false;
+//                String endTimeStr = "";
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+//                try {
+//                    endTime = simpleDateFormat.parse(product.getStartTime());
+//                    calendar.setTime(endTime);
+//                    calendar.add(Calendar.MINUTE, product.getDuration());
+//
+//                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+//
+//                    startTime = simpleDateFormat.parse(product.getStartTime());
+//                    endTime = simpleDateFormat.parse(endTimeStr);
+//                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+//                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
+//                    before = nowTime.after(startTime);
+//                    after = nowTime.before(endTime);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+//                        .title(product.getTitle())
+//                        .buyNowPrice(product.getBuyNowPrice())
+//                        .live(before && after || now)
+//                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+//                        .image(product.getProductImage1())
+//                        .build();
+//                productSearchResponseDAOS.add(productSearchResponseDAO);
+//            }
+//        }
+//
+//        //assertThat(productSearchResponseDAOS).isNotEmpty();
+//    }
 
 
     @Transactional
@@ -303,59 +303,59 @@ class ProductServiceTest {
         assertThat(product.getTitle()).isEqualTo("Test Title");
     }
 
-    @Transactional
-    @Rollback
-    @Test
-    void getProductBySearch(){
-        List<Product> products = productRepository.findAll();
-        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
-
-        for(Product product : products){
-            if(product.getCategory().getName().contains("자동차") || product.getTitle().contains("자동차")){
-
-                Date startTime;
-                Date endTime;
-                Date nowTime;
-
-
-                boolean before = false;
-                boolean after = false;
-                boolean now = false;
-                String endTimeStr = "";
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
-                try {
-                    endTime = simpleDateFormat.parse(product.getStartTime());
-                    calendar.setTime(endTime);
-                    calendar.add(Calendar.MINUTE, product.getDuration());
-
-                    endTimeStr = simpleDateFormat.format(calendar.getTime());
-
-                    startTime = simpleDateFormat.parse(product.getStartTime());
-                    endTime = simpleDateFormat.parse(endTimeStr);
-                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
-                    before = nowTime.after(startTime);
-                    after = nowTime.before(endTime);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-
-                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
-                        .title(product.getTitle())
-                        .buyNowPrice(product.getBuyNowPrice())
-                        .live(before && after || now)
-                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
-                        .image(product.getProductImage1())
-                        .build();
-                productSearchResponseDAOS.add(productSearchResponseDAO);
-            }
-        }
-
-        Assertions.assertThat(productSearchResponseDAOS).isNotEmpty();
-    }
+//    @Transactional
+//    @Rollback
+//    @Test
+//    void getProductBySearch(){
+//        List<Product> products = productRepository.findAll();
+//        List<ProductSearchResponseDAO> productSearchResponseDAOS = new LinkedList<>();
+//
+//        for(Product product : products){
+//            if(product.getCategory().getName().contains("자동차") || product.getTitle().contains("자동차")){
+//
+//                Date startTime;
+//                Date endTime;
+//                Date nowTime;
+//
+//
+//                boolean before = false;
+//                boolean after = false;
+//                boolean now = false;
+//                String endTimeStr = "";
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");
+//                try {
+//                    endTime = simpleDateFormat.parse(product.getStartTime());
+//                    calendar.setTime(endTime);
+//                    calendar.add(Calendar.MINUTE, product.getDuration());
+//
+//                    endTimeStr = simpleDateFormat.format(calendar.getTime());
+//
+//                    startTime = simpleDateFormat.parse(product.getStartTime());
+//                    endTime = simpleDateFormat.parse(endTimeStr);
+//                    nowTime = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+//                    now = nowTime.equals(startTime) || nowTime.equals(endTime);
+//                    before = nowTime.after(startTime);
+//                    after = nowTime.before(endTime);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//                ProductSearchResponseDAO productSearchResponseDAO = ProductSearchResponseDAO.builder()
+//                        .title(product.getTitle())
+//                        .buyNowPrice(product.getBuyNowPrice())
+//                        .live(before && after || now)
+//                        .like(interestRepository.findByProductIdAndUserId(product.getId(), product.getUser().getId()) != null)
+//                        .image(product.getProductImage1())
+//                        .build();
+//                productSearchResponseDAOS.add(productSearchResponseDAO);
+//            }
+//        }
+//
+//        Assertions.assertThat(productSearchResponseDAOS).isNotEmpty();
+//    }
 
     @Transactional
     @Rollback
