@@ -16,6 +16,7 @@ import org.springframework.web.server.handler.ResponseStatusExceptionHandler;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,19 +65,6 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    private int getTotalPrice(){
-        List<Product> products = productRepository.findAll();
-        int totalPrice = 0;
-
-        for(Product product : products){
-            if(product.getStatus() == 'S'){
-                if(product.getInstant() == 1)
-                    totalPrice += product.getBuyNowPrice();
-                totalPrice += product.getEndPrice();
-            }
-        }
-        return totalPrice;
-    }
 
     @Transactional
     public Object login(UserLoginDTO userLoginDTO){
@@ -84,14 +72,28 @@ public class UserService {
             User user = userRepository.findByEmail(userLoginDTO.getEmail());
 
             if(userLoginDTO.getEmail().equals("admin@admin")){
-                List<User> users = userRepository.findAll();
-                int userCount = users.size();
+                List<Product> products = productRepository.findAll();
+                List<AdminInfo> adminInfos = new ArrayList<>();
 
-                return AdminInfo.builder()
-                        .totalPrice(getTotalPrice())
-                        .commission((int) (getTotalPrice() * 0.05))
-                        .userCount(userCount)
-                        .build();
+                for(Product product : products){
+                    if(product.getStatus() == 'S'){
+                        int price = product.getInstant() == 1 ? product.getBuyNowPrice() : product.getEndPrice();
+                        User buyer = userRepository.findById(product.getBuyerId())
+                                .orElseThrow();
+
+                        AdminInfo adminInfo = AdminInfo.builder()
+                                .title(product.getTitle())
+                                .image(product.getProductImage1())
+                                .price(price)
+                                .commission((int) (price * 0.05))
+                                .buyer(buyer.getNickName())
+                                .seller(product.getUser().getNickName())
+                                .build();
+
+                        adminInfos.add(adminInfo);
+                    }
+                }
+                return adminInfos;
             }
 
             if(passwordEncoder.matches(userLoginDTO.getPassword(), user.getPassword())){

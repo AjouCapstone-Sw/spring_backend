@@ -7,14 +7,21 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class AdminInfo {
-    private int totalPrice;
+    private String title;
+    private String image;
+    private int price;
     private int commission;
-    private int userCount;
+    private String seller;
+    private String buyer;
+
 
     @Builder
-    AdminInfo(int totalPrice, int commission, int userCount){
-        this.totalPrice = totalPrice;
+    AdminInfo(String title, String image, int price, int commission, String seller, String buyer){
+        this.title = title;
+        this.image = image;
         this.commission = commission;
-        this.userCount = userCount;
+        this.price = price;
+        this.seller = seller;
+        this.buyer = buyer;
     }
 }
